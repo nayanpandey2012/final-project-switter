@@ -1,24 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
+import './pages/Logged_in_main'
 import './App.css';
+import Logged_in_main from './pages/Logged_in_main';
 
-function App() {
+
+function App() { // I just have logged_in_main for testing, this should be replaced later
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Logged_in_main />
     </div>
   );
 }

@@ -1,10 +1,15 @@
-class tweets extends React.Component {
+import React, { Component } from "react";
 
-    //////////// THIS IS NOT COMPLETE, JUST PLACEHOLDER
 
-    render() { // THIS ENDPOINT DOES NOT EXITS YET
-        <div>
-            <tweets_list /> 
-        </div>
+export default class Tweets extends Component {
+
+
+    render() {
+        return (
+            <div>
+                <p>Tweets go here!</p>
+            </div>
+        )
     }
 }
+
