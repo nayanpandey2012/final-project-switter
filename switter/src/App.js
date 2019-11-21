@@ -1,11 +1,16 @@
 import React from 'react';
+import './pages/Logged_in_main'
 // import logo from './logo.svg';
 import switterLogo from './csc667-logo.svg';
 import './App.css';
+import Logged_in_main from './pages/Logged_in_main';
 
-function App() {
+
+function App() { // I just have logged_in_main for testing, this should be replaced later
   return (
     <div className="App">
+      <Logged_in_main />
+
       <header className="App-header">
         <img src={switterLogo} className="App-logo" alt="logo" />
         <p>
