@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Tweet from "./tweet";
 
 
 export default class Tweets extends Component {
@@ -6,8 +7,8 @@ export default class Tweets extends Component {
 
     render() {
         return (
-            <div>
-                <p>Tweets go here!</p>
+            <div className="tweets">
+
             </div>
         )
     }
