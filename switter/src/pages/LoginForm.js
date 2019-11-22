@@ -1,12 +1,14 @@
 import React from 'react';
 import switterLogo from '../csc667-logo.svg';
 import '../App.css';
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
     const inputStyle = {
         group: {
             position: 'relative',
             marginBottom: '45px'
+            
         },
         input: {
             fontSize: '18px',
@@ -31,20 +33,15 @@ const LoginForm = () => {
             margin: '30px auto 0',
             display: 'block',
             background: '#FFF',
-            padding: '10px 50px'
+            padding: '10px 50px',textAlign: 'center'
         }, 
-        bar: {
-            position: 'relative',
-            display: 'block',
-            width: '300px'
-        }
     }; 
 
     return (
     <div>
         <div>
             <span>
-                <img src={switterLogo} width='50' height='50' alt='logo'/>
+                <Link to='/'><img src={switterLogo} width='60' height='60' alt='logo'/></Link>
             </span>
             <span>
                 <h1>Switter, it's Twitter, but sweeter</h1>
