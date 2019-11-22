@@ -23,9 +23,10 @@ function App() { // I just have logged_in_main for testing, this should be repla
             <li>
               <Link to="/sign_up">Sign Up</Link>
             </li>
-            </ul>
-        </nav>
 
+          </ul>
+        </nav>
+        
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>

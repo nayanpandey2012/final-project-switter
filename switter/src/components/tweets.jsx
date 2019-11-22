@@ -8,7 +8,17 @@ export default class Tweets extends Component {
     render() {
         return (
             <div className="tweets">
-
+                <ul>
+                    <li>
+                        <tweet />
+                    </li>
+                    <li>
+                        <tweet />
+                    </li>
+                    <li>
+                        <tweet />
+                    </li>
+                </ul>
             </div>
         )
     }
