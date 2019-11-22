@@ -1,13 +1,19 @@
 import React from 'react';
+
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Sign_up from './pages/Sign_up';
+import './pages/Logged_in_main'
+import switterLogo from './csc667-logo.svg';
+
+import Logged_in_main from './pages/Logged_in_main';
 
 
 
-function App() {
+function App() { // I just have logged_in_main for testing, this should be replaced later
   return (
+
     <Router>
       <h1>First Page</h1>
       <div>
@@ -31,6 +37,7 @@ function App() {
         </Switch>
       </div>
     </Router>
+
   );
 }
 

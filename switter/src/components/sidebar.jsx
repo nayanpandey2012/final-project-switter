@@ -1,23 +1,27 @@
-class sidebar extends React.Component {
+import React from "react";
 
-    //////////// THIS IS NOT COMPLETE, JUST PLACEHOLDER
-    
+export default class Sidebar extends React.Component {
+
+    // these will be changed to routes, placeholders for now
+
     render() {
-        <div>
-            <ul>
-                <li>
-                    HOME
-                </li>
-                <li>
-                    PROFILE
-                </li>
-                <li>
-                    ACTIVE USERS
-                </li>
-                <li>
-                    MORE+
-                </li>
-            </ul>
-        </div>
+        return (
+            <div className="sidebar">
+                <ul>
+                    <li>
+                        HOME
+                    </li>
+                    <li>
+                        PROFILE
+                    </li>
+                    <li>
+                        ACTIVE USERS
+                    </li>
+                    <li>
+                        MORE+
+                    </li>
+                </ul>
+            </div>
+        )
     }
 }
