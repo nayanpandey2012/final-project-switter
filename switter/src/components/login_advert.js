@@ -26,7 +26,7 @@ const LoginAdvert = () => {
 // CSS Styling: 
 const backgroundStyle = {
     color: 'white',
-    textFont: 'Arial',
+    fontFamily: 'Helvetica, sans-serif 500',
     backgroundColor: '#00aced',
 }
 

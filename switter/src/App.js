@@ -2,16 +2,12 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Login from './pages/LoginPage';
-import { faHome } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import switterLogo from '../src/csc667-logo.svg';
 
 const Home = () => {
   return (
     <div>
-      <br />
-      <Link to='/login'><FontAwesomeIcon icon={faHome} /></Link>
-      <br />
-      <FontAwesomeIcon icon={['far', 'comment']} />
+      <Link to='/login'><img src={switterLogo} width='40px' height='40px' alt='logo' /></Link>
     </div>
   )
 }

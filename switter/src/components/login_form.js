@@ -73,7 +73,8 @@ const inputStyle = {
     }, 
     p: {
         fontFamily: 'Helvetica, sans-serif 500',
-        fontSize: '36px'
+        fontSize: '36px',
+        fontWeight: '0.1'
     }
 }; 
 
