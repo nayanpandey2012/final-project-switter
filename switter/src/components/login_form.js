@@ -9,6 +9,7 @@ const LoginForm = () => {
     <div>
         <div>
             <span>
+                <br />
                 <Link to='/'><img src={switterLogo} width='70px' height='70px' alt='logo'/></Link>
             </span>
             <span>
