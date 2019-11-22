@@ -1,35 +1,41 @@
-import React from 'react';
-// comment this out: 
-// import './pages/Logged_in_main'
-// import logo from './logo.svg';
-import switterLogo from './csc667-logo.svg';
+import React, { Component } from 'react';
+import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+
+
 import './App.css';
-// comment this out:
-// import Logged_in_main from './pages/Logged_in_main';
 
+class App extends Component {
+  render() {
+    return (
+      <Router basename="/react-auth-ui/">
+        <div className="App">
+          <div className="App__Aside">
 
-function App() { // I just have logged_in_main for testing, this should be replaced later
-  return (
-    <div className="App">
-      {/* comment this out:  */}
-      {/* <Logged_in_main /> */}
+          </div>
+          <div className="App__Form"> 
+          <div className="PageSwitcher">
+                <NavLink to="/sign-in" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
+                <NavLink exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</NavLink>
+              </div>
 
-      <header className="App-header">
-        <img src={switterLogo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+              <div className="text">
+                <h1>See what's happening in </h1>
+                <h1>the world right now</h1>
+              </div>
+                
+              <div className="FormTitle">
+                  <NavLink to="/sign-in" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink> or
+                  <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink>
+              </div>
+          
+          
+          
+          </div>
+
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
