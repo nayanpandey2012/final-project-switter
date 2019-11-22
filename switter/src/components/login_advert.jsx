@@ -10,13 +10,13 @@ const LoginAdvert = () => {
         <div style={backgroundStyle}>
             <br />
             <h2>Follow your interests</h2>
-            <FontAwesomeIcon icon={faComment} />
+            <FontAwesomeIcon icon={faSearch} />
             <br />
             <h2>Connect with people</h2>
             <FontAwesomeIcon icon={faUserFriends} />
             <br />
             <h2>Join the conversation</h2>
-            <FontAwesomeIcon icon={faSearch} />
+            <FontAwesomeIcon icon={faComment} />
             <br />
             <br/>
         </div>

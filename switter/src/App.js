@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import Login from './pages/LoginPage';
+import Login from './pages/LoginPage.jsx';
 import switterLogo from '../src/csc667-logo.svg';
 
 const Home = () => {

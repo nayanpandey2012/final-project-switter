@@ -1,7 +1,7 @@
 // Date: Nov 22, 2019 by Tran
 import React from 'react';
 import switterLogo from '../csc667-logo.svg';
-import '../App.css';
+import '../LoginPage.css';
 import { Link } from "react-router-dom";
 
 const LoginForm = () => {
