@@ -1,10 +1,5 @@
+// Date: Nov 22, 2019 by Tran
 import React from 'react';
-
-const backgroundStyle = {
-    color: 'white',
-    textFont: 'Arial',
-    backgroundColor: '#00aced',
-}
 
 const LoginAdvert = () => {
     return (
@@ -18,6 +13,13 @@ const LoginAdvert = () => {
             <br />
         </div>
     );
+}
+
+// CSS Styling: 
+const backgroundStyle = {
+    color: 'white',
+    textFont: 'Arial',
+    backgroundColor: '#00aced',
 }
 
 export default LoginAdvert;

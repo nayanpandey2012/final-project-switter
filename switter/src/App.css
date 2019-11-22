@@ -3,9 +3,11 @@
   text-align: center;
 }
 
-input:focus 		{ outline:none; }
+input:focus { 
+  outline:none; 
+}
 
-label 				 {
+label {
   color:#00aced; 
   font-size:18px;
   font-weight:normal;
@@ -71,4 +73,25 @@ input:focus ~ .highlight {
 @keyframes inputHighlighter {
 	from { background:#00aced; }
   to 	{ width:0; background:transparent; }
+}
+
+
+
+/* Login Form btn */
+.login-btn {
+  display: block;
+  width: 240px;
+  height: 40px;
+  padding: 0;
+  margin: 10px 20px 10px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #00aced;
+  border: none;
+  border-radius: 20px;
+  transition: background-color .10s ease-in-out;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
 }
