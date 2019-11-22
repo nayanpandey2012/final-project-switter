@@ -1,30 +1,38 @@
 import React from 'react';
-import './pages/Logged_in_main'
-// import logo from './logo.svg';
-import switterLogo from './csc667-logo.svg';
 import './App.css';
-import Logged_in_main from './pages/Logged_in_main';
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import Login from '../src/pages/Login';
+// import LoginAdvert from '../src/components/login_advert';
 
+const Home = () => {
+  return (
+    <div>
+      <p>Fake home</p>
+    </div>
+  )
+}
 
-function App() { // I just have logged_in_main for testing, this should be replaced later
+function App() {
   return (
     <div className="App">
-      <Logged_in_main />
-
-      <header className="App-header">
-        <img src={switterLogo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  <Router>
+      <div>
+        <nav>
+          <ul>
+          <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          </ul>
+        </nav>
+        <Switch>
+          <Route path='/login' component={Login} />
+          <Route exact path='/' component={Home} />
+        </Switch>
+      </div>
+    </Router>
     </div>
   );
 }
