@@ -10,33 +10,12 @@ import Logged_in_main from './pages/Logged_in_main';
 
 
 
-function App() { // I just have logged_in_main for testing, this should be replaced later
+function App() {
   return (
 
-    <Router>
-      <h1>First Page</h1>
-      <div>
-        <nav>
-          <ul>
-           
-            <li>
-              <Link to="/sign_up">Sign Up</Link>
-            </li>
-
-          </ul>
-        </nav>
-        
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          
-          
-          <Route path="/sign_up">
-            <Sign_up />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <div>
+      <Logged_in_main />
+    </div>
 
   );
 }

@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import Tweet from "./tweet";
+import Tweet from "./Tweet";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Button,  Badge, Col, Row } from "react-bootstrap";
+
 
 
 export default class Tweets extends Component {
@@ -7,19 +10,20 @@ export default class Tweets extends Component {
 
     render() {
         return (
-            <div className="tweets">
-                <ul>
-                    <li>
-                        <tweet />
-                    </li>
-                    <li>
-                        <tweet />
-                    </li>
-                    <li>
-                        <tweet />
-                    </li>
-                </ul>
-            </div>
+            <Container>
+                <Col>
+                    <p>PLACEHOLDER</p>
+                    <p>PLACEHOLDER</p>
+                    <p>PLACEHOLDER</p>
+                    <p>PLACEHOLDER</p>
+                    <p>PLACEHOLDER</p>
+                    <p>PLACEHOLDER</p>
+                    <p>PLACEHOLDER</p>
+                    <p>PLACEHOLDER</p>
+                    <p>PLACEHOLDER</p>
+                    <p>PLACEHOLDER</p>
+                </Col>
+            </Container>
         )
     }
 }
