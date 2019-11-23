@@ -8,13 +8,15 @@ export default class Tweets extends Component {
 
 
     render() {
-        return (
+        return this.props.tweets.map((tweet)=>(
             <Container>
                 <Col xs={8}>
-                    
+                    <Tweet box ={tweet}/>
                 </Col>
             </Container>
         )
+
+        );
     }
 }
 

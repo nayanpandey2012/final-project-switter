@@ -5,11 +5,12 @@ export default class Tweet extends Component {
 
 
     render() {
+        const{username,message,likes } = this.props.box;
         return (
             <div>
-                <h1>username</h1>
-                <p>This is a tweet</p>
-                <h2>time stamp goes here</h2>
+                <h1>{username}</h1>
+                <p>{message}</p>
+                <h2>{likes}</h2>
             </div>
         )
     }
