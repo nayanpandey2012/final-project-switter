@@ -11,7 +11,7 @@ import Logged_in_main from './pages/Logged_in_main';
 
 
 
-function App() { // I just have logged_in_main for testing, this should be replaced later
+function App() {
   return (
 
     <Router>
@@ -19,14 +19,15 @@ function App() { // I just have logged_in_main for testing, this should be repla
       <div>
         <nav>
           <ul>
-           
             <li>
               <Link to="/sign_up">Sign Up</Link>
             </li>
-
+            <li>
+              <Link to="/logged_in_main">This link is to test the logged_in_main</Link>
+            </li>
           </ul>
         </nav>
-        
+
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
@@ -34,6 +35,9 @@ function App() { // I just have logged_in_main for testing, this should be repla
           
           <Route path="/sign_up">
             <Sign_up />
+          </Route>
+          <Route path="/logged_in_main">
+            <Logged_in_main />
           </Route>
         </Switch>
       </div>

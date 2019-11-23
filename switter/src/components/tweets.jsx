@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Tweet from "./tweet";
+import Tweet from "./Tweet";
 
 
 export default class Tweets extends Component {
@@ -10,13 +10,13 @@ export default class Tweets extends Component {
             <div className="tweets">
                 <ul>
                     <li>
-                        <tweet />
+                        this is a tweet placeholder
                     </li>
                     <li>
-                        <tweet />
+                        this is a tweet placeholder
                     </li>
                     <li>
-                        <tweet />
+                    this is a tweet placeholder
                     </li>
                 </ul>
             </div>

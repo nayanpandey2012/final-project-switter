@@ -7,30 +7,12 @@ export default class Sidebar extends React.Component {
 
     render() {
         return (
-            <Router>
-                <div
-                style={{
-                display: 'flex',
-          justifyContent: 'center',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-        className="app"
-      >
-        <Navbar />
-        <Switch>
-          <Route path="/login">
-            {isLoggedIn ? <Redirect to="/notes" /> : <LoginPage />}
-          </Route>
-          <Route path="/register">
-            {isLoggedIn ? <Redirect to="/notes" /> : <RegisterPage />}
-          </Route>
-          <Route path="/notes">
-            {isLoggedIn ? <NotesPage /> : <Redirect to="/login" />}
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+          <div>
+              <p>placeholder</p>
+              <p>placeholder</p>
+              <p>placeholder</p>
+              <p>placeholder</p>
+          </div>
         )
     }
 }
