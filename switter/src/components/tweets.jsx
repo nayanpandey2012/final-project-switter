@@ -10,8 +10,17 @@ export default class Tweets extends Component {
     render() {
         return (
             <Container>
-                <Col xs={8}>
-                    
+                <Col>
+                    <p>PLACEHOLDER</p>
+                    <p>PLACEHOLDER</p>
+                    <p>PLACEHOLDER</p>
+                    <p>PLACEHOLDER</p>
+                    <p>PLACEHOLDER</p>
+                    <p>PLACEHOLDER</p>
+                    <p>PLACEHOLDER</p>
+                    <p>PLACEHOLDER</p>
+                    <p>PLACEHOLDER</p>
+                    <p>PLACEHOLDER</p>
                 </Col>
             </Container>
         )

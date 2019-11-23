@@ -9,12 +9,10 @@ export default class Logged_in_main extends React.Component {
     render() {
         return (
             <Container>
-                <Col>
-                    <Tweets/>
-                </Col>
-                <Col>
-                    <Sidebar />
-                </Col>
+            <Row>
+                <Col xs={9}><Tweets /></Col>
+                <Col xs={3}><Sidebar /></Col>
+            </Row>
             </Container>
         );
     };
