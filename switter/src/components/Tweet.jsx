@@ -8,11 +8,11 @@ export default class Tweet extends Component {
         const{username,message,likes } = this.props.box;
         return (
             <div style={tweetStyle}>
-                <h1>{username}</h1>
+                <p>{username}</p>
                 <p>{message}</p>
                 <ion-icon name="heart"></ion-icon>
 
-                <h2>{likes}</h2>
+                <p>likes: {likes}</p>
             </div>
         )
     }
