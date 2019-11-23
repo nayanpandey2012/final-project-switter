@@ -11,7 +11,9 @@ export default class Sidebar extends React.Component {
     render() {
         return (
             <Container>
-            <Col xsOffset={10} xs={2}>
+            <Row xs={4}>
+            </Row>
+            <Col xs={4}>
             <Button variant="primary" size="lg" block>
                 Home
             </Button>
