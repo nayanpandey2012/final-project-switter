@@ -1,4 +1,7 @@
 import React from "react";
+//import "./app.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Button,  Badge, Col, Row } from "react-bootstrap";
 
 export default class Sidebar extends React.Component {
 
@@ -7,12 +10,19 @@ export default class Sidebar extends React.Component {
 
     render() {
         return (
-          <div>
-              <p>placeholder</p>
-              <p>placeholder</p>
-              <p>placeholder</p>
-              <p>placeholder</p>
-          </div>
+            <Container>
+            <Col xsOffset={10} xs={2}>
+            <Button variant="primary" size="lg" block>
+                Home
+            </Button>
+            <Button variant="primary" size="lg" block>
+                Profile
+            </Button>
+            <h1>
+                Active Users <Badge variant="secondary">NUMBER</Badge>
+            </h1>
+            </Col>
+            </Container>
         )
     }
 }

@@ -16,7 +16,7 @@ export default class Tweets extends Component {
                         this is a tweet placeholder
                     </li>
                     <li>
-                    this is a tweet placeholder
+                        this is a tweet placeholder
                     </li>
                 </ul>
             </div>
