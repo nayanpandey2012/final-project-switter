@@ -9,22 +9,13 @@ export default class Tweets extends Component {
 
 
     render() {
-        return (
+        return this.props.tweets.map((tweet)=>(
             <Container>
                 <Col>
-                    <p>PLACEHOLDER</p>
-                    <p>PLACEHOLDER</p>
-                    <p>PLACEHOLDER</p>
-                    <p>PLACEHOLDER</p>
-                    <p>PLACEHOLDER</p>
-                    <p>PLACEHOLDER</p>
-                    <p>PLACEHOLDER</p>
-                    <p>PLACEHOLDER</p>
-                    <p>PLACEHOLDER</p>
-                    <p>PLACEHOLDER</p>
+                <Tweet box ={tweet}/>
                 </Col>
             </Container>
-        )
+        ));
     }
 }
 

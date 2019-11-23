@@ -5,12 +5,21 @@ export default class Tweet extends Component {
 
 
     render() {
+        const{username,message,likes } = this.props.box;
         return (
-            <div>
-                <h1>username</h1>
-                <p>This is a tweet</p>
-                <h2>time stamp goes here</h2>
+            <div style={tweetStyle}>
+                <h1>{username}</h1>
+                <p>{message}</p>
+                <ion-icon name="heart"></ion-icon>
+
+                <h2>{likes}</h2>
             </div>
         )
     }
+}
+
+const tweetStyle = {
+    borderStyle:'solid',
+    borderColor:'grey',
+    marginBottom: '3px',
 }
