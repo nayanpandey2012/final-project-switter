@@ -1,4 +1,4 @@
-// src / models / user.js
+// src / models / userSchema.js
 'use strict'
 
 const mongoose = require('mongoose')
@@ -7,7 +7,8 @@ const mongoose = require('mongoose')
 let UserSchema = mongoose.Schema({
   username: String,
   password: String,
-  createdAt: Date
+  createdAt: Date,
+  email: String
 })
 
 let User = mongoose.model('users', UserSchema)

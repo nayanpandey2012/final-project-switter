@@ -1,4 +1,4 @@
-// src / models / tweet.js
+// src / models / tweetSchema.js
 'use strict'
 
 const mongoose = require('mongoose')
@@ -7,7 +7,8 @@ const mongoose = require('mongoose')
 let TweetSchema = mongoose.Schema({
   text: String,
   userId: String,
-  createdAt: Date
+  createdAt: Date,
+  likes: String
 })
 
 let Tweet = mongoose.model('tweets', TweetSchema)
