@@ -24,7 +24,6 @@ function App() {
     <div className="App">
   <Router>
       <div>
-    <div>
         <Switch>
           <Route path='/login' component={Login} />
           <Route exact path='/' component={Home} />
@@ -32,10 +31,13 @@ function App() {
         </div>
     <div>
       <Logged_in_main />
-      </div>
-      </div>
-    </Router>
     </div>
+    </Router>
+
+      </div>
+
+    
+
   );
 }
 
