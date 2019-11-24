@@ -3,7 +3,6 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Advertisement from '../src/components/advertisement';
 import SigninTab from '../src/components/signinTab';
-import { HashRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import Login from './pages/LoginPage.jsx';
 import switterLogo from '../src/csc667-logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -32,7 +31,7 @@ function App() {
           <Route exact path='/' component={Home} />
           <Route path= '/signin' component = {Advertisement}/>
           <Route path = '/' component= {SigninTab}/>
-          <Route path = '/signup' component= {Sign_up}/>
+          <Route path = '/sign_up' component= {Sign_up}/>
         </Switch>
         </div>
     <div>
