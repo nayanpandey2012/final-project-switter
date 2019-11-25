@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import Login from './pages/LoginPage.jsx';
+import LoginPage from './pages/LoginPage.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Sign_up from './pages/Sign_up';
 import WelcomePage from './pages/WelcomePage';
@@ -16,7 +16,7 @@ const App = () => {
             <Switch>
               <Route path='/welcome' component={WelcomePage} />
               <Route path='/signup' component={Sign_up} />
-              <Route path='/login' component={Login} />
+              <Route path='/login' component={LoginPage} />
               <Route exact path='/' component={Logged_In_Main} />
             </Switch>
           </div>
