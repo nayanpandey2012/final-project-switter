@@ -1,7 +1,7 @@
 import React from "react";
 //import "./app.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Button,  Badge, Col, Row, Navbar } from "react-bootstrap";
+import { Container, Form,  Badge, Navbar } from "react-bootstrap";
 
 export default class Sidebar extends React.Component {
 
@@ -11,7 +11,9 @@ export default class Sidebar extends React.Component {
     render() {
         return (
             <Container>
-        
+                <br />
+                <Form.Control type="text" placeholder="Search" />
+                <br />
                 <Navbar bg="light">
                     Home
                 </Navbar>
