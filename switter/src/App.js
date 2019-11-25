@@ -5,9 +5,8 @@ import Login from './pages/LoginPage.jsx';
 import switterLogo from '../src/csc667-logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Sign_up from './pages/Sign_up';
-import './pages/Logged_in_main'
-
-import Logged_in_main from './pages/Logged_in_main';
+// import './pages/Logged_in_main';
+import Logged_In_Main from './pages/Logged_In_Main';
 
 
 const Home = () => {
@@ -27,11 +26,8 @@ function App() {
           <div>
             <Switch>
               <Route path='/login' component={Login} />
-              <Route exact path='/' component={Home} />
+              <Route exact path='/' component={Logged_In_Main} />
             </Switch>
-          </div>
-          <div>
-            <Logged_in_main />
           </div>
         </div>
       </Router>

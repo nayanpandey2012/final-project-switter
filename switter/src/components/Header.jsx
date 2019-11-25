@@ -1,7 +1,9 @@
 import React from "react";
 //import "./app.css"
+import switterLogo from '../csc667-logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Button,  Badge, Col, Row, Navbar, Form } from "react-bootstrap";
+
 
 export default class Header extends React.Component {
 
@@ -11,18 +13,33 @@ export default class Header extends React.Component {
     render() {
         return (
             <Container>
+                <Navbar bg="light">
+                    <Navbar.Brand href="/" style={logoStyle.float}>
+                        <img 
+                            src={switterLogo}
+                            width='40'
+                            height='40'
+                            alt='logo'
+                        />
+                    </Navbar.Brand>
+                </Navbar>
                 <Form>
-             
                     <Form.Group controlId="tweet_submit">
-                        <Form.Label>Switter</Form.Label>
+                        {/* <Form.Label><a href='/'>Switter</a></Form.Label> */}
                         <Form.Control type="text" placeholder="Whats on your mind?" />
                     </Form.Group>
-                    <Button variant="primary" type="submit">
+                    <Button variant="primary" type="submit" onClick={e => e.preventDefault()}>
                         Submit
                     </Button>
-                
-                    </Form>
+                </Form>
             </Container>
         )
+    }
+}
+
+const logoStyle = {
+    position: {
+        float: 'left !important',
+        marginTop: '-15px !important'
     }
 }
