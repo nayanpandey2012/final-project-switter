@@ -13,7 +13,7 @@ export default class Header extends React.Component {
     render() {
         return (
             <Container>
-                <Navbar bg="light">
+                <Navbar bg="white">
                     <Navbar.Brand href="/" style={logoStyle.float}>
                         <img 
                             src={switterLogo}

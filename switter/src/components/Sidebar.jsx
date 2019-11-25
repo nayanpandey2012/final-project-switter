@@ -2,6 +2,7 @@ import React from "react";
 //import "./app.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Button,  Badge, Col, Row, Navbar } from "react-bootstrap";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 export default class Sidebar extends React.Component {
 
@@ -12,12 +13,12 @@ export default class Sidebar extends React.Component {
         return (
             <Container>
         
-                <Navbar bg="light">
-                    Home
+                <Navbar bg="white">
+                    <Link to='/'>Home</Link>
                 </Navbar>
                 <br/>
-                <Navbar bg="light">
-                    Login
+                <Navbar bg="white">
+                    <Link to='/welcome'>Login / Register</Link>
                 </Navbar>
                 <br/>
                 <h5>
