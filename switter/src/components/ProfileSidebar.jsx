@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Button,  Badge, Col, Row, Navbar } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
-export default class Sidebar extends React.Component {
+export default class ProfileSidebar extends React.Component {
 
     
     // these will be changed to routes, placeholders for now
@@ -18,7 +18,7 @@ export default class Sidebar extends React.Component {
                 </Navbar>
                 <br/>
                 <Navbar bg="white">
-                    <Link to='/welcome'>Login / Register</Link>
+                    <Link to='/welcome'>Login</Link>
                 </Navbar>
                 <br/>
                 <h5>

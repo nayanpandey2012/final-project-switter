@@ -34,7 +34,7 @@ const Sign_up = () => {
       </Form.Group>
       <ButtonToolbar>
       <Button variant="outline-primary" style={{width: '49vh'}}>
-        <Link to='/'>Sign up</Link>
+        <Link to='/profile'>Sign up</Link>
       </Button>
       </ButtonToolbar>
     

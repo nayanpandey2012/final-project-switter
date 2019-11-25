@@ -33,7 +33,7 @@ const LoginForm = () => {
                 </div>
                 <br />
                 <button className='login-btn'>
-                    <Link to='/'>Log in</Link>
+                    <Link to='/profile'>Log in</Link>
                 </button>
             </form>
         </div>  
