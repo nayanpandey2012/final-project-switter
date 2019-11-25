@@ -33,7 +33,9 @@ const Sign_up = () => {
       <Form.Control type="password" placeholder="Confirm Password" />
       </Form.Group>
       <ButtonToolbar>
-      <Button variant="outline-primary" style={{width: '49vh'}}>Sign up</Button>
+      <Button variant="outline-primary" style={{width: '49vh'}}>
+        <Link to='/'>Sign up</Link>
+      </Button>
       </ButtonToolbar>
     
     </Form>
