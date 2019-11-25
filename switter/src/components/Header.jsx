@@ -25,6 +25,7 @@ export default class Header extends React.Component {
                 </Navbar>
                 <Form>
                     <Form.Group controlId="tweet_submit">
+                        {/* Note: Use <Navnar> for logo as homepage btn */}
                         {/* <Form.Label><a href='/'>Switter</a></Form.Label> */}
                         <Form.Control type="text" placeholder="Whats on your mind?" />
                     </Form.Group>

@@ -5,26 +5,18 @@ import Login from './pages/LoginPage.jsx';
 import switterLogo from '../src/csc667-logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Sign_up from './pages/Sign_up';
-// import './pages/Logged_in_main';
+import WelcomePage from './pages/WelcomePage';
 import Logged_In_Main from './pages/Logged_In_Main';
 
-
-const Home = () => {
-  return (
-    <div>
-      <Link to='/login'><img src={switterLogo} width='40px' height='40px' alt='logo' /></Link>
-    </div>
-  )
-}
-
-
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Router>
         <div>
           <div>
             <Switch>
+              <Route path='/welcome' component={WelcomePage} />
+              <Route path='/signup' component={Sign_up} />
               <Route path='/login' component={Login} />
               <Route exact path='/' component={Logged_In_Main} />
             </Switch>
