@@ -22,22 +22,20 @@ const Home = () => {
 function App() {
   return (
     <div className="App">
-  <Router>
-      <div>
-    <div>
-        <Switch>
-          <Route path='/login' component={Login} />
-          <Route exact path='/' component={Home} />
-        </Switch>
+      <Router>
+        <div>
+          <div>
+            <Switch>
+              <Route path='/login' component={Login} />
+              <Route exact path='/' component={Home} />
+            </Switch>
+          </div>
+          <div>
+            <Logged_in_main />
+          </div>
         </div>
-    <div>
-      <Logged_in_main />
+      </Router>
     </div>
-      </div>
-    </Router>
-
-    
-
   );
 }
 
