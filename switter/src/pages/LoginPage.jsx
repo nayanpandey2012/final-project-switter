@@ -1,7 +1,7 @@
-// Date: Nov 22, 2019 by Tran
+// Credit to Tran: 
 import React from 'react';
-import LoginAdvert from '../components/login_advert.jsx';
-import LoginForm from '../components/login_form.jsx';
+import LoginAdvert from '../components/Login_Advert.jsx';
+import LoginForm from '../components/Login_Form.jsx';
 
 const Login = () => {
     return (
