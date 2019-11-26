@@ -32,7 +32,9 @@ const LoginForm = () => {
                     <label>Password</label>
                 </div>
                 <br />
-                <button className='login-btn'>Log in</button>
+                <button className='login-btn'>
+                    <Link to='/profile'>Log in</Link>
+                </button>
             </form>
         </div>  
     </div>
