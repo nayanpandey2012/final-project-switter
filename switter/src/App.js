@@ -1,43 +1,30 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import Login from './pages/LoginPage.jsx';
-import switterLogo from '../src/csc667-logo.svg';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import LoginPage from './pages/LoginPage.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Sign_up from './pages/Sign_up';
-import './pages/Logged_in_main'
+import WelcomePage from './pages/WelcomePage';
+import Logged_In_Main from './pages/Logged_In_Main';
+import ProfilePage from './pages/ProfilePage';
 
-import Logged_in_main from './pages/Logged_in_main';
-
-
-const Home = () => {
-  return (
-    <div>
-      <Link to='/login'><img src={switterLogo} width='40px' height='40px' alt='logo' /></Link>
-    </div>
-  )
-}
-
-
-function App() {
+const App = () => {
   return (
     <div className="App">
-  <Router>
-      <div>
-        <Switch>
-          <Route path='/login' component={Login} />
-          <Route exact path='/' component={Home} />
-        </Switch>
+      <Router>
+        <div>
+          <div>
+            <Switch>
+              <Route path='/profile' component={ProfilePage} />
+              <Route path='/welcome' component={WelcomePage} />
+              <Route path='/signup' component={Sign_up} />
+              <Route path='/login' component={LoginPage} />
+              <Route exact path='/' component={Logged_In_Main} />
+            </Switch>
+          </div>
         </div>
-    <div>
-      <Logged_in_main />
+      </Router>
     </div>
-    </Router>
-
-      </div>
-
-    
-
   );
 }
 

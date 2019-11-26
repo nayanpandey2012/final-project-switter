@@ -71,6 +71,7 @@ input:focus ~ .highlight {
   
 /* Login Form btn */
 .login-btn {
+    /* text-decoration: none; */
     display: block;
     width: 240px;
     height: 40px;
@@ -87,4 +88,3 @@ input:focus ~ .highlight {
     -ms-user-select:none;
     user-select:none;
 }
-  

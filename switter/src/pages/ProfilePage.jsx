@@ -1,6 +1,6 @@
 import React from "react";
 import Tweets from "../components/Tweets";
-import Sidebar from "../components/Sidebar";
+import ProfileSidebar from "../components/ProfileSidebar";
 import Header from "../components/Header";
 import ProfileLabel from "../components/ProfileLabel";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -39,7 +39,7 @@ class ProfilePage extends React.Component {
             <Tweets tweets={this.state.tweets} />
           </Col>
           <Col xs={3}>
-            <Sidebar />
+            <ProfileSidebar />
           </Col>
         </Row>
       </Container>
