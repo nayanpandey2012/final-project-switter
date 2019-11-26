@@ -18,7 +18,7 @@ export default class ProfileSidebar extends React.Component {
                 </Navbar>
                 <br/>
                 <Navbar bg="white">
-                    <Link to='/welcome'>Login</Link>
+                    <Link to='/'>Logout</Link>
                 </Navbar>
                 <br/>
                 <h5>
