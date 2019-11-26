@@ -5,7 +5,7 @@ import LoginPage from './pages/LoginPage.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Sign_up from './pages/Sign_up';
 import WelcomePage from './pages/WelcomePage';
-import Logged_In_Main from './pages/Logged_In_Main';
+import Logged_in_main from './pages/Logged_in_main';
 import ProfilePage from './pages/ProfilePage';
 
 const App = () => {
@@ -19,7 +19,7 @@ const App = () => {
               <Route path='/welcome' component={WelcomePage} />
               <Route path='/signup' component={Sign_up} />
               <Route path='/login' component={LoginPage} />
-              <Route exact path='/' component={Logged_In_Main} />
+              <Route exact path='/' component={Logged_in_main} />
             </Switch>
           </div>
         </div>
