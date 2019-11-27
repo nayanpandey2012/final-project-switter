@@ -88,6 +88,7 @@ export default class Header extends React.Component {
       <div key={index}>
         <h3>{tweet.username}</h3>
         <p>{tweet.message}</p>
+        <h6>{tweet.likes}</h6>
       </div>
     ));
   };
