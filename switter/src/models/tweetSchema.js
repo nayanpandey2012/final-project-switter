@@ -1,16 +1,19 @@
-// src / models / tweetSchema.js
-'use strict'
+const mongoose = require("mongoose");
 
-const mongoose = require('mongoose')
+const Schema = mongoose.Schema;
 
 // Tweet Collection
-let TweetSchema = mongoose.Schema({
-  text: String,
-  userId: String,
-  createdAt: Date,
-  likes: String
-})
+const TweetSchema = new Schema({
+  id: String,
+  username: String,
+  message: String,
+  likes: String,
+  createdAt: {
+    type: String,
+    default: Date.now()
+  }
+});
 
-let Tweet = mongoose.model('tweets', TweetSchema)
+const Tweet = mongoose.model("Tweet", TweetSchema);
 
-module.exports = Tweet
+module.exports = Tweet;
