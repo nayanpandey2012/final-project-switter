@@ -7,7 +7,10 @@ const mongoose = require('mongoose')
 let UserSchema = mongoose.Schema({
   username: String,
   password: String,
-  createdAt: Date,
+  createdAt: {
+    type: String,
+    default: Date.now()
+  },
   email: String
 })
 
