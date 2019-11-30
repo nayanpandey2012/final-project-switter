@@ -22,4 +22,5 @@ const tweetStyle = {
     borderStyle:'solid',
     borderColor:'grey',
     marginBottom: '3px',
+    
 }

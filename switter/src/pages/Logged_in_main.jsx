@@ -32,11 +32,11 @@ export default class Logged_in_main extends React.Component {
         return (
             <Container>
             <Row>
-                <Col xs={9}>
+                <Col xs={8}>
                     <Header />
                     {/* <Tweets tweets={this.state.tweets}/> */}
                 </Col>
-                <Col xs={3}><Sidebar /></Col>
+                <Col xs={4}><Sidebar /></Col>
             </Row>
             </Container>
         );

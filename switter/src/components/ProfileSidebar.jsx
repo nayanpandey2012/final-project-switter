@@ -1,8 +1,8 @@
 import React from "react";
 //import "./app.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Button,  Badge, Col, Row, Navbar } from "react-bootstrap";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { Container,Badge, Navbar } from "react-bootstrap";
+import { BrowserRouter as  Link } from "react-router-dom";
 
 export default class ProfileSidebar extends React.Component {
 

@@ -1,11 +1,12 @@
 // Credit to Sushil: 
 import React from "react";
 import Tweets from "../components/Tweets";
-import ProfileSidebar from "../components/ProfileSidebar";
-import Header from "../components/Header";
 import ProfileLabel from "../components/ProfileLabel";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Button, Badge, Col, Row } from "react-bootstrap";
+import Sidebar from "../components/Sidebar";
+
+
+import { Container,  Col, Row } from "react-bootstrap";
 
 class ProfilePage extends React.Component {
   state = {
@@ -34,13 +35,13 @@ class ProfilePage extends React.Component {
     return (
       <Container>
         <Row>
-          <Col xs={9}>
+          <Col xs={8}>
             <ProfileLabel />
             <p><u><h3>Swits</h3></u></p>
             <Tweets tweets={this.state.tweets} />
           </Col>
-          <Col xs={3}>
-            <ProfileSidebar />
+          <Col xs={4}>
+            <Sidebar />
           </Col>
         </Row>
       </Container>
