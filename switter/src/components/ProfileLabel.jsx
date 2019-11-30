@@ -3,12 +3,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Container,
-  Button,
-  Badge,
   Col,
-  Row,
-  Navbar,
-  Form
 } from "react-bootstrap";
 
 var userName = "User1";

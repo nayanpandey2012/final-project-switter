@@ -1,6 +1,6 @@
 // Credit to Sunny: 
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link, NavLink } from "react-router-dom";
+import { BrowserRouter as  NavLink } from "react-router-dom";
 import '../WelcomePage.css';
 
 class WelcomePage extends Component {
