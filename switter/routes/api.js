@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Tweet = require("../src/models/tweetSchema");
+const User = require("../src/models/userSchema");
 
 router.get("/", (req, res) => {
   Tweet.find({})
@@ -13,7 +14,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// Save data into MongoDB
+// Save tweets data into MongoDB
 router.post("/save", (req, res) => {
   console.log("Body", req.body);
   const data = req.body;
@@ -30,6 +31,24 @@ router.post("/save", (req, res) => {
     //     msg: "data inserted into database..!!!!"
     //   });
     // }
+    return res.json({
+      msg: "data inserted into database..!!!!"
+    });
+  });
+});
+
+// Save users data into MongoDB
+router.post("/usersave", (req, res) => {
+  console.log("Body", req.body);
+  const data = req.body;
+
+  const newUserPost = new User(data);
+
+  newUserPost.save(error => {
+    if (error) {
+      res.status(500).json({ msg: "Sorry, internal server error..." });
+      return;
+    }
     return res.json({
       msg: "data inserted into database..!!!!"
     });

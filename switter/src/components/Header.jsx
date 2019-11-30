@@ -6,9 +6,6 @@ import axios from "axios";
 import {
   Container,
   Button,
-  Badge,
-  Col,
-  Row,
   Navbar,
   Form
 } from "react-bootstrap";
