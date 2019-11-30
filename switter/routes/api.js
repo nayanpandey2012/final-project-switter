@@ -3,7 +3,6 @@ const router = express.Router();
 const Tweet = require("../src/models/tweetSchema");
 const User = require("../src/models/userSchema");
 
-
 router.get("/", (req, res) => {
   Tweet.find({})
     .then(data => {
@@ -50,11 +49,6 @@ router.post("/usersave", (req, res) => {
       res.status(500).json({ msg: "Sorry, internal server error..." });
       return;
     }
-    // else {
-    //   res.json({
-    //     msg: "data inserted into database..!!!!"
-    //   });
-    // }
     return res.json({
       msg: "data inserted into database..!!!!"
     });
