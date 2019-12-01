@@ -5,13 +5,16 @@ import { Button,  Form } from "react-bootstrap";
 import switterLogo from "../csc667-logo.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
+//import { validateAll } from "indicative";
+
 
 export default class Sign_up extends React.Component {
   state = {
     id: 1,
     username: "",
     password: "",
-    email: ""
+    email: "",
+    c_password:""
     // users: []
   };
 
@@ -45,8 +48,13 @@ export default class Sign_up extends React.Component {
       id: this.state.id,
       username: this.state.username,
       password: this.state.password,
-      email: this.state.email
+      email: this.state.email,
+      c_password:this.state.c_password
     };
+
+    if (this.state.password !== this.state.c_password) {
+      alert("Passwords don't match");
+    } else {
 
     axios({
       url: "/api/usersave",
@@ -61,6 +69,7 @@ export default class Sign_up extends React.Component {
       .catch(() => {
         console.log("Internal server error");
       });
+    }
   };
 
   resetUserdataInputs = () => {
@@ -91,6 +100,7 @@ export default class Sign_up extends React.Component {
               type="text"
               placeholder="Pick a name"
               name="username"
+              required
               value={this.state.username}
               onChange={this.handleChange}
             />
@@ -101,6 +111,7 @@ export default class Sign_up extends React.Component {
               type="email"
               placeholder="Enter email"
               name="email"
+              required
               value={this.state.email}
               onChange={this.handleChange}
             />
@@ -111,6 +122,7 @@ export default class Sign_up extends React.Component {
               type="password"
               placeholder="Password"
               name="password"
+              required
               value={this.state.password}
               onChange={this.handleChange}
             />
@@ -121,6 +133,7 @@ export default class Sign_up extends React.Component {
               type="password"
               placeholder="Confirm Password"
               name="c_password"
+              required
               value={this.state.c_password}
               onChange={this.handleChange}
             />
