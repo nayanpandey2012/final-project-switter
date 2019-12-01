@@ -12,14 +12,8 @@ import { setIsLoggedIn } from './redux/actions/userActions';
 import Axios from 'axios';
 
 const App = ({ isLoggedIn, dispatch }) => {
-  useEffect(() => {
-    // Check if they are logged in previously. Auth server for cookies
-    Axios.post('/auth/cookies', {}, { withCredentials: true })
-      .then(res => {
-        dispatch(setIsLoggedIn(true));
-      })
-      .catch(error => console.log(error));
-  }, []);
+
+  // useEffect here will need to check auth server if previously signed in
 
   return (
     <div className="App">
