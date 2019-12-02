@@ -1,9 +1,9 @@
 // Credit to Tran: 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import LoginAdvert from '../components/login_advert.jsx';
 import LoginForm from '../components/login_form.jsx';
 import { connect } from 'react-redux';
-import { setIsLoggedIn } from './redux/actions/userActions';
+import { setIsLoggedIn } from '../redux/actions/userActions';
 import Axios from 'axios';
 
 const options = {

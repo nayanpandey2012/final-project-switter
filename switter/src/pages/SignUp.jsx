@@ -6,7 +6,7 @@ import switterLogo from "../csc667-logo.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-export default class Sign_up extends React.Component {
+export default class SignUp extends React.Component {
   state = {
     id: 1,
     username: "",

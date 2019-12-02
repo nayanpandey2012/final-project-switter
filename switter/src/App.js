@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import LoginPage from './pages/LoginPage.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Sign_up from './pages/Sign_up';
+import SignUp from './pages/SignUp';
 import WelcomePage from './pages/WelcomePage';
 import Logged_in_main from './pages/Logged_in_main';
 import ProfilePage from './pages/ProfilePage';
@@ -28,7 +28,7 @@ const App = ({ isLoggedIn, dispatch }) => {
                 {isLoggedIn ? <Redirect to="/welcomePage" /> : <LoginPage />}
               </Route>
               <Route path='/signup' component={WelcomePage}>
-                {isLoggedIn ? <Redirect to="/welcomePage" /> : <Sign_up />}
+                {isLoggedIn ? <Redirect to="/welcomePage" /> : <SignUp />}
               </Route>
               <Route path='/login' component={WelcomePage}>
                 {isLoggedIn ? <Redirect to="/welcomePage" /> : <LoginPage />}
