@@ -19,25 +19,30 @@ const App = ({ isLoggedIn, dispatch }) => {
     <div className="App">
       <Router>
         <div>
-          <div>
-            <Switch>
-              <Route path='/profile' component={ProfilePage}>
-                {isLoggedIn ? <Redirect to="/profile" /> : <LoginPage />}
-                </Route>
-              <Route path='/welcome' component={WelcomePage}>
-                {isLoggedIn ? <Redirect to="/welcomePage" /> : <LoginPage />}
+          {/* <Switch>
+            <Route path='/profile' component={ProfilePage}>
+              {isLoggedIn ? <Redirect to="/profile" /> : <LoginPage />}
               </Route>
-              <Route path='/signup' component={WelcomePage}>
-                {isLoggedIn ? <Redirect to="/welcomePage" /> : <SignUp />}
-              </Route>
-              <Route path='/login' component={WelcomePage}>
-                {isLoggedIn ? <Redirect to="/welcomePage" /> : <LoginPage />}
-              </Route>
-              <Route path='/' component={Logged_in_main}>
-                {isLoggedIn ? <Redirect to="/" /> : <LoginPage />}
-              </Route>
-            </Switch>
-          </div>
+            <Route path='/welcome' component={WelcomePage}>
+              {isLoggedIn ? <Redirect to="/welcomePage" /> : <LoginPage />}
+            </Route>
+            <Route path='/signup' component={WelcomePage}>
+              {isLoggedIn ? <Redirect to="/welcomePage" /> : <SignUp />}
+            </Route>
+            <Route path='/login' component={WelcomePage}>
+              {isLoggedIn ? <Redirect to="/welcomePage" /> : <LoginPage />}
+            </Route>
+            <Route path='/' component={Logged_in_main}>
+              {isLoggedIn ? <Redirect to="/" /> : <LoginPage />}
+            </Route>
+          </Switch> */}
+          <Switch>
+            <Route path='/profile' component={ProfilePage} />
+            <Route path='/welcome' component={WelcomePage} />
+            <Route path='/signup' component={SignUp} />
+            <Route path='/login' component={LoginPage} />
+            <Route exact path='/' component={Logged_in_main} />
+          </Switch>
         </div>
       </Router>
     </div>
