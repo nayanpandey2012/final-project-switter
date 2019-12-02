@@ -8,7 +8,7 @@ import axios from "axios";
 //import { validateAll } from "indicative";
 
 
-export default class Sign_up extends React.Component {
+export default class SignUp extends React.Component {
   state = {
     id: 1,
     username: "",
