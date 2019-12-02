@@ -1,17 +1,20 @@
 // Credit to Poorva:
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, ButtonToolbar, Form } from "react-bootstrap";
+import { Button,  Form } from "react-bootstrap";
 import switterLogo from "../csc667-logo.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
+//import { validateAll } from "indicative";
+
 
 export default class SignUp extends React.Component {
   state = {
     id: 1,
     username: "",
     password: "",
-    email: ""
+    email: "",
+    c_password:""
     // users: []
   };
 
@@ -45,8 +48,13 @@ export default class SignUp extends React.Component {
       id: this.state.id,
       username: this.state.username,
       password: this.state.password,
-      email: this.state.email
+      email: this.state.email,
+      c_password:this.state.c_password
     };
+
+    if (this.state.password !== this.state.c_password) {
+      alert("Passwords don't match");
+    } else {
 
     axios({
       url: "/api/usersave",
@@ -61,6 +69,7 @@ export default class SignUp extends React.Component {
       .catch(() => {
         console.log("Internal server error");
       });
+    }
   };
 
   resetUserdataInputs = () => {
@@ -72,7 +81,7 @@ export default class SignUp extends React.Component {
   render() {
     console.log("user State: ", this.state);
     return (
-      <div style={{ height: "60vh", paddingTop: 100, paddingLeft: 550 }}>
+      <div style={{ height: "60vh", paddingTop: 100 }}>
         <h2 style={{ color: "#00ACED" }}>Create your account</h2>
 
         {/* NOTE: add home btn logo to return to homepage */}
@@ -80,45 +89,51 @@ export default class SignUp extends React.Component {
           <Link to="/">
             <img src={switterLogo} width="40px" height="40px" alt="logo" />
           </Link>
+
         </span>
 
         <form onSubmit={this.submit}>
-          <Form.Group style={{ width: "49vh" }}>
+        <br />
+          <Form.Group style={{ width: "49vh", marginInlineStart: 550 }}>
             <Form.Label>Avatar name</Form.Label>
             <Form.Control
               type="text"
               placeholder="Pick a name"
               name="username"
+              required
               value={this.state.username}
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Form.Group controlId="formGroupEmail" style={{ width: "49vh" }}>
+          <Form.Group controlId="formGroupEmail" style={{ width: "49vh", marginInlineStart: 550 }}>
             <Form.Label>Email address</Form.Label>
             <Form.Control
               type="email"
               placeholder="Enter email"
               name="email"
+              required
               value={this.state.email}
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Form.Group controlId="formGroupPassword" style={{ width: "49vh" }}>
+          <Form.Group controlId="formGroupPassword" style={{ width: "49vh",marginInlineStart: 550 }}>
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
               placeholder="Password"
               name="password"
+              required
               value={this.state.password}
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Form.Group controlId="formGroupPassword" style={{ width: "49vh" }}>
+          <Form.Group controlId="formGroupPassword" style={{ width: "49vh" , marginInlineStart: 550}}>
             <Form.Label>Confirm Password</Form.Label>
             <Form.Control
               type="password"
               placeholder="Confirm Password"
               name="c_password"
+              required
               value={this.state.c_password}
               onChange={this.handleChange}
             />
@@ -127,12 +142,11 @@ export default class SignUp extends React.Component {
           <Button
             type="submit"
             variant="outline-primary"
-            style={{ width: "49vh" }}
+            style={{ width: "49vh",  }}
           >
-            {/* <Link to='/profile'>Sign up</Link> */}Submit
+            Submit
           </Button>
-          {/* </ButtonToolbar> */}
-          {/* <Button type="submit">Submit</Button> */}
+        
         </form>
       </div>
     );
