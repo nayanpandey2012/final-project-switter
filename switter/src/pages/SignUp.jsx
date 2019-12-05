@@ -74,7 +74,11 @@ export default class SignUp extends React.Component {
 
   resetUserdataInputs = () => {
     this.setState({
-      username: ""
+      username: "",
+      password: "",
+      email: "",
+      c_password:""
+
     });
   };
 
