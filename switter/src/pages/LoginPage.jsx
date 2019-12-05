@@ -1,7 +1,7 @@
 // Credit to Tran: 
 import React, { useState, useEffect } from 'react';
-import LoginAdvert from '../components/login_advert.jsx';
-import LoginForm from '../components/login_form.jsx';
+import LoginAdvert from '../components/Login_Advert';
+import LoginForm from '../components/Login_Form';
 import { connect } from 'react-redux';
 import { setIsLoggedIn } from '../redux/actions/userActions';
 import Axios from 'axios';
