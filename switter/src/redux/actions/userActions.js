@@ -10,3 +10,8 @@ export const setActiveUsers = activeUsers => ({
   type: 'SET_ACTIVE_USERS',
   activeUsers,
 });
+
+export const setLikedTweet = likedTweet => ({
+  type: 'SET_LIKED_TWEET',
+  likedTweet,
+})
