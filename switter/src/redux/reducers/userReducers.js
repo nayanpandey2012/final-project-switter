@@ -16,6 +16,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
           ...state,
           activeUsers: action.activeUsers,
       }
+    case 'SET_LIKED_TWEET':
+      return {
+        ...state,
+        likedTweet: action.likedTweet,
+      }
     default:
       return state;
   }
