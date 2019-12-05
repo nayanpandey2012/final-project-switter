@@ -63,6 +63,8 @@ export default class SignUp extends React.Component {
           alert("You are now registered..");
           console.log("Data has been sent to the server", res);
           this.resetUserdataInputs();
+          alert("User is now signed up. Happy Switting!");
+
           // this.getUserPost();
         })
         .catch(e => {
