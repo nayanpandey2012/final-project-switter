@@ -64,6 +64,11 @@ export default class SignUp extends React.Component {
       .then(() => {
         console.log("Data has been sent to the server");
         this.resetUserdataInputs();
+        alert("User is now signed up. Happy Switting!");
+        
+          
+        
+
         // this.getUserPost();
       })
       .catch(() => {
