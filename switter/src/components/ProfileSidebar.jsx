@@ -1,31 +1,32 @@
 import React from "react";
-//import "./app.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container,Badge, Navbar } from "react-bootstrap";
-import { BrowserRouter as  Link } from "react-router-dom";
+import { Container, Button,  Badge, Col, Row, Navbar, Form } from "react-bootstrap";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { connect } from 'react-redux';
 
-export default class ProfileSidebar extends React.Component {
+const ProfileSidebar = ({ activeUsers }) => {
 
-    
     // these will be changed to routes, placeholders for now
-
-    render() {
-        return (
-            <Container>
-        
-                <Navbar bg="white">
-                    <Link to='/'>Home</Link>
-                </Navbar>
-                <br/>
-                <Navbar bg="white">
-                    <Link to='/'>Logout</Link>
-                </Navbar>
-                <br/>
-                <h5>
-                    Active Users <Badge variant="secondary">5</Badge>
-                </h5>
-
-            </Container>
-        )
-    }
+    return (
+        <Container>
+            <br/>
+            <h5>
+                Active Users <Badge variant="secondary">5</Badge>
+            </h5>
+            <br/>
+            <h5>
+                Hello 
+            </h5>
+            <br/>
+            <Navbar bg="white">
+                <Link to='/'>Logout</Link>
+            </Navbar>
+        </Container>
+    );
 }
+
+const mapStateToProps = state => ({
+    activeUsers: state.userReducer.activeUsers,
+});
+
+export default connect(mapStateToProps, null)(ProfileSidebar);
