@@ -1,6 +1,9 @@
 // Credit to Sunny: 
 import React, { Component } from 'react';
-import { HashRouter as  NavLink, Router, Route, Switch, Link } from 'react-router-dom';
+
+//import { BrowserRouter as  NavLink, Router, Route, Switch, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+
 import '../WelcomePage.css';
 
 class WelcomePage extends Component {
