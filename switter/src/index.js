@@ -6,8 +6,9 @@ import App from './App';
 import store from './store';
 import * as serviceWorker from './serviceWorker';
 import { setActiveUsers } from './redux/actions/userActions';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-// Websocket Credit to Tran: 
+// websocket for active user: 
 const ws = new WebSocket('ws://localhost:4005');
 
 ws.onopen = () => {
@@ -28,13 +29,11 @@ ws.onerror = e => {
   console.log(e);
 };
 
-// temporary for demonstration, used to access globally, 
-// 9 times out of 10 don't do this
-window.ws = ws; 
-
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </Provider>,
   document.getElementById('root'),
 );

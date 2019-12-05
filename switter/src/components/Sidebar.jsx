@@ -1,5 +1,4 @@
 import React from "react";
-//import "./app.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Button,  Badge, Col, Row, Navbar, Form } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
@@ -9,11 +8,6 @@ const Sidebar = ({ activeUsers }) => {
     return (
         <Container>
             <br/>
-
-            <Navbar bg="white">
-                <Link to='/'>Home</Link>
-            </Navbar>
-            
             <Navbar bg="white">
                 <Link to='/welcome'>Login / Register</Link>
             </Navbar>
@@ -27,7 +21,7 @@ const Sidebar = ({ activeUsers }) => {
                 </Col>
                 <Col>
                 <Button variant="primary" type="submit">
-                Search
+                    Search
                 </Button>
                 </Col>
             </Form.Row>
@@ -38,6 +32,6 @@ const Sidebar = ({ activeUsers }) => {
 
 const mapStateToProps = state => ({
     activeUsers: state.userReducer.activeUsers,
-})
+});
 
 export default connect(mapStateToProps, null)(Sidebar);
