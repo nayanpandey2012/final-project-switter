@@ -11,7 +11,7 @@ const ProfileSidebar = ({ activeUsers }) => {
         <Container>
             <br/>
             <h5>
-                Active Users <Badge variant="secondary">5</Badge>
+                Active Users <Badge variant="secondary">{activeUsers}</Badge>
             </h5>
             <br/>
             <h5>
@@ -21,6 +21,18 @@ const ProfileSidebar = ({ activeUsers }) => {
             <Navbar bg="white">
                 <Link to='/'>Logout</Link>
             </Navbar>
+            <form>
+                <Form.Row>
+                    <Col>
+                        <Form.Control placeholder="Search by Username" style={{width:"200px"}}/>
+                    </Col>
+                    <Col>
+                    <Button variant="primary" type="submit">
+                        Search
+                    </Button>
+                    </Col>
+                </Form.Row>
+            </form>
         </Container>
     );
 }
