@@ -28,10 +28,6 @@ ws.onerror = e => {
   console.log(e);
 };
 
-// temporary for demonstration, used to access globally, 
-// 9 times out of 10 don't do this
-window.ws = ws; 
-
 ReactDOM.render(
   <Provider store={store}>
     <App />
