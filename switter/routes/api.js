@@ -45,20 +45,21 @@ router.post("/usersave", async (req, res) => {
   const newUserPost = new User(data);
 
   let user = await User.findOne({ username: req.body.username });
-  if (user) {
-    console.log("User already Exists");
-    return res.status(400).send("That user already exisits!");
-  }
-
-  newUserPost.save(error => {
-    if (error) {
-      res.status(500).json({ msg: "Sorry, internal server error..." });
-      return;
-    }
-    return res.json({
-      msg: "data inserted into database..!!!!"
+  if (!user) {
+    newUserPost.save(error => {
+      if (error) {
+        res.status(500).json({ msg: "Sorry, internal server error..." });
+        return;
+      }
+      return res.json({
+        msg: "data inserted into database..!!!!"
+      });
     });
-  });
+  } else {
+    console.log("User already Exists");
+    // alert("User already Exists");
+    return res.status(400).json({ msg: "User already exists.!!" });
+  }
 });
 
 module.exports = router;

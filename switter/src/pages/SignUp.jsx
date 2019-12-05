@@ -1,12 +1,11 @@
 // Credit to Poorva:
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button,  Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import switterLogo from "../csc667-logo.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
 //import { validateAll } from "indicative";
-
 
 export default class SignUp extends React.Component {
   state = {
@@ -14,7 +13,7 @@ export default class SignUp extends React.Component {
     username: "",
     password: "",
     email: "",
-    c_password:""
+    c_password: ""
     // users: []
   };
 
@@ -49,26 +48,27 @@ export default class SignUp extends React.Component {
       username: this.state.username,
       password: this.state.password,
       email: this.state.email,
-      c_password:this.state.c_password
+      c_password: this.state.c_password
     };
 
     if (this.state.password !== this.state.c_password) {
       alert("Passwords don't match");
     } else {
-
-    axios({
-      url: "/api/usersave",
-      method: "POST",
-      data: userpayload
-    })
-      .then(() => {
-        console.log("Data has been sent to the server");
-        this.resetUserdataInputs();
-        // this.getUserPost();
+      axios({
+        url: "/api/usersave",
+        method: "POST",
+        data: userpayload
       })
-      .catch(() => {
-        console.log("Internal server error");
-      });
+        .then(res => {
+          alert("You are now registered..");
+          console.log("Data has been sent to the server", res);
+          this.resetUserdataInputs();
+          // this.getUserPost();
+        })
+        .catch(e => {
+          alert("Username already taken.!!");
+          console.log("Internal server error", e.res);
+        });
     }
   };
 
@@ -77,8 +77,7 @@ export default class SignUp extends React.Component {
       username: "",
       password: "",
       email: "",
-      c_password:""
-
+      c_password: ""
     });
   };
 
@@ -93,11 +92,10 @@ export default class SignUp extends React.Component {
           <Link to="/">
             <img src={switterLogo} width="40px" height="40px" alt="logo" />
           </Link>
-
         </span>
 
         <form onSubmit={this.submit}>
-        <br />
+          <br />
           <Form.Group style={{ width: "49vh", marginInlineStart: 550 }}>
             <Form.Label>Avatar name</Form.Label>
             <Form.Control
@@ -109,7 +107,10 @@ export default class SignUp extends React.Component {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Form.Group controlId="formGroupEmail" style={{ width: "49vh", marginInlineStart: 550 }}>
+          <Form.Group
+            controlId="formGroupEmail"
+            style={{ width: "49vh", marginInlineStart: 550 }}
+          >
             <Form.Label>Email address</Form.Label>
             <Form.Control
               type="email"
@@ -120,7 +121,10 @@ export default class SignUp extends React.Component {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Form.Group controlId="formGroupPassword" style={{ width: "49vh",marginInlineStart: 550 }}>
+          <Form.Group
+            controlId="formGroupPassword"
+            style={{ width: "49vh", marginInlineStart: 550 }}
+          >
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
@@ -131,7 +135,10 @@ export default class SignUp extends React.Component {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Form.Group controlId="formGroupPassword" style={{ width: "49vh" , marginInlineStart: 550}}>
+          <Form.Group
+            controlId="formGroupPassword"
+            style={{ width: "49vh", marginInlineStart: 550 }}
+          >
             <Form.Label>Confirm Password</Form.Label>
             <Form.Control
               type="password"
@@ -146,11 +153,10 @@ export default class SignUp extends React.Component {
           <Button
             type="submit"
             variant="outline-primary"
-            style={{ width: "49vh",  }}
+            style={{ width: "49vh" }}
           >
             Submit
           </Button>
-        
         </form>
       </div>
     );
