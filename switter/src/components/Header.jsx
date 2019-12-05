@@ -6,9 +6,6 @@ import axios from "axios";
 import {
   Container,
   Button,
-  Badge,
-  Col,
-  Row,
   Navbar,
   Form
 } from "react-bootstrap";
@@ -101,6 +98,7 @@ export default class Header extends React.Component {
           <Navbar.Brand href="/" style={logoStyle.float}>
             <img src={switterLogo} width="40" height="40" alt="logo" />
           </Navbar.Brand>
+
         </Navbar>
         <form onSubmit={this.submit}>
           <Form.Group controlId="tweet_submit">
@@ -114,7 +112,7 @@ export default class Header extends React.Component {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Button type="submit">Submit</Button>
+          <Button style={{marginInlineStart:"600px"}} type="submit">Submit</Button>
         </form>
         <div classname="blog-">{this.displayBlogPost(this.state.tweets)}</div>
       </Container>

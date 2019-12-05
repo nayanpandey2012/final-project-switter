@@ -1,9 +1,9 @@
 import React from "react";
-import Tweets from "../components/Tweets";
+//import Tweets from "../components/Tweets";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Button,  Badge, Col, Row } from "react-bootstrap";
+import { Container,  Col, Row } from "react-bootstrap";
 
 export default class Logged_in_main extends React.Component {
     // state = {
@@ -32,11 +32,11 @@ export default class Logged_in_main extends React.Component {
         return (
             <Container>
             <Row>
-                <Col xs={9}>
+                <Col xs={8}>
                     <Header />
                     {/* <Tweets tweets={this.state.tweets}/> */}
                 </Col>
-                <Col xs={3}><Sidebar /></Col>
+                <Col xs={4}><Sidebar /></Col>
             </Row>
             </Container>
         );
