@@ -1,11 +1,35 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import '../LoginPage.css';
+import '../App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form } from "react-bootstrap";
 import switterLogo from '../csc667-logo.svg';
+import { setUsername, setPassword, setIsLoggedIn } from '../redux/actions/userActions';
+import { connect } from 'react-redux';
 
-const Login = () => {
+const Login = ({ dispatch, username, password, isLoggedIn }) => {
+
+  const verify = () => {
+    dispatch(setIsLoggedIn(true));
+  };
+
+  const updateUsername = newUser => {
+    if (newUser.length < 20) {
+      dispatch(setUsername(newUser));
+    }
+  };
+
+  const updatePassword = newPassword => {
+    if (newPassword.length < 20) {
+      dispatch(setPassword(newPassword));
+    }
+  };
+
+  if (isLoggedIn) {
+    return <Redirect to='/profile' />;
+  }
+
   return (
     <div style={{ height: "60vh", paddingTop: 100 }}>
       <h2 style={{ color: "#00ACED" }}>Login with your Username</h2>
@@ -24,6 +48,8 @@ const Login = () => {
           <Form.Control
             type="text"
             placeholder="username"
+            value={username}
+            onChange={e => updateUsername(e.target.value)}
             required
           />
         </Form.Group>
@@ -34,15 +60,27 @@ const Login = () => {
           <Form.Control
             type="password"
             placeholder="*******"
+            value={password}
+            onChange={e => updatePassword(e.target.value)}
             required
           />
         </Form.Group>
-        <button style={{ width: "49vh", marginInlineStart: 550 }} className='login-btn'>
-          <Link to='/profile'>Log in</Link>
+        <button style={{ width: "49vh", marginInlineStart: 550 }} 
+          className='login-btn'
+          onClick={verify}
+        >
+          Login
+          {/* <Link to='/profile'>Log in</Link> */}
         </button>
       </Form>
     </div>
   );
 }
+
+const mapStateToProps = state => ({
+  username: state.userReducer.username,
+  password: state.userReducer.password,
+  isLoggedIn: state.userReducer.isLoggedIn,
+});
   
-export default Login;
+export default connect(mapStateToProps, null)(Login);

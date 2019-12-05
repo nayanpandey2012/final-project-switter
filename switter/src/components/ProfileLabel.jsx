@@ -1,20 +1,14 @@
 import React from "react";
-//import "./app.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import switterLogo from "../csc667-logo.svg";
-import {
-  Container,
-  Col,
-} from "react-bootstrap";
-import {
- 
-  Button,
-  Navbar,
-  Form
-} from "react-bootstrap";
+import { Container, Col } from "react-bootstrap";
+import { Button, Navbar, Form } from "react-bootstrap";
 
 var userName = "User1";
 class ProfileLabel extends React.Component {
+
+  
+
   render() {
     return (
       <Container>
@@ -26,16 +20,19 @@ class ProfileLabel extends React.Component {
         </Navbar>
         <form onSubmit={this.submit}>
           <Form.Group controlId="tweet_submit">
-            {/* Note: Use <Navnar> for logo as homepage btn */}
-            {/* <Form.Label><a href='/'>Switter</a></Form.Label> */}
             <Form.Control
               type="text"
               placeholder="What's on your mind"
               name="message"
-            
             />
           </Form.Group>
-          <Button style={{marginInlineStart:"600px"}} type="submit">Submit</Button>
+          <Button 
+            style={{marginInlineStart:"600px"}} 
+            type="submit"
+            onClick={e => e.preventDefault()}
+          >
+            Swit
+          </Button>
         </form>
         <Col>
           <p>

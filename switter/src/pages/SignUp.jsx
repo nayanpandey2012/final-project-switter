@@ -157,7 +157,7 @@ export default class SignUp extends React.Component {
             variant="outline-primary"
             style={{ width: "49vh" }}
           >
-            Submit
+            <Link to='/profile'>submit</Link>
           </Button>
         </form>
       </div>
