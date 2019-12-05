@@ -38,11 +38,17 @@ router.post("/save", (req, res) => {
 });
 
 // Save users data into MongoDB
-router.post("/usersave", (req, res) => {
+router.post("/usersave", async (req, res) => {
   console.log("Body", req.body);
   const data = req.body;
 
   const newUserPost = new User(data);
+
+  let user = await User.findOne({ username: req.body.username });
+  if (user) {
+    console.log("User already Exists");
+    return res.status(400).send("That user already exisits!");
+  }
 
   newUserPost.save(error => {
     if (error) {
