@@ -22,12 +22,10 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
         console.log(response.data);
         if (response.data) {
           dispatch(setIsLoggedIn(true));
-          return <Redirect to='/profile' />;
         } 
       })
       .catch(err => {
         console.log('no user found', err);
-        
       });
   }
 

@@ -46,7 +46,6 @@ const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
 const mapStateToProps = state => ({
     activeUsers: state.userReducer.activeUsers,
     username: state.userReducer.username,
-    // isLoggedIn: state.userReducer.isLoggedIn,
 });
 
 export default connect(mapStateToProps, null)(ProfileSidebar);
