@@ -3,7 +3,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form } from "react-bootstrap";
 import switterLogo from "../csc667-logo.svg";
-import { Link, Redirect  } from "react-router-dom";
+import { Link  } from "react-router-dom";
 import axios from "axios";
 //import { validateAll } from "indicative";
 
