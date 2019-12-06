@@ -3,7 +3,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form } from "react-bootstrap";
 import switterLogo from "../csc667-logo.svg";
-import { Link } from "react-router-dom";
+import { Link, Redirect  } from "react-router-dom";
 import axios from "axios";
 //import { validateAll } from "indicative";
 
@@ -60,19 +60,29 @@ export default class SignUp extends React.Component {
         data: userpayload
       })
         .then(res => {
-          alert("You are now registered..");
+          alert("You are now registered. Please login to use Switter.");
           console.log("Data has been sent to the server", res);
           this.resetUserdataInputs();
-          alert("User is now signed up. Happy Switting!");
+          //alert("User is now signed up. Happy Switting!");
+          window.location.href="login"
 
+          //this.redirecttologin();
           // this.getUserPost();
         })
+        
         .catch(e => {
           alert("Username already taken.!!");
           console.log("Internal server error", e.res);
         });
     }
   };
+
+  // redirecttologin = ()=>{
+  //   console.log('Click happened');
+  //   return <Redirect to="/login" />;
+  // }
+
+
 
   resetUserdataInputs = () => {
     this.setState({
@@ -156,8 +166,8 @@ export default class SignUp extends React.Component {
             type="submit"
             variant="outline-primary"
             style={{ width: "49vh" }}
-          >
-            <Link to='/profile'>submit</Link>
+          >Sign up
+            {/* <Link to='/profile'>submit</Link> */}
           </Button>
         </form>
       </div>
