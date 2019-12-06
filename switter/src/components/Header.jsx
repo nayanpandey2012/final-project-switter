@@ -1,22 +1,16 @@
 import React from "react";
-//import "./app.css"
 import switterLogo from "../csc667-logo.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import {
-  Container,
-  Button,
-  Navbar,
-  Form
-} from "react-bootstrap";
+import { Container, Button, Navbar, Form } from "react-bootstrap";
 
 export default class Header extends React.Component {
   state = {
     id: 1,
-    username: "user1",
+    // username: "user1",
     message: "",
     likes: 1,
-    tweets: []
+    tweets: [],
   };
 
   componentDidMount = () => {
@@ -102,8 +96,6 @@ export default class Header extends React.Component {
         </Navbar>
         <form onSubmit={this.submit}>
           <Form.Group controlId="tweet_submit">
-            {/* Note: Use <Navnar> for logo as homepage btn */}
-            {/* <Form.Label><a href='/'>Switter</a></Form.Label> */}
             <Form.Control
               type="text"
               placeholder="What's on your mind"
@@ -112,7 +104,12 @@ export default class Header extends React.Component {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <Button style={{marginInlineStart:"600px"}} type="submit">Submit</Button>
+          <Button 
+            style={{marginInlineStart:"600px"}} 
+            type="submit"
+          >
+            Swit
+          </Button>
         </form>
         <div classname="blog-">{this.displayBlogPost(this.state.tweets)}</div>
       </Container>

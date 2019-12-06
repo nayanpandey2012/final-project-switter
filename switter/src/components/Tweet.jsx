@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 
-
 export default class Tweet extends Component {
-
-
     render() {
         const{username,message,likes } = this.props.box;
         return (
@@ -22,5 +19,4 @@ const tweetStyle = {
     borderStyle:'solid',
     borderColor:'grey',
     marginBottom: '3px',
-    
 }
