@@ -15,6 +15,7 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
     axios.get('/api/getUser', {
       params: {
         username: username, 
+        password: password,
       }
     })
       .then(response => {

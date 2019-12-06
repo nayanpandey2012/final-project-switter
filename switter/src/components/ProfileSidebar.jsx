@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch, Link, Redirect, useHistory } fr
 import { connect } from 'react-redux';
 import { setIsLoggedIn } from '../redux/actions/userActions';
 
-const ProfileSidebar = ({ dispatch, activeUsers, username, isLoggedIn }) => {
+const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
     
     let history = useHistory();
 
@@ -46,7 +46,7 @@ const ProfileSidebar = ({ dispatch, activeUsers, username, isLoggedIn }) => {
 const mapStateToProps = state => ({
     activeUsers: state.userReducer.activeUsers,
     username: state.userReducer.username,
-    isLoggedIn: state.userReducer.isLoggedIn,
+    // isLoggedIn: state.userReducer.isLoggedIn,
 });
 
 export default connect(mapStateToProps, null)(ProfileSidebar);

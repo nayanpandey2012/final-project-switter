@@ -19,8 +19,9 @@ router.get("/", (req, res) => {
 router.get('/getUser', (req, res) => {
 
   let findUsername = req.query.username; 
+  let findPassword = req.query.password;
 
-  User.findOne({username: findUsername})
+  User.findOne({username: findUsername, password: findPassword})
     .then(data => {
       console.log('user data: ', data);
       res.json(data);
