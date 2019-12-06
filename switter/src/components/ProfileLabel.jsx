@@ -10,7 +10,7 @@ class ProfileLabel extends React.Component {
     return (
       <Container>
         <Navbar bg="white">
-          <Navbar.Brand href="/" style={logoStyle.float}>
+          <Navbar.Brand href="/profile" style={logoStyle.float}>
             <img src={switterLogo} width="40" height="40" alt="logo" />
           </Navbar.Brand>
 

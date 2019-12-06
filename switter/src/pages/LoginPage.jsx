@@ -22,10 +22,11 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
         if (response.data) {
           dispatch(setIsLoggedIn(true));
           return <Redirect to='/profile' />;
-        }
+        } 
       })
       .catch(err => {
         console.log('no user found', err);
+        
       });
   }
 
@@ -93,7 +94,6 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
       >
         Login
       </button>
-      <button onClick={checkUser}>Get User</button>
     </div>
   );
 }

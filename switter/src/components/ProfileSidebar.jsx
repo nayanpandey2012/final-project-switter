@@ -1,16 +1,16 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Button,  Badge, Col, Row, Navbar, Form } from "react-bootstrap";
-import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link, Redirect, useHistory, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import { setIsLoggedIn } from '../redux/actions/userActions';
 
 const ProfileSidebar = ({ dispatch, activeUsers, username, isLoggedIn }) => {
-    // console.log('isLoggedIn: ', isLoggedIn);
-    // if (isLoggedIn) {
-    //     return <Redirect to='/' />;
-    // }
+    
 
+    const logout = ( ) => {
+        dispatch(setIsLoggedIn(false));
+    }
     return (
         <Container>
             <br/>
@@ -22,8 +22,7 @@ const ProfileSidebar = ({ dispatch, activeUsers, username, isLoggedIn }) => {
             <br/>
             <Navbar bg="white">
                 <button 
-                    onClick={() => { dispatch(setIsLoggedIn(false)) }}
-                    to='/'
+                    onClick={logout}
                 >Logout</button>
             </Navbar>
             <form>
