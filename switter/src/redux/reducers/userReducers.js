@@ -17,6 +17,7 @@ const INITIAL_STATE = {
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_IS_LOGGED_IN:
+      console.log(action.isLoggedIn);
       return {
         ...state,
         isLoggedIn: action.isLoggedIn,
