@@ -5,7 +5,7 @@ const User = require("../src/models/userSchema");
 
 // get all tweets in MongoDB: 
 router.get("/", (req, res) => {
-  Tweet.find({})
+  Tweet.find()
     .then(data => {
       console.log("Data: ", data);
       res.json(data);
@@ -43,11 +43,6 @@ router.post("/save", (req, res) => {
       res.status(500).json({ msg: "Sorry, internal server error..." });
       return;
     }
-    // else {
-    //   res.json({
-    //     msg: "data inserted into database..!!!!"
-    //   });
-    // }
     return res.json({
       msg: "data inserted into database..!!!!"
     });
@@ -75,7 +70,6 @@ router.post("/usersave", async (req, res) => {
     });
   } else {
     console.log("User already Exists");
-    // alert("User already Exists");
     return res.status(400).json({ msg: "User already exists.!!" });
   }
 });

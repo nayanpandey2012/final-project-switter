@@ -4,7 +4,7 @@ import switterLogo from "../csc667-logo.svg";
 import { Container, Col } from "react-bootstrap";
 import { Button, Navbar, Form } from "react-bootstrap";
 
-var userName = "User1";
+// var userName = "User1";
 class ProfileLabel extends React.Component {
   render() {
     return (
@@ -15,7 +15,7 @@ class ProfileLabel extends React.Component {
           </Navbar.Brand>
 
         </Navbar>
-        <form onSubmit={this.submit}>
+        <form>
           <Form.Group controlId="tweet_submit">
             <Form.Control
               type="text"
@@ -34,7 +34,8 @@ class ProfileLabel extends React.Component {
         <Col>
           <p>
             <b>
-              <h2>{userName}</h2>
+              {/* <h2>{userName}</h2> */}
+              <h2>username</h2>
             </b>
           </p>
         </Col>
