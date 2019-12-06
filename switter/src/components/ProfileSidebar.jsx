@@ -17,13 +17,6 @@ const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
                 Active Users <Badge variant="secondary">{activeUsers}</Badge>
             </h5>
             <br/>
-            <h5>Hello {username}</h5>
-            <br/>
-            <Navbar bg="white">
-                <button 
-                    onClick={logout}
-                >Logout</button>
-            </Navbar>
             <form>
                 <Form.Row>
                     <Col>
@@ -36,6 +29,13 @@ const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
                     </Col>
                 </Form.Row>
             </form>
+            <br/>
+            <br/>
+            <Button variant="primary"
+                onClick={logout}
+            >
+                Logout
+            </Button>
         </Container>
     );
 }

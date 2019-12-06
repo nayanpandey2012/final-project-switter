@@ -8,19 +8,25 @@ const Sidebar = ({ activeUsers }) => {
     return (
         <Container>
             <br/>
-            <Navbar bg="white">
-                <Link to='/welcome'>Login / Register</Link>
-            </Navbar>
             <h5>
                 Active Users <Badge variant="secondary">{activeUsers}</Badge>
             </h5>
+            <br/>
+            <Button variant="primary"
+                onClick={() =>  window.location.href='/welcome'}
+            >
+                Login / Register
+            </Button>
             <form>
+            <br/>
             <Form.Row>
                 <Col>
                     <Form.Control placeholder="Search by Username" style={{width:"200px"}}/>
                 </Col>
                 <Col>
-                <Button variant="primary" type="submit">
+                <Button variant="primary"
+                    onClick={() =>  window.location.href='/welcome'}
+                >
                     Search
                 </Button>
                 </Col>
