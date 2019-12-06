@@ -3,6 +3,7 @@ const router = express.Router();
 const Tweet = require("../src/models/tweetSchema");
 const User = require("../src/models/userSchema");
 
+// get all tweets in MongoDB: 
 router.get("/", (req, res) => {
   Tweet.find({})
     .then(data => {
@@ -10,11 +11,30 @@ router.get("/", (req, res) => {
       res.json(data);
     })
     .catch(error => {
-      console.log("error: ", daerrorta);
+      console.log("error: ", error);
     });
 });
 
-// Save tweets data into MongoDB
+// get specific user in MongoDB: 
+router.get('/getUser', (req, res) => {
+
+  let findUsername = req.query.username; 
+
+  User.findOne({username: findUsername})
+    .then(data => {
+      console.log('user data: ', data);
+      if (data === null ){
+        res.json('user not found');
+      } else {
+        res.json(data);
+      }
+    })
+    .catch(err => {
+      console.log('error find user: ', err);
+    })
+});
+
+// save tweets data into MongoDB: 
 router.post("/save", (req, res) => {
   console.log("Body", req.body);
   const data = req.body;
@@ -37,7 +57,7 @@ router.post("/save", (req, res) => {
   });
 });
 
-// Save users data into MongoDB
+// save users data into MongoDB: 
 router.post("/usersave", async (req, res) => {
   console.log("Body", req.body);
   const data = req.body;
@@ -45,6 +65,7 @@ router.post("/usersave", async (req, res) => {
   const newUserPost = new User(data);
 
   let user = await User.findOne({ username: req.body.username });
+
   if (!user) {
     newUserPost.save(error => {
       if (error) {

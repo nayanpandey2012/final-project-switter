@@ -6,9 +6,6 @@ import { Button, Navbar, Form } from "react-bootstrap";
 
 var userName = "User1";
 class ProfileLabel extends React.Component {
-
-  
-
   render() {
     return (
       <Container>

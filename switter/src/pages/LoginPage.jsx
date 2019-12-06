@@ -7,8 +7,28 @@ import { Button, Form } from "react-bootstrap";
 import switterLogo from '../csc667-logo.svg';
 import { setUsername, setPassword, setIsLoggedIn } from '../redux/actions/userActions';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 const Login = ({ dispatch, username, password, isLoggedIn }) => {
+
+  const checkUser = () => {
+    axios.get('/api/getUser', {
+      params: {
+        username: username, 
+      }
+    })
+      .then(response => {
+        console.log(response.data);
+        dispatch(setIsLoggedIn(true));
+      })
+      .catch(err => {
+        console.log('no user found', err);
+      });
+  }
+
+  React.useEffect(() => {
+    checkUser();
+  }, []);
 
   const verify = () => {
     dispatch(setIsLoggedIn(true));
@@ -73,6 +93,7 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
           {/* <Link to='/profile'>Log in</Link> */}
         </button>
       </Form>
+      <button onClick={checkUser}>Get User</button>
     </div>
   );
 }
