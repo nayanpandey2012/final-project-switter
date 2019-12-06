@@ -7,12 +7,31 @@ import { Button, Form } from "react-bootstrap";
 import switterLogo from '../csc667-logo.svg';
 import { setUsername, setPassword, setIsLoggedIn } from '../redux/actions/userActions';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 const Login = ({ dispatch, username, password, isLoggedIn }) => {
 
-  const verify = () => {
-    dispatch(setIsLoggedIn(true));
-  };
+  const checkUser = () => {
+    axios.get('/api/getUser', {
+      params: {
+        username: username, 
+        password: password,
+      }
+    })
+      .then(response => {
+        console.log(response.data);
+        if (response.data) {
+          dispatch(setIsLoggedIn(true));
+        } 
+      })
+      .catch(err => {
+        console.log('no user found', err);
+      });
+  }
+
+  React.useEffect(() => {
+    checkUser();
+  }, []);
 
   const updateUsername = newUser => {
     if (newUser.length < 20) {
@@ -27,6 +46,7 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
   };
 
   if (isLoggedIn) {
+    console.log('isLoggedIn: ',isLoggedIn);
     return <Redirect to='/profile' />;
   }
 
@@ -65,14 +85,14 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
             required
           />
         </Form.Group>
-        <button style={{ width: "49vh", marginInlineStart: 550 }} 
-          className='login-btn'
-          onClick={verify}
-        >
-          Login
-          {/* <Link to='/profile'>Log in</Link> */}
-        </button>
+        
       </Form>
+      <button style={{ width: "49vh", marginInlineStart: 550 }} 
+        className='login-btn'
+        onClick={ checkUser }
+      >
+        Login
+      </button>
     </div>
   );
 }

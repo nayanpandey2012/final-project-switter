@@ -7,10 +7,10 @@ import { Container, Button, Navbar, Form } from "react-bootstrap";
 export default class Header extends React.Component {
   state = {
     id: 1,
-    username: "user1",
+    // username: "user1",
     message: "",
     likes: 1,
-    tweets: []
+    tweets: [],
   };
 
   componentDidMount = () => {
