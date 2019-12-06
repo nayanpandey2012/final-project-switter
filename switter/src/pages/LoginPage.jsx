@@ -1,36 +1,86 @@
-// Credit to Tran: 
-import React, { useState, useEffect } from 'react';
-import LoginAdvert from '../components/Login_Advert';
-import LoginForm from '../components/Login_Form';
+import React from 'react';
+import { Link, Redirect } from "react-router-dom";
+import '../LoginPage.css';
+import '../App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Button, Form } from "react-bootstrap";
+import switterLogo from '../csc667-logo.svg';
+import { setUsername, setPassword, setIsLoggedIn } from '../redux/actions/userActions';
 import { connect } from 'react-redux';
-import { setIsLoggedIn } from '../redux/actions/userActions';
-import Axios from 'axios';
 
-const options = {
-    withCredentials: true,
+const Login = ({ dispatch, username, password, isLoggedIn }) => {
+
+  const verify = () => {
+    dispatch(setIsLoggedIn(true));
   };
 
-const Login = ({ isLoggedIn, dispatch }) => {
+  const updateUsername = newUser => {
+    if (newUser.length < 20) {
+      dispatch(setUsername(newUser));
+    }
+  };
 
-    useEffect(() => {
-        // Check if they are logged in previously. Auth server for cookies
-        Axios.post('/auth/cookies', {}, { withCredentials: true })
-          .then(res => {
-            dispatch(setIsLoggedIn(true));
-          })
-          .catch(error => console.log(error));
-      }, []);
-    
-    return (
-        <div>
-            <LoginAdvert />
-            <LoginForm />
-        </div>
-    );
+  const updatePassword = newPassword => {
+    if (newPassword.length < 20) {
+      dispatch(setPassword(newPassword));
+    }
+  };
+
+  if (isLoggedIn) {
+    return <Redirect to='/profile' />;
+  }
+
+  return (
+    <div style={{ height: "60vh", paddingTop: 100 }}>
+      <h2 style={{ color: "#00ACED" }}>Login with your Username</h2>
+      <span>
+        <Link to="/">
+          <img src={switterLogo} width="40px" height="40px" alt="logo" />
+        </Link>
+      </span>
+      <br />
+      <br />
+      <Form>
+        <Form.Group
+          controlId="formGroupEmail"
+          style={{ width: "49vh", marginInlineStart: 550 }}
+        >
+          <Form.Control
+            type="text"
+            placeholder="username"
+            value={username}
+            onChange={e => updateUsername(e.target.value)}
+            required
+          />
+        </Form.Group>
+        <Form.Group
+          controlId="formGroupPassword"
+          style={{ width: "49vh", marginInlineStart: 550 }}
+        >
+          <Form.Control
+            type="password"
+            placeholder="*******"
+            value={password}
+            onChange={e => updatePassword(e.target.value)}
+            required
+          />
+        </Form.Group>
+        <button style={{ width: "49vh", marginInlineStart: 550 }} 
+          className='login-btn'
+          onClick={verify}
+        >
+          Login
+          {/* <Link to='/profile'>Log in</Link> */}
+        </button>
+      </Form>
+    </div>
+  );
 }
 
 const mapStateToProps = state => ({
-    isLoggedIn: state.userReducer.isLoggedIn,
+  username: state.userReducer.username,
+  password: state.userReducer.password,
+  isLoggedIn: state.userReducer.isLoggedIn,
 });
   
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps, null)(Login);

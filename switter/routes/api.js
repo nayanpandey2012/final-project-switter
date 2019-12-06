@@ -38,21 +38,28 @@ router.post("/save", (req, res) => {
 });
 
 // Save users data into MongoDB
-router.post("/usersave", (req, res) => {
+router.post("/usersave", async (req, res) => {
   console.log("Body", req.body);
   const data = req.body;
 
   const newUserPost = new User(data);
 
-  newUserPost.save(error => {
-    if (error) {
-      res.status(500).json({ msg: "Sorry, internal server error..." });
-      return;
-    }
-    return res.json({
-      msg: "data inserted into database..!!!!"
+  let user = await User.findOne({ username: req.body.username });
+  if (!user) {
+    newUserPost.save(error => {
+      if (error) {
+        res.status(500).json({ msg: "Sorry, internal server error..." });
+        return;
+      }
+      return res.json({
+        msg: "data inserted into database..!!!!"
+      });
     });
-  });
+  } else {
+    console.log("User already Exists");
+    // alert("User already Exists");
+    return res.status(400).json({ msg: "User already exists.!!" });
+  }
 });
 
 module.exports = router;
