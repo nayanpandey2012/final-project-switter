@@ -1,15 +1,17 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Button,  Badge, Col, Row, Navbar, Form } from "react-bootstrap";
-import { BrowserRouter as Router, Route, Switch, Link, Redirect, useHistory, withRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link, Redirect, useHistory } from "react-router-dom";
 import { connect } from 'react-redux';
 import { setIsLoggedIn } from '../redux/actions/userActions';
 
 const ProfileSidebar = ({ dispatch, activeUsers, username, isLoggedIn }) => {
     
+    let history = useHistory();
 
     const logout = ( ) => {
         dispatch(setIsLoggedIn(false));
+        history.push('/');
     }
     return (
         <Container>
