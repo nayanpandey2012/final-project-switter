@@ -30,11 +30,6 @@ export default class Header extends React.Component {
       });
   };
 
-  //   handleChange = e => {
-  // const target = e.target;
-  // const name = target.name;
-  // const value = target.value;
-
   handleChange = ({ target }) => {
     const { name, value } = target;
 
