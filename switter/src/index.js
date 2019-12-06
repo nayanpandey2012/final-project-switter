@@ -22,7 +22,6 @@ ws.onmessage = message => {
           store.dispatch(setActiveUsers(messageObj.count));
           break;
   }
-  console.log('messageObj ', messageObj);
 };
 
 ws.onerror = e => {

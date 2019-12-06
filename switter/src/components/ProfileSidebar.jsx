@@ -1,12 +1,18 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Button,  Badge, Col, Row, Navbar, Form } from "react-bootstrap";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link, Redirect, useHistory } from "react-router-dom";
 import { connect } from 'react-redux';
 import { setIsLoggedIn } from '../redux/actions/userActions';
 
 const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
+    
+    let history = useHistory();
 
+    const logout = ( ) => {
+        dispatch(setIsLoggedIn(false));
+        history.push('/');
+    }
     return (
         <Container>
             <br/>
@@ -17,10 +23,9 @@ const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
             <h5>Hello {username}</h5>
             <br/>
             <Navbar bg="white">
-                <Link 
-                    onClick={() => { dispatch(setIsLoggedIn(false)) }}
-                    to='/'
-                >Logout</Link>
+                <button 
+                    onClick={logout}
+                >Logout</button>
             </Navbar>
             <form>
                 <Form.Row>
