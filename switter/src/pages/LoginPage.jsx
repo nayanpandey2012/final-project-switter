@@ -19,7 +19,10 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
     })
       .then(response => {
         console.log(response.data);
-        dispatch(setIsLoggedIn(true));
+        if (response.data) {
+          dispatch(setIsLoggedIn(true));
+          return <Redirect to='/profile' />;
+        }
       })
       .catch(err => {
         console.log('no user found', err);
@@ -29,10 +32,6 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
   React.useEffect(() => {
     checkUser();
   }, []);
-
-  const verify = () => {
-    dispatch(setIsLoggedIn(true));
-  };
 
   const updateUsername = newUser => {
     if (newUser.length < 20) {
@@ -47,6 +46,7 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
   };
 
   if (isLoggedIn) {
+    console.log('isLoggedIn: ',isLoggedIn);
     return <Redirect to='/profile' />;
   }
 
@@ -85,14 +85,14 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
             required
           />
         </Form.Group>
-        <button style={{ width: "49vh", marginInlineStart: 550 }} 
-          className='login-btn'
-          onClick={verify}
-        >
-          Login
-          {/* <Link to='/profile'>Log in</Link> */}
-        </button>
+        
       </Form>
+      <button style={{ width: "49vh", marginInlineStart: 550 }} 
+        className='login-btn'
+        onClick={ checkUser }
+      >
+        Login
+      </button>
       <button onClick={checkUser}>Get User</button>
     </div>
   );

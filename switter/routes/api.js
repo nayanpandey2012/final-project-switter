@@ -23,11 +23,7 @@ router.get('/getUser', (req, res) => {
   User.findOne({username: findUsername})
     .then(data => {
       console.log('user data: ', data);
-      if (data === null ){
-        res.json('user not found');
-      } else {
-        res.json(data);
-      }
+      res.json(data);
     })
     .catch(err => {
       console.log('error find user: ', err);

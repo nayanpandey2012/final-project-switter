@@ -1,11 +1,15 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Button,  Badge, Col, Row, Navbar, Form } from "react-bootstrap";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
 import { connect } from 'react-redux';
 import { setIsLoggedIn } from '../redux/actions/userActions';
 
-const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
+const ProfileSidebar = ({ dispatch, activeUsers, username, isLoggedIn }) => {
+    // console.log('isLoggedIn: ', isLoggedIn);
+    // if (isLoggedIn) {
+    //     return <Redirect to='/' />;
+    // }
 
     return (
         <Container>
@@ -17,10 +21,10 @@ const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
             <h5>Hello {username}</h5>
             <br/>
             <Navbar bg="white">
-                <Link 
+                <button 
                     onClick={() => { dispatch(setIsLoggedIn(false)) }}
                     to='/'
-                >Logout</Link>
+                >Logout</button>
             </Navbar>
             <form>
                 <Form.Row>
@@ -41,6 +45,7 @@ const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
 const mapStateToProps = state => ({
     activeUsers: state.userReducer.activeUsers,
     username: state.userReducer.username,
+    isLoggedIn: state.userReducer.isLoggedIn,
 });
 
 export default connect(mapStateToProps, null)(ProfileSidebar);
