@@ -15,20 +15,33 @@ router.get("/", (req, res) => {
     });
 });
 
-// get specific user in MongoDB: 
+// find user tweets by username: 
+router.get('/searchuser', (req, res) => {
+  console.log(req.query.username);
+
+  Tweet.findOne({ username: req.query.username })
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+});
+
+// find a specific user by matching username and password: 
 router.get('/getUser', (req, res) => {
 
   let findUsername = req.query.username; 
   let findPassword = req.query.password;
 
-  User.findOne({username: findUsername, password: findPassword})
+  User.findOne({ username: findUsername, password: findPassword })
     .then(data => {
       console.log('user data: ', data);
       res.json(data);
     })
     .catch(err => {
       console.log('error find user: ', err);
-    })
+    });
 });
 
 // save tweets data into MongoDB: 

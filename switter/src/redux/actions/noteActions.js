@@ -11,7 +11,7 @@ export const setTweets = tweets => ({
     tweets,
 });
 
-// get all tweets from database
+// get all tweets from database: 
 export const getAllTweets = () => (dispatch, getState) => {
     axios.get('/api')
         .then(res => {

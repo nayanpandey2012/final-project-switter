@@ -12,14 +12,14 @@ import axios from 'axios';
 const Login = ({ dispatch, username, password, isLoggedIn }) => {
 
   const checkUser = () => {
-    axios.get('/api/getUser', {
-      params: {
-        username: username, 
-        password: password,
-      }
-    })
+    axios
+      .get('/api/getUser', {
+        params: {
+          username: username, 
+          password: password,
+        }
+      })
       .then(response => {
-        console.log(response.data);
         if (response.data) {
           dispatch(setIsLoggedIn(true));
         } 
@@ -52,7 +52,7 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
 
   return (
     <div style={{ height: "60vh", paddingTop: 100 }}>
-      <h2 style={{ color: "#00ACED" }}>Login with your Username</h2>
+      <h2 style={{ color: "#00ACED" }}>Login with your username</h2>
       <span>
         <Link to="/">
           <img src={switterLogo} width="40px" height="40px" alt="logo" />
@@ -89,7 +89,7 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
       </Form>
       <button style={{ width: "49vh", marginInlineStart: 550 }} 
         className='login-btn'
-        onClick={ checkUser }
+        onClick={checkUser}
       >
         Login
       </button>

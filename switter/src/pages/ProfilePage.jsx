@@ -11,8 +11,6 @@ const ProfilePage = () => {
       <Row>
         <Col xs={8}>
           <ProfileHeader />
-          {/* <p><u><h3>All Tweets</h3></u></p> */}
-          {/* <Tweets tweets={this.state.tweets} /> */}
         </Col>
         <Col xs={4}>
           <ProfileSidebar />

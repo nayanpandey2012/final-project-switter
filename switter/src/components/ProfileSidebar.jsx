@@ -1,6 +1,6 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Button,  Badge, Col, Form } from "react-bootstrap";
+import { Container, Button,  Badge } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { setIsLoggedIn } from '../redux/actions/userActions';
 import ProfileSearch from './ProfileSearch';
