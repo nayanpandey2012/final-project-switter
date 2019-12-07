@@ -5,7 +5,7 @@ const User = require("../src/models/userSchema");
 
 // get all tweets in MongoDB: 
 router.get("/", (req, res) => {
-  Tweet.find()
+  Tweet.find({})
     .then(data => {
       console.log("Data: ", data);
       res.json(data);

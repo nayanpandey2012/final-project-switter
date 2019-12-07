@@ -20,7 +20,9 @@ const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
                         <Form.Control placeholder="Search by Username" style={{width:"200px"}}/>
                     </Col>
                     <Col>
-                    <Button variant="primary" type="submit">
+                    <Button variant="primary" 
+                        onClick={e => e.preventDefault()}
+                    >
                         Search
                     </Button>
                     </Col>

@@ -5,13 +5,13 @@ const SET_TWEETS = 'SET_TWEETS';
 const SET_MESSAGE = 'SET_MESSAGE';
 const SET_NEW_TWEETS = 'SET_NEW_TWEETS';
 
-// setNotes
+// current tweet in db:
 export const setTweets = tweets => ({
     type: SET_TWEETS,
     tweets,
 });
 
-// listNotes()
+// get all tweets from database
 export const getAllTweets = () => (dispatch, getState) => {
     axios.get('/api')
         .then(res => {
@@ -24,13 +24,13 @@ export const getAllTweets = () => (dispatch, getState) => {
         });
 };
 
-// setID
+// message of user state:
 export const setMessage = message => ({
     type: SET_MESSAGE,
     message,
 });
 
-// setNewNote
+// new tweet inserted by user state: 
 export const setNewTweets = newTweets => ({
     type: SET_NEW_TWEETS,
     newTweets,

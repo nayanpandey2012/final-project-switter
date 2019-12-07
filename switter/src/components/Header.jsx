@@ -4,25 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { Container, Button, Navbar, Form } from "react-bootstrap";
 import { connect } from 'react-redux'; 
+import { setTweets, getAllTweets, setMessage, setNewTweets } from '../redux/actions/noteActions';
 
-const Header = () => {
+const Header = ({ dispatch, tweets, message, newTweets }) => {
 
-  const getBlogPost = () => {
-    axios
-      .get("/api")
-      .then(res => {
-        const data = res.data;
-        if (data) {
-          displayBlogPost(data);
-        }
-        console.log("Data has been received!!", data);
-      })
-      .catch(() => {
-        alert("Error finding data");
-      });
-  }
   React.useEffect(() => {
-    getBlogPost();
+    dispatch(getAllTweets());
   }, []);
 
   return (
@@ -41,22 +28,30 @@ const Header = () => {
         </Form.Group>
         <Button 
           style={{marginInlineStart:"600px"}} 
+          // force lazy-registration
           onClick={() =>  window.location.href='/welcome'}
         >
           Tweet
         </Button>
       </form>
-      {/* <button onClick={getBlogPost}>Get All Tweet</button> */}
       <div>
-        <h5>All Tweets</h5>
+        {tweets.map((tweet, index) => (
+          <div key={index}>
+            <h5>@user: {tweet.username}</h5>
+            <h5>{tweet.message}</h5>
+            <h6>likes: {tweet.likes}</h6>
+            <br />
+          </div>
+        ))}
       </div>
     </Container>
   );
 }
 
 const mapStateToProps = state => ({
-  likedTweet: state.userReducer.likedTweet,
-  message: state.userReducer.message,
+  tweets: state.notesReducer.tweets,
+  message: state.notesReducer.message,
+  newTweets: state.notesReducer.newTweets,
 });
 
 export default connect(mapStateToProps, null)(Header);
