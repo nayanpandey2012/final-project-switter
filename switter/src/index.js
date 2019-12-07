@@ -38,4 +38,9 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
+// activate hot module to reload app in browser without page refresh
+if (module.hot) {
+  module.hot.accept();
+}
+
 serviceWorker.unregister();
