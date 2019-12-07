@@ -1,7 +1,6 @@
 //credit to sunny
 import React, { Component } from "react";
-//import { BrowserRouter as  NavLink, Router, Route, Switch, Link } from "react-router-dom";
-import { HashRouter as Router, Route, Link, NavLink } from "react-router-dom";
+import { HashRouter as Link, NavLink } from "react-router-dom";
 import switterLogo from "../csc667-logo.svg";
 import "../WelcomePage.css";
 

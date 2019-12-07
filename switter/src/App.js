@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Switch, Redirect, Link} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
 import LoginPage from './pages/LoginPage.jsx';
 import SignUp from './pages/SignUp';
 import WelcomePage from './pages/WelcomePage';
@@ -10,9 +10,7 @@ import ProfilePage from './pages/ProfilePage';
 import { connect } from 'react-redux';
 
 const App = ({ isLoggedIn }) => {
-
-  // useEffect here will need to check auth server if previously signed in
-
+  
   return (
     <div className="App">
       <Router>
