@@ -3,8 +3,6 @@ const SET_USERNAME = 'SET_USERNAME';
 const SET_PASSWORD = 'SET_PASSWORD';
 const SET_IS_LOGGED_IN = 'SET_IS_LOGGED_IN';
 const SET_ACTIVE_USERS = 'SET_ACTIVE_USERS';
-const SET_LIKED_TWEET = 'SET_LIKED_TWEET';
-
 
 export const setIsLoggedIn = isLoggedIn => ({
   type: SET_IS_LOGGED_IN,
@@ -26,7 +24,4 @@ export const setPassword = password => ({
   password,
 });
 
-export const setLikedTweet = likedTweet => ({
-  type: SET_LIKED_TWEET,
-  likedTweet,
-});
+

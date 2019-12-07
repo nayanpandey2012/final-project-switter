@@ -1,12 +1,12 @@
 import React from "react";
-import switterLogo from "../csc667-logo.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
-import { Container, Button, Navbar, Form } from "react-bootstrap";
-import { connect } from 'react-redux'; 
-import { setTweets, getAllTweets, setMessage, setNewTweets } from '../redux/actions/noteActions';
+import switterLogo from "../csc667-logo.svg";
+import { Container} from "react-bootstrap";
+import { Button, Navbar, Form } from "react-bootstrap";
+import { connect } from 'react-redux';
+import { getAllTweets} from '../redux/actions/noteActions';
 
-const Header = ({ dispatch, tweets, message, newTweets }) => {
+const ProfileHeader = ({ dispatch, tweets }) => {
 
   React.useEffect(() => {
     dispatch(getAllTweets());
@@ -15,7 +15,7 @@ const Header = ({ dispatch, tweets, message, newTweets }) => {
   return (
     <Container>
       <Navbar bg="white">
-        <Navbar.Brand href="/" style={logoStyle.float}>
+        <Navbar.Brand href="/profile" style={logoStyle.float}>
           <img src={switterLogo} width="40" height="40" alt="logo" />
         </Navbar.Brand>
       </Navbar>
@@ -24,12 +24,12 @@ const Header = ({ dispatch, tweets, message, newTweets }) => {
           <Form.Control
             type="text"
             placeholder="What's on your mind"
+            name="message"
           />
         </Form.Group>
         <Button 
           style={{marginInlineStart:"600px"}} 
-          // force lazy-registration
-          onClick={() =>  window.location.href='/welcome'}
+          onClick={e => e.preventDefault()}
         >
           Tweet
         </Button>
@@ -52,11 +52,12 @@ const mapStateToProps = state => ({
   tweets: state.notesReducer.tweets,
   message: state.notesReducer.message,
   newTweets: state.notesReducer.newTweets,
+  username: state.userReducer.username,
 });
 
-export default connect(mapStateToProps, null)(Header);
+export default connect(mapStateToProps, null)(ProfileHeader);
 
-// CSS:
+// CSS: 
 const logoStyle = {
   position: {
     float: "left !important",
@@ -64,35 +65,19 @@ const logoStyle = {
   }
 };
 
-// export default class Header extends React.Component {
-//   state = {
-//     username: "user1",
-//     message: "",
-//     likes: 1,
-//   };
 
-//   componentDidMount = () => {
-//     this.getBlogPost();
-//   };
-
-//   getBlogPost = () => {
-//     axios
-//       .get("/api")
-//       .then(res => {
-//         const data = res.data;
-//         this.setState({ tweets: data });
-//         console.log("Data has been received!!");
-//       })
-//       .catch(() => {
-//         alert("Error finding data");
-//       });
-//   };
-
-//   handleChange = ({ target }) => {
-//     const { name, value } = target;
-
-//     this.setState({ [name]: value });
-//   };
+  //  getBlogPost = () => {
+  //     axios
+  //       .get("/api")
+  //       .then(res => {
+  //         const data = res.data;
+  //         this.setState({ tweets: data });
+  //         console.log("Data has been received!!");
+  //       })
+  //       .catch(() => {
+  //         alert("Error finding data");
+  //       });
+  //   };
 
 //   submit = e => {
 //     e.preventDefault();
@@ -119,55 +104,48 @@ const logoStyle = {
 //       });
 //   };
 
-//   resetUserInputs = () => {
-//     this.setState({
-//       message: ""
-//     });
-//   };
-
-//   displayBlogPost = tweets => {
-//     if (!tweets.length) return null;
-
-//     return tweets.map((tweet, index) => (
-//       <div key={index}>
-//         <h3>{tweet.username}</h3>
-//         <p>{tweet.message}</p>
-//         <h6>{tweet.likes}</h6>
-//       </div>
-//     ));
-//   };
-
+// var userName = "User1";
+// class ProfileLabel extends React.Component {
 //   render() {
-//     console.log("State: ", this.state);
 //     return (
 //       <Container>
 //         <Navbar bg="white">
-//           <Navbar.Brand href="/" style={logoStyle.float}>
+//           <Navbar.Brand href="/profile" style={logoStyle.float}>
 //             <img src={switterLogo} width="40" height="40" alt="logo" />
 //           </Navbar.Brand>
 
 //         </Navbar>
-//         <form onSubmit={this.submit}>
+//         <form>
 //           <Form.Group controlId="tweet_submit">
 //             <Form.Control
 //               type="text"
 //               placeholder="What's on your mind"
 //               name="message"
-//               value={this.state.message}
-//               onChange={this.handleChange}
 //             />
 //           </Form.Group>
 //           <Button 
 //             style={{marginInlineStart:"600px"}} 
 //             type="submit"
+//             onClick={e => e.preventDefault()}
 //           >
 //             Swit
 //           </Button>
 //         </form>
-//         <div classname="blog-">{this.displayBlogPost(this.state.tweets)}</div>
+//         <Col>
+//           <p>
+//             <b>
+//               {/* <h2>{userName}</h2> */}
+//               <h2>username</h2>
+//             </b>
+//           </p>
+//         </Col>
 //       </Container>
 //     );
 //   }
 // }
+
+// export default ProfileLabel;
+
+
 
 
