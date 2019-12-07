@@ -5,7 +5,7 @@ import { Container} from "react-bootstrap";
 import { Button, Navbar, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
 
-const ProfileHeader = () => {
+const ProfileHeader = ({ username }) => {
   return (
     <Container>
       <Navbar bg="white">
@@ -23,7 +23,6 @@ const ProfileHeader = () => {
         </Form.Group>
         <Button 
           style={{marginInlineStart:"600px"}} 
-          type="submit"
           onClick={e => e.preventDefault()}
         >
           Tweet
@@ -46,6 +45,45 @@ const logoStyle = {
     marginTop: "-15px !important"
   }
 };
+
+
+  //  getBlogPost = () => {
+  //     axios
+  //       .get("/api")
+  //       .then(res => {
+  //         const data = res.data;
+  //         this.setState({ tweets: data });
+  //         console.log("Data has been received!!");
+  //       })
+  //       .catch(() => {
+  //         alert("Error finding data");
+  //       });
+  //   };
+
+//   submit = e => {
+//     e.preventDefault();
+
+//     const payload = {
+//       id: 1,
+//       username: "user1",
+//       message: this.state.message,
+//       likes: 1
+//     };
+
+//     axios({
+//       url: "/api/save",
+//       method: "POST",
+//       data: payload
+//     })
+//       .then(() => {
+//         console.log("Data has been sent to the server");
+//         this.resetUserInputs();
+//         this.getBlogPost();
+//       })
+//       .catch(() => {
+//         console.log("Internal server error");
+//       });
+//   };
 
 // var userName = "User1";
 // class ProfileLabel extends React.Component {

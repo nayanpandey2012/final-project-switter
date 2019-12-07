@@ -21,20 +21,6 @@ const Header = () => {
         alert("Error finding data");
       });
   }
-    const displayBlogPost = (tweets) => {
-      // console.log('tweets ', tweets);
-      // if (!tweets.length) return null;
-      
-      // return tweets.map((tweet, index) => (
-      //   console.log(index + ' ' + tweet.message)
-      //   <div key={index}>
-      //     <h3>{tweet.username}</h3>
-      //     <p>{tweet.message}</p>
-      //     <h6>{tweet.likes}</h6>
-      //   </div>
-      // ));
-    };
-
   React.useEffect(() => {
     getBlogPost();
   }, []);
@@ -85,11 +71,9 @@ const logoStyle = {
 
 // export default class Header extends React.Component {
 //   state = {
-//     id: 1,
-//     // username: "user1",
+//     username: "user1",
 //     message: "",
 //     likes: 1,
-//     tweets: [],
 //   };
 
 //   componentDidMount = () => {
