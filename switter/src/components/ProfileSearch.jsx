@@ -2,16 +2,15 @@ import React from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Col, Form } from "react-bootstrap";
-import Tweet from './Tweet';
 import { connect } from 'react-redux';
 import { setTweets } from '../redux/actions/noteActions';
 
 
-const ProfileSearch = ({ dispatch, tweets }) => {
+const ProfileSearch = ({ dispatch }) => {
 
     const [searchTerm, setSearchTerm] = React.useState('');
 
-    const searchuser = () => {
+    const searchUser = () => {
         axios
             .get('/api/searchuser', {
                 params: {
@@ -19,11 +18,11 @@ const ProfileSearch = ({ dispatch, tweets }) => {
                 }
             })
             .then(response => {
-                console.log('user tweet ', response.data);
+                console.log('search user: ', response.data);
                 if (response.data) {
                     // get tweet stats by that particular username: 
                     dispatch(setTweets(response.data));
-                }
+                } 
             })
             .catch(err => {
                 console.log('no user tweet ', err);
@@ -35,7 +34,7 @@ const ProfileSearch = ({ dispatch, tweets }) => {
     }
 
     React.useEffect(() => {
-        searchuser();
+        searchUser();
     }, []);
 
     return (
@@ -50,14 +49,15 @@ const ProfileSearch = ({ dispatch, tweets }) => {
                 />
             </Col>
             <Col>
-            <Button variant="primary" 
-                onClick={searchuser}
-            >
-                Search
-            </Button>
+                <Button variant="primary" 
+                    onClick={searchUser}
+                >
+                    Search
+                </Button>
             </Col>
         </Form.Row>
         </form>
+        
     );
 }
 

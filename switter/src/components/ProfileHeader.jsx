@@ -3,12 +3,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import switterLogo from "../csc667-logo.svg";
 import { Container } from "react-bootstrap";
 import Tweet from './Tweet';
-import Tweets from './Tweets';
 import { Button, Navbar, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { getAllTweets} from '../redux/actions/noteActions';
 
-const ProfileHeader = ({ dispatch, tweets }) => {
+const ProfileHeader = ({ dispatch }) => {
 
   React.useEffect(() => {
     dispatch(getAllTweets());
@@ -30,7 +29,7 @@ const ProfileHeader = ({ dispatch, tweets }) => {
           />
         </Form.Group>
         <Button 
-          style={{marginInlineStart:"600px"}} 
+          
           onClick={e => e.preventDefault()}
         >
           Tweet
@@ -46,13 +45,9 @@ const ProfileHeader = ({ dispatch, tweets }) => {
             <br />
           </div>
         ))} */}
-        {/* {<div>
-          <h5>{tweets.username}</h5>
-          <h5>{tweets.message}</h5>
-          <h6>{tweets.likes}</h6>
-         </div>} */}
 
-         <Tweet />
+        {/* only display single tweet! NEED WORK!!!! */}
+        <Tweet />
       </div>
     </Container>
   );

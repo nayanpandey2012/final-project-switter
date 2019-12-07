@@ -1,8 +1,5 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container,  Col } from "react-bootstrap";
 import { connect } from 'react-redux';
-
 
 const Tweet = ({ tweets }) => {
     return (
@@ -16,19 +13,16 @@ const Tweet = ({ tweets }) => {
 
 const mapStateToProps = state => ({
     tweets: state.notesReducer.tweets,
-    message: state.notesReducer.message,
-    newTweets: state.notesReducer.newTweets,
-    username: state.userReducer.username,
 });
 
 export default connect(mapStateToProps, null)(Tweet);
 
 // CSS: 
-const tweetStyle = {
-    borderStyle:'solid',
-    borderColor:'grey',
-    marginBottom: '3px',
-};
+// const tweetStyle = {
+//     borderStyle:'solid',
+//     borderColor:'grey',
+//     marginBottom: '3px',
+// };
 
 
 // export default class Tweet extends Component {

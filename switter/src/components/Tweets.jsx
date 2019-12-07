@@ -5,13 +5,20 @@ import Tweet from "./Tweet";
 import { connect } from 'react-redux';
 
 const Tweets = ({ tweets }) => {
-    return this.props.tweets.map((tweet)=>(
+    return (
         <Container>
             <Col>
-            <Tweet box ={tweet}/>
+            {tweets.map((tweet, index) => (
+                <div key={index}>
+                    <h5>{tweet.username}</h5>
+                    <h5>{tweet.message}</h5>
+                    <h6>{tweet.likes}</h6>
+                    <br/>
+                </div>
+            ))}
             </Col>
         </Container>
-    ));
+    );
 }
 
 const mapStateToProps = state => ({
