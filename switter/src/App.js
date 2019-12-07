@@ -10,9 +10,7 @@ import ProfilePage from './pages/ProfilePage';
 import { connect } from 'react-redux';
 
 const App = ({ isLoggedIn }) => {
-
-  // useEffect here will need to check auth server if previously signed in
-
+  
   return (
     <div className="App">
       <Router>

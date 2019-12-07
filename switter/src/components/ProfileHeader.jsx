@@ -4,9 +4,9 @@ import switterLogo from "../csc667-logo.svg";
 import { Container} from "react-bootstrap";
 import { Button, Navbar, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
-import { setTweets, getAllTweets, setMessage, setNewTweets } from '../redux/actions/noteActions';
+import { getAllTweets} from '../redux/actions/noteActions';
 
-const ProfileHeader = ({ username, dispatch, tweets, message, newTweets }) => {
+const ProfileHeader = ({ dispatch, tweets }) => {
 
   React.useEffect(() => {
     dispatch(getAllTweets());

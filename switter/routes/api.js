@@ -3,7 +3,7 @@ const router = express.Router();
 const Tweet = require("../src/models/tweetSchema");
 const User = require("../src/models/userSchema");
 
-// get all tweets in MongoDB: 
+// get all tweets in Tweet DB: 
 router.get("/", (req, res) => {
   Tweet.find({})
     .then(data => {

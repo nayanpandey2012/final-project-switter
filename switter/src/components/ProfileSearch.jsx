@@ -2,10 +2,9 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Col, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
-import { searchByUser, setUsername } from '../redux/actions/userActions';
 import axios from 'axios';
 
-const ProfileSearch = ({ dispatch, username }) => {
+const ProfileSearch = () => {
 
     const [searchTerm, setSearchTerm] = React.useState('');
 
@@ -25,7 +24,6 @@ const ProfileSearch = ({ dispatch, username }) => {
     }
     
     const getSearchterm = el => {
-        console.log(el);
         setSearchTerm(el)
     }
 

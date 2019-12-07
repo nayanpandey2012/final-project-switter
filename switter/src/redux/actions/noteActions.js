@@ -36,15 +36,3 @@ export const setNewTweets = newTweets => ({
     newTweets,
 });
 
-// updateNote
-export const updateNewTweet = () => (dispatch, getState) => {
-    // const {_id, newNote} = getState().notesReducer;
-  
-    // axios.get(`/update?_id=${_id}&notes=${newNote}`)
-    // .then(() => {
-    //     dispatch(setNewNote(''));
-    //     dispatch(setId(''));
-    //     dispatch(listNotes(''));
-    // })
-    // .catch(console.log);
-}
