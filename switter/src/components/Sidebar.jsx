@@ -30,6 +30,7 @@ const Sidebar = ({ activeUsers }) => {
             </div>
             <br/>
             <Button variant="primary"
+                // force lazy-registration
                 onClick={() =>  window.location.href='/welcome'}
             >
                 Login / Register
