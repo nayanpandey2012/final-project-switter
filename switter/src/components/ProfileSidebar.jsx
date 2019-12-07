@@ -1,6 +1,6 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Button,  Badge, Col, Row, Navbar, Form } from "react-bootstrap";
+import { Container, Button,  Badge, Col, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { setIsLoggedIn } from '../redux/actions/userActions';
 
@@ -13,10 +13,7 @@ const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
     return (
         <Container>
             <br/>
-            <h5>
-                Active Users <Badge variant="secondary">{activeUsers}</Badge>
-            </h5>
-            <br/>
+            <br />
             <form>
                 <Form.Row>
                     <Col>
@@ -30,6 +27,18 @@ const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
                 </Form.Row>
             </form>
             <br/>
+            <br/>
+            <div>
+                <h5>
+                    Active Users <Badge variant="secondary">{activeUsers}</Badge>
+                </h5>
+            </div>
+            <br/>
+            <div>
+                <h5>
+                    Hello <Badge variant="secondary">{username}</Badge>
+                </h5>
+            </div>
             <br/>
             <Button variant="primary"
                 onClick={logout}

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Switch, Redirect, Link} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
 import LoginPage from './pages/LoginPage.jsx';
 import SignUp from './pages/SignUp';
 import WelcomePage from './pages/WelcomePage';

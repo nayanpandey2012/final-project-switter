@@ -3,23 +3,37 @@ import switterLogo from "../csc667-logo.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { Container, Button, Navbar, Form } from "react-bootstrap";
-import { connect } from 'react-redux';
-import { BrowserRouter as Link, Redirect } from "react-router-dom";
-import { setLikedTweet, setMessage } from '../redux/actions/userActions'; 
+import { connect } from 'react-redux'; 
 
-const Header = ({ dispatch, likedTweet, message, isLoggedIn }) => {
+const Header = () => {
 
   const getBlogPost = () => {
     axios
       .get("/api")
       .then(res => {
         const data = res.data;
+        if (data) {
+          displayBlogPost(data);
+        }
         console.log("Data has been received!!", data);
       })
       .catch(() => {
         alert("Error finding data");
       });
   }
+    const displayBlogPost = (tweets) => {
+      // console.log('tweets ', tweets);
+      // if (!tweets.length) return null;
+      
+      // return tweets.map((tweet, index) => (
+      //   console.log(index + ' ' + tweet.message)
+      //   <div key={index}>
+      //     <h3>{tweet.username}</h3>
+      //     <p>{tweet.message}</p>
+      //     <h6>{tweet.likes}</h6>
+      //   </div>
+      // ));
+    };
 
   React.useEffect(() => {
     getBlogPost();
@@ -37,17 +51,19 @@ const Header = ({ dispatch, likedTweet, message, isLoggedIn }) => {
           <Form.Control
             type="text"
             placeholder="What's on your mind"
-            // name="message"
           />
         </Form.Group>
         <Button 
           style={{marginInlineStart:"600px"}} 
           onClick={() =>  window.location.href='/welcome'}
         >
-          Swit
+          Tweet
         </Button>
       </form>
-      <button onClick={getBlogPost}>Get All Tweet</button>
+      {/* <button onClick={getBlogPost}>Get All Tweet</button> */}
+      <div>
+        <h5>All Tweets</h5>
+      </div>
     </Container>
   );
 }

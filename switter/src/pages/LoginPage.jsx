@@ -3,7 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import '../LoginPage.css';
 import '../App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import switterLogo from '../csc667-logo.svg';
 import { setUsername, setPassword, setIsLoggedIn } from '../redux/actions/userActions';
 import { connect } from 'react-redux';

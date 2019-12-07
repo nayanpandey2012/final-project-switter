@@ -1,11 +1,11 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import switterLogo from "../csc667-logo.svg";
-import { Container, Col } from "react-bootstrap";
+import { Container} from "react-bootstrap";
 import { Button, Navbar, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
 
-const ProfileLable = ({ username }) => {
+const ProfileHeader = () => {
   return (
     <Container>
       <Navbar bg="white">
@@ -29,13 +29,6 @@ const ProfileLable = ({ username }) => {
           Tweet
         </Button>
       </form>
-      <Col>
-        <p>
-          <b>
-          <h2>Welcome back {username}</h2>
-          </b>
-        </p>
-      </Col>
     </Container>
   );
 }
@@ -44,7 +37,7 @@ const mapStateToProps = state => ({
   username: state.userReducer.username,
 });
 
-export default connect(mapStateToProps, null)(ProfileLable);
+export default connect(mapStateToProps, null)(ProfileHeader);
 
 // CSS: 
 const logoStyle = {

@@ -21,6 +21,7 @@ ws.onmessage = message => {
       case 'UPDATE_USER_COUNT':
           store.dispatch(setActiveUsers(messageObj.count));
           break;
+      default: return;
   }
 };
 

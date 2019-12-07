@@ -5,7 +5,7 @@ import { Button, Form } from "react-bootstrap";
 import switterLogo from "../csc667-logo.svg";
 import { Link  } from "react-router-dom";
 import axios from "axios";
-//import { validateAll } from "indicative";
+
 
 export default class SignUp extends React.Component {
   state = {
@@ -13,26 +13,8 @@ export default class SignUp extends React.Component {
     username: "",
     password: "",
     email: "",
-    c_password: ""
-    // users: []
+    c_password: "",
   };
-
-  // componentDidMount = () => {
-  //   this.getUserPost();
-  // };
-
-  // getUserPost = () => {
-  //   axios
-  //     .get("/api")
-  //     .then(res => {
-  //       const data = res.data;
-  //       this.setState({ users: data });
-  //       console.log("Data has been received!!");
-  //     })
-  //     .catch(() => {
-  //       alert("Error finding data");
-  //     });
-  // };
 
   handleChange = ({ target }) => {
     const { name, value } = target;
@@ -65,9 +47,6 @@ export default class SignUp extends React.Component {
           this.resetUserdataInputs();
           //alert("User is now signed up. Happy Switting!");
           window.location.href="login"
-
-          //this.redirecttologin();
-          // this.getUserPost();
         })
         
         .catch(e => {
@@ -76,13 +55,6 @@ export default class SignUp extends React.Component {
         });
     }
   };
-
-  // redirecttologin = ()=>{
-  //   console.log('Click happened');
-  //   return <Redirect to="/login" />;
-  // }
-
-
 
   resetUserdataInputs = () => {
     this.setState({
@@ -98,8 +70,6 @@ export default class SignUp extends React.Component {
     return (
       <div style={{ height: "60vh", paddingTop: 100 }}>
         <h2 style={{ color: "#00ACED" }}>Create your account</h2>
-
-        {/* NOTE: add home btn logo to return to homepage */}
         <span>
           <Link to="/">
             <img src={switterLogo} width="40px" height="40px" alt="logo" />
@@ -161,13 +131,11 @@ export default class SignUp extends React.Component {
               onChange={this.handleChange}
             />
           </Form.Group>
-          {/* <ButtonToolbar> */}
           <Button
             type="submit"
             variant="outline-primary"
             style={{ width: "49vh" }}
           >Sign up
-            {/* <Link to='/profile'>submit</Link> */}
           </Button>
         </form>
       </div>
