@@ -4,8 +4,14 @@ import switterLogo from "../csc667-logo.svg";
 import { Container} from "react-bootstrap";
 import { Button, Navbar, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
+import { setTweets, getAllTweets, setMessage, setNewTweets } from '../redux/actions/noteActions';
 
-const ProfileHeader = ({ username }) => {
+const ProfileHeader = ({ username, dispatch, tweets, message, newTweets }) => {
+
+  React.useEffect(() => {
+    dispatch(getAllTweets());
+  }, []);
+
   return (
     <Container>
       <Navbar bg="white">
@@ -28,11 +34,24 @@ const ProfileHeader = ({ username }) => {
           Tweet
         </Button>
       </form>
+      <div>
+        {tweets.map((tweet, index) => (
+          <div key={index}>
+            <h5>@user: {tweet.username}</h5>
+            <h5>{tweet.message}</h5>
+            <h6>likes: {tweet.likes}</h6>
+            <br />
+          </div>
+        ))}
+      </div>
     </Container>
   );
 }
 
 const mapStateToProps = state => ({
+  tweets: state.notesReducer.tweets,
+  message: state.notesReducer.message,
+  newTweets: state.notesReducer.newTweets,
   username: state.userReducer.username,
 });
 
