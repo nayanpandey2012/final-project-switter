@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Button,  Badge, Col, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { setIsLoggedIn } from '../redux/actions/userActions';
+import ProfileSearch from './ProfileSearch';
 
 const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
 
@@ -14,20 +15,7 @@ const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
         <Container>
             <br/>
             <br />
-            <form>
-                <Form.Row>
-                    <Col>
-                        <Form.Control placeholder="Search by Username" style={{width:"200px"}}/>
-                    </Col>
-                    <Col>
-                    <Button variant="primary" 
-                        onClick={e => e.preventDefault()}
-                    >
-                        Search
-                    </Button>
-                    </Col>
-                </Form.Row>
-            </form>
+            <ProfileSearch />
             <br/>
             <br/>
             <div>
