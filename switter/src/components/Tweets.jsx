@@ -1,17 +1,37 @@
-import React, { Component } from "react";
-import Tweet from "./Tweet";
+import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container,  Col } from "react-bootstrap";
+import Tweet from "./Tweet";
+import { connect } from 'react-redux';
 
-export default class Tweets extends Component {
-    render() {
-        return this.props.tweets.map((tweet)=>(
-            <Container>
-                <Col>
-                <Tweet box ={tweet}/>
-                </Col>
-            </Container>
-        ));
-    }
+const Tweets = ({ tweets }) => {
+    return this.props.tweets.map((tweet)=>(
+        <Container>
+            <Col>
+            <Tweet box ={tweet}/>
+            </Col>
+        </Container>
+    ));
 }
+
+const mapStateToProps = state => ({
+    tweets: state.notesReducer.tweets,
+    message: state.notesReducer.message,
+    newTweets: state.notesReducer.newTweets,
+    username: state.userReducer.username,
+});
+
+export default connect(mapStateToProps, null)(Tweets);
+
+// export default class Tweets extends Component {
+//     render() {
+//         return this.props.tweets.map((tweet)=>(
+//             <Container>
+//                 <Col>
+//                 <Tweet box ={tweet}/>
+//                 </Col>
+//             </Container>
+//         ));
+//     }
+// }
 
