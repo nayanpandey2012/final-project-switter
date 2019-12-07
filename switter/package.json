@@ -31,7 +31,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "client": "npm start",
-    "dev": "concurrently -n 'server, client' -c 'red,blue' \"nodemon server/server.js\" \"npm run client\""
+    "dev": "concurrently -n 'server, client, server' -c 'red,blue,black' \"nodemon server/server.js\" \"npm run client\" \"nodemon server/websocket.js\""
   },
   "eslintConfig": {
     "extends": "react-app"

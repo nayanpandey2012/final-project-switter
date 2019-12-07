@@ -47,7 +47,7 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
 
   if (isLoggedIn) {
     console.log('isLoggedIn: ',isLoggedIn);
-    return <Redirect to='/profile' />;
+    return <Redirect to='/' />;
   }
 
   return (
