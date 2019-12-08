@@ -5,7 +5,7 @@ const SET_NEW_TWEETS = 'SET_NEW_TWEETS';
 
 // initial state: 
 const INITIAL_STATE = {
-    tweets: [],
+    tweets: null,
     message: '',
     newTweets: '',
 };
@@ -20,7 +20,7 @@ const notesReducer = (state = INITIAL_STATE, action) => {
         case SET_NEW_TWEETS:
             return {
                 ...state,
-                newTweets: action.newTweets,
+                newTweets: [action.newTweets, ...state.list]
             };
         case SET_TWEETS:
             return {
