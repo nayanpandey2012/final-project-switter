@@ -2,8 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import switterLogo from "../csc667-logo.svg";
 import { Container } from "react-bootstrap";
-import Tweet from './Tweet';
-import Tweets from './Tweets';
+import ProfileTweetDashboard from './ProfileTweetDashboard';
 import { Button, Navbar, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { getAllTweets} from '../redux/actions/noteActions';
@@ -36,20 +35,7 @@ const ProfileHeader = ({ dispatch, tweets }) => {
           Tweet
         </Button>
       </form>
-      <div>
-        {/* Dashboard for all saved tweets in DB: */}
-
-        {/* only display single tweet! NEED WORK!!!! */}
-        {/* <Tweets /> */}
-        {/* {tweets.map((tweet, index) => (
-          <div key={index}>
-              <h5>{tweet.username}</h5>
-              <h5>{tweet.message}</h5>
-              <h6>{tweet.likes}</h6>
-              <br/>
-          </div>
-        ))} */}
-      </div>
+      <ProfileTweetDashboard />
     </Container>
   );
 }
