@@ -29,16 +29,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, null)(Tweets);
-
-// export default class Tweets extends Component {
-//     render() {
-//         return this.props.tweets.map((tweet)=>(
-//             <Container>
-//                 <Col>
-//                 <Tweet box ={tweet}/>
-//                 </Col>
-//             </Container>
-//         ));
-//     }
-// }
-
