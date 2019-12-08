@@ -15,6 +15,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 
 const Login = ({ dispatch, username, password, email, isLoggedIn }) => {
+  const [count, setCount] = useState("");
   const checkUser = () => {
     axios
       .get("/api/getUser", {
