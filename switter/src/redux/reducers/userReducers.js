@@ -38,7 +38,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
         password: action.password
       };
     case SET_EMAIL:
-      console.log(action.email);
       return {
         ...state,
         email: action.email
