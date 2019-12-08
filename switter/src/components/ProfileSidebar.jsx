@@ -5,13 +5,14 @@ import { connect } from 'react-redux';
 import { setIsLoggedIn } from '../redux/actions/userActions';
 import ProfileSearch from './ProfileSearch';
 
-const ProfileSidebar = ({ dispatch, activeUsers, username, isLoggedIn }) => {
+const ProfileSidebar = ({ dispatch, activeUsers, username, email, isLoggedIn }) => {
 
     const logout = ( ) => {
         dispatch(setIsLoggedIn(false));
         window.location.href='/';
     }
     const profile = ( ) => {
+        console.log("email: " + email);
         if(isLoggedIn == true){
             window.location.href='/profile';
         }   
