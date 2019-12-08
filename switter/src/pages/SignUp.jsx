@@ -3,9 +3,8 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form } from "react-bootstrap";
 import switterLogo from "../csc667-logo.svg";
-import { Link  } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
-
 
 export default class SignUp extends React.Component {
   state = {
@@ -13,7 +12,7 @@ export default class SignUp extends React.Component {
     username: "",
     password: "",
     email: "",
-    c_password: "",
+    c_password: ""
   };
 
   handleChange = ({ target }) => {
@@ -42,16 +41,19 @@ export default class SignUp extends React.Component {
         data: userpayload
       })
         .then(res => {
-          alert("You are now registered. Please login to use Switter.");
           console.log("Data has been sent to the server", res);
           this.resetUserdataInputs();
-          //alert("User is now signed up. Happy Switting!");
-          window.location.href="login"
+          setTimeout(() => {
+            window.location.href = "login";
+          }, 3000);
+          console.log("i am here");
+          this.setState({ dbMsg: res.data.msg });
         })
-        
+
         .catch(e => {
-          alert("Username already taken.!!");
-          console.log("Internal server error", e.res);
+          console.log("Internal server error");
+          console.log(e);
+          this.setState({ dbMsg: e.response.data.msg });
         });
     }
   };
@@ -135,9 +137,12 @@ export default class SignUp extends React.Component {
             type="submit"
             variant="outline-primary"
             style={{ width: "49vh" }}
-          >Sign up
+          >
+            Sign up
           </Button>
         </form>
+
+        <p style={{ margin: "10px" }}>{this.state.dbMsg}</p>
       </div>
     );
   }
