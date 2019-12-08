@@ -6,6 +6,8 @@ import ProfileSidebar from '../components/ProfileSidebar';
 import { Container,  Col, Row } from "react-bootstrap";
 
 const ProfilePage = () => {
+
+  
   return (
     <Container>
       <Row>
