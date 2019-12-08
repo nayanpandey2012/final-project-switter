@@ -2,9 +2,10 @@ import React from "react";
 import switterLogo from "../csc667-logo.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import Tweets from './Tweets';
 import { Container, Button, Navbar, Form } from "react-bootstrap";
 import { connect } from 'react-redux'; 
-import { setTweets, getAllTweets, setMessage, setNewTweets } from '../redux/actions/noteActions';
+import {  getAllTweets } from '../redux/actions/noteActions';
 
 const Header = ({ dispatch, tweets, message, newTweets }) => {
 
@@ -35,14 +36,15 @@ const Header = ({ dispatch, tweets, message, newTweets }) => {
         </Button>
       </form>
       <div>
-        {tweets.map((tweet, index) => (
+        {/* {tweets.map((tweet, index) => (
           <div key={index}>
             <h5>@user: {tweet.username}</h5>
             <h5>{tweet.message}</h5>
             <h6>likes: {tweet.likes}</h6>
             <br />
           </div>
-        ))}
+        ))} */}
+        <Tweets />
       </div>
     </Container>
   );

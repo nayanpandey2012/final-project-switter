@@ -1,14 +1,16 @@
 import React from 'react';
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Col, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
-import axios from 'axios';
+import { setTweets } from '../redux/actions/noteActions';
 
-const ProfileSearch = () => {
+
+const ProfileSearch = ({ dispatch }) => {
 
     const [searchTerm, setSearchTerm] = React.useState('');
 
-    const searchuser = () => {
+    const searchUser = () => {
         axios
             .get('/api/searchuser', {
                 params: {
@@ -16,7 +18,11 @@ const ProfileSearch = () => {
                 }
             })
             .then(response => {
-                console.log('user tweet ', response.data);
+                console.log('search user: ', response.data);
+                if (response.data) {
+                    // get tweet stats by that particular username: 
+                    dispatch(setTweets(response.data));
+                } 
             })
             .catch(err => {
                 console.log('no user tweet ', err);
@@ -28,7 +34,7 @@ const ProfileSearch = () => {
     }
 
     React.useEffect(() => {
-        searchuser();
+        searchUser();
     }, []);
 
     return (
@@ -43,19 +49,20 @@ const ProfileSearch = () => {
                 />
             </Col>
             <Col>
-            <Button variant="primary" 
-                onClick={searchuser}
-            >
-                Search
-            </Button>
+                <Button variant="primary" 
+                    onClick={searchUser}
+                >
+                    Search
+                </Button>
             </Col>
         </Form.Row>
         </form>
+        
     );
 }
 
 const mapStateToProps = state => ({
-    username: state.userReducer.username,
+    tweets: state.notesReducer.tweets,
 });
 
 export default connect(mapStateToProps, null)(ProfileSearch); 
