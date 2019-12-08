@@ -140,10 +140,9 @@ export default class SignUp extends React.Component {
           >
             Sign up
           </Button>
-          <div>
-            <h1>{this.state.dbMsg}</h1>
-          </div>
         </form>
+
+        <p style={{ margin: "10px" }}>{this.state.dbMsg}</p>
       </div>
     );
   }
