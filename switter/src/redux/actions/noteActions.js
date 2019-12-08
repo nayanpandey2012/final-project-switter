@@ -4,7 +4,7 @@ import axios from 'axios';
 const SET_TWEETS = 'SET_TWEETS';
 const SET_MESSAGE = 'SET_MESSAGE';
 const SET_NEW_TWEETS = 'SET_NEW_TWEETS';
-const SET_SEARCH_TWEETS = 'SET_SEARCH_TWEETS';
+const SET_IS_LIKED = 'SET_IS_LIKED';
 
 // current tweet in db:
 export const setTweets = tweets => ({
@@ -36,4 +36,9 @@ export const setNewTweets = newTweets => ({
     type: SET_NEW_TWEETS,
     newTweets,
 });
+
+export const setIsLiked = isLiked => ({
+    type: SET_IS_LIKED,
+    isLiked,
+})
 

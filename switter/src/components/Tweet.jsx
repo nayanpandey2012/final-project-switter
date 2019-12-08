@@ -44,38 +44,11 @@ export default class Tweet extends Component {
           }
 
     render() {
-        const{username,message,likes } = this.props.box;
+        //const{username,message,likes } = this.props.box;
         return (
-            <div style={tweetStyle}>
-                <p>{username}</p>
-                <p>{message}</p>
-                <div>
-                    
-                <p onClick={this.updateLikes}>
-                    <ion-icon name="heart"></ion-icon>
-                    </p>
-        <p>{this.state.likes}</p>
-        </div>
-        
-                
-            </div>
+            <div >
+              </div>
         )
     }
 }
-
-
-// export default class Tweet extends Component {
-//     render() {
-//         const{username,message,likes } = this.props.box;
-//         return (
-//             <div style={tweetStyle}>
-//                 <p>{username}</p>
-//                 <p>{message}</p>
-//                 <ion-icon name="heart"></ion-icon>
-
-//                 <p>likes: {likes}</p>
-//             </div>
-//         )
-//     }
-// }
 
