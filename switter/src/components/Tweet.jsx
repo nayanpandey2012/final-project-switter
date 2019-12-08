@@ -1,15 +1,15 @@
-import React from "react";
+import React, { Component , tweetStyle} from "react";
 import { connect } from 'react-redux';
 
-const Tweet = ({ tweets }) => {
-    return (
-        <div>
-            <h5>{tweets.username}</h5>
-            <h5>{tweets.message}</h5>
-            <h6>{tweets.likes}</h6>
-        </div>
-    );
-}
+///const Tweet = ({ tweets }) => {
+    //return (
+        //<div>
+            //<h5>{tweets.username}</h5>
+            //<h5>{tweets.message}</h5>
+            //<h6>{tweets.likes}</h6>
+       // </div>
+    //);
+//}
 
 export default class Tweet extends Component {
      
