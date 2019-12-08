@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 });
 
 // find user tweets by username: 
-router.get('/searchuser', (req, res) => {
+router.get('/searchUser', (req, res) => {
   console.log(req.query.username);
 
   Tweet.findOne({ username: req.query.username })
