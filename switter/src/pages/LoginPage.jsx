@@ -8,19 +8,20 @@ import switterLogo from "../csc667-logo.svg";
 import {
   setUsername,
   setPassword,
+  setEmail,
   setIsLoggedIn
 } from "../redux/actions/userActions";
 import { connect } from "react-redux";
 import axios from "axios";
 
-const Login = ({ dispatch, username, password, isLoggedIn }) => {
-  const [count, setCount] = useState(" ");
+const Login = ({ dispatch, username, password, email, isLoggedIn }) => {
   const checkUser = () => {
     axios
       .get("/api/getUser", {
         params: {
           username: username,
-          password: password
+          password: password,
+          email: email
         }
       })
       .then(response => {
@@ -53,6 +54,8 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
 
   if (isLoggedIn) {
     console.log("isLoggedIn: ", isLoggedIn);
+    setUsername(username);
+    setEmail(email);
     return <Redirect to="/profile" />;
   }
 
