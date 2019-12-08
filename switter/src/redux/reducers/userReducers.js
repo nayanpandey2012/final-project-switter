@@ -10,6 +10,7 @@ const INITIAL_STATE = {
     activeUsers: 0,
     username: '',
     password: '',
+    // tweetMessage: '',
   };
 
 const userReducer = (state = INITIAL_STATE, action) => {

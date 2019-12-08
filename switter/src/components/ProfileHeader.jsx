@@ -3,11 +3,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import switterLogo from "../csc667-logo.svg";
 import { Container } from "react-bootstrap";
 import Tweet from './Tweet';
+import Tweets from './Tweets';
 import { Button, Navbar, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { getAllTweets} from '../redux/actions/noteActions';
 
-const ProfileHeader = ({ dispatch }) => {
+const ProfileHeader = ({ dispatch, tweets }) => {
 
   React.useEffect(() => {
     dispatch(getAllTweets());
@@ -37,17 +38,17 @@ const ProfileHeader = ({ dispatch }) => {
       </form>
       <div>
         {/* Dashboard for all saved tweets in DB: */}
-        {/* {tweets.map((tweet, index) => (
-          <div key={index}>
-            <h5>@user: {tweet.username}</h5>
-            <h5>{tweet.message}</h5>
-            <h6>likes: {tweet.likes}</h6>
-            <br />
-          </div>
-        ))} */}
 
         {/* only display single tweet! NEED WORK!!!! */}
-        <Tweet />
+        {/* <Tweets /> */}
+        {/* {tweets.map((tweet, index) => (
+          <div key={index}>
+              <h5>{tweet.username}</h5>
+              <h5>{tweet.message}</h5>
+              <h6>{tweet.likes}</h6>
+              <br/>
+          </div>
+        ))} */}
       </div>
     </Container>
   );
@@ -55,9 +56,9 @@ const ProfileHeader = ({ dispatch }) => {
 
 const mapStateToProps = state => ({
   tweets: state.notesReducer.tweets,
-  message: state.notesReducer.message,
-  newTweets: state.notesReducer.newTweets,
-  username: state.userReducer.username,
+  // message: state.notesReducer.message,
+  // newTweets: state.notesReducer.newTweets,
+  // username: state.userReducer.username,
 });
 
 export default connect(mapStateToProps, null)(ProfileHeader);

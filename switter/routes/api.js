@@ -19,8 +19,9 @@ router.get("/", (req, res) => {
 router.get('/searchuser', (req, res) => {
   console.log(req.query.username);
 
-  Tweet.findOne({ username: req.query.username })
+  Tweet.find({ username: req.query.username })
     .then(data => {
+      console.log('tweet: ', data);
       res.json(data);
     })
     .catch(err => {
