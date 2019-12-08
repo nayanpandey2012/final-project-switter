@@ -39,10 +39,6 @@ const Login = ({ dispatch, username, password, email, isLoggedIn }) => {
       });
   };
 
-  // React.useEffect(() => {
-  //   checkUser();
-  // }, []);
-
   const updateUsername = newUser => {
     if (newUser.length < 20) {
       dispatch(setUsername(newUser));

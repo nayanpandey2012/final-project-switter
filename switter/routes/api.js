@@ -21,7 +21,6 @@ router.get("/searchUser", (req, res) => {
 
   Tweet.find({ username: req.query.username })
     .then(data => {
-      console.log('tweet: ', data);
       res.json(data);
     })
     .catch(err => {
