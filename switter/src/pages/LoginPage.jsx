@@ -9,7 +9,7 @@ import { setUsername, setPassword, setEmail, setIsLoggedIn } from '../redux/acti
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-const Login = ({ dispatch, username, password, isLoggedIn }) => {
+const Login = ({ dispatch, username, password, email, isLoggedIn }) => {
 
   const checkUser = () => {
     axios
@@ -17,6 +17,7 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
         params: {
           username: username, 
           password: password,
+          email: email,
         }
       })
       .then(response => {
@@ -47,6 +48,8 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
 
   if (isLoggedIn) {
     console.log('isLoggedIn: ',isLoggedIn);
+    setUsername(username);
+    setEmail(email);
     return <Redirect to='/profile' />;
   }
 

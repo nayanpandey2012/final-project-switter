@@ -25,6 +25,7 @@ const ProfileSidebar = ({ dispatch, activeUsers, username, isLoggedIn }) => {
                 <h5>
                     <Button variant="primary"
                     onClick={profile} >
+                        Profile
                     </Button>
                 </h5>
             <br/>
