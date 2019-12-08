@@ -6,7 +6,7 @@
   
 .App__Aside {
   width: 50%;
-  background-color: #3fc5f0;
+  background-color: #f4f4f4;
 }
   
 .App__Form {
@@ -79,4 +79,10 @@
   
 .text {
   text-align: center;
+  color: #000;
+}
+
+.logo{
+  text-align: center;
+  
 }

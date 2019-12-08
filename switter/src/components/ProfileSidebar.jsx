@@ -1,31 +1,59 @@
 import React from "react";
-//import "./app.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container,Badge, Navbar } from "react-bootstrap";
-import { BrowserRouter as  Link } from "react-router-dom";
+import { Container, Button,  Badge } from "react-bootstrap";
+import { connect } from 'react-redux';
+import { setIsLoggedIn } from '../redux/actions/userActions';
+import ProfileSearch from './ProfileSearch';
 
-export default class ProfileSidebar extends React.Component {
+const ProfileSidebar = ({ dispatch, activeUsers, username, email, isLoggedIn }) => {
 
-    
-    // these will be changed to routes, placeholders for now
-
-    render() {
-        return (
-            <Container>
-        
-                <Navbar bg="white">
-                    <Link to='/'>Home</Link>
-                </Navbar>
-                <br/>
-                <Navbar bg="white">
-                    <Link to='/'>Logout</Link>
-                </Navbar>
-                <br/>
-                <h5>
-                    Active Users <Badge variant="secondary">5</Badge>
-                </h5>
-
-            </Container>
-        )
+    const logout = ( ) => {
+        dispatch(setIsLoggedIn(false));
+        window.location.href='/';
     }
+    const profile = ( ) => {
+        console.log("email: " + email);
+        if(isLoggedIn == true){
+            window.location.href='/profile';
+        }   
+    }
+    return (
+        <Container>
+            <br/>
+            <br />
+            <ProfileSearch />
+            <br/>
+                <h5>
+                    <Button variant="primary"
+                    onClick={profile} >
+                        Profile
+                    </Button>
+                </h5>
+            <br/>
+            <div>
+                <h5>
+                    Active Users <Badge variant="secondary">{activeUsers}</Badge>
+                </h5>
+            </div>
+            <br/>
+            <div>
+                <h5>
+                    Hello <Badge variant="secondary">{username}</Badge>
+                </h5>
+            </div>
+            <br/>
+            <Button variant="primary"
+                onClick={logout}
+            >
+                Logout
+            </Button>
+        </Container>
+    );
 }
+
+const mapStateToProps = state => ({
+    activeUsers: state.userReducer.activeUsers,
+    username: state.userReducer.username,
+});
+
+export default connect(mapStateToProps, null)(ProfileSidebar);

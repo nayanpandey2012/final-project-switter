@@ -6,8 +6,9 @@ import App from './App';
 import store from './store';
 import * as serviceWorker from './serviceWorker';
 import { setActiveUsers } from './redux/actions/userActions';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-// Websocket Credit to Tran: 
+// websocket for active user: 
 const ws = new WebSocket('ws://localhost:4005');
 
 ws.onopen = () => {
@@ -20,23 +21,26 @@ ws.onmessage = message => {
       case 'UPDATE_USER_COUNT':
           store.dispatch(setActiveUsers(messageObj.count));
           break;
+      default: return;
   }
-  console.log('messageObj ', messageObj);
 };
 
 ws.onerror = e => {
   console.log(e);
 };
 
-// temporary for demonstration, used to access globally, 
-// 9 times out of 10 don't do this
-window.ws = ws; 
-
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </Provider>,
   document.getElementById('root'),
 );
+
+// activate hot module to reload app in browser without page refresh
+if (module.hot) {
+  module.hot.accept();
+}
 
 serviceWorker.unregister();
