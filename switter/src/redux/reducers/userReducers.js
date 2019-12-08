@@ -1,6 +1,7 @@
 // action types:
 const SET_USERNAME = 'SET_USERNAME';
 const SET_PASSWORD = 'SET_PASSWORD';
+const SET_EMAIL = 'SET_EMAIL';
 const SET_IS_LOGGED_IN = 'SET_IS_LOGGED_IN';
 const SET_ACTIVE_USERS = 'SET_ACTIVE_USERS';
 
@@ -10,6 +11,7 @@ const INITIAL_STATE = {
     activeUsers: 0,
     username: '',
     password: '',
+    email: '',
   };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -34,6 +36,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         password: action.password,
+      }
+    case SET_EMAIL:
+      return {
+        ...state,
+        email: action.email,
       }
     default:
       return state;
