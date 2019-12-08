@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
 router.get("/searchUser", (req, res) => {
   console.log(req.query.username);
 
-  Tweet.findOne({ username: req.query.username })
+  Tweet.find({ username: req.query.username })
     .then(data => {
       res.json(data);
     })
@@ -32,17 +32,6 @@ router.get("/searchUser", (req, res) => {
 router.get("/getUser", async (req, res) => {
   let findUsername = req.query.username;
   let findPassword = req.query.password;
-
-  //   User.findOne({ username: findUsername, password: findPassword })
-  //     .then(data => {
-  //       console.log("user data: ", data);
-  //       res.json(data);
-  //     })
-  //     .catch(err => {
-  //       console.log("error find user: ", err);
-  //       res.status(403).json({ loginMsg: "wrong username and password.. " });
-  //     });
-  // });
 
   let user = await User.findOne({
     username: findUsername,
