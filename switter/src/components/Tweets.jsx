@@ -1,7 +1,6 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container,  Col } from "react-bootstrap";
-import Tweet from "./Tweet";
 import { connect } from 'react-redux';
 
 const Tweets = ({ tweets }) => {
