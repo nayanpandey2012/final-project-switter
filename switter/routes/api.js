@@ -15,13 +15,28 @@ router.get("/", (req, res) => {
     });
 });
 
+// find user email profile by username:
+router.get("/profileEmail", (req, res) => {
+  console.log('print req.query', req.query.username);
+
+  User.find({ username: req.query.username })
+    .then(response => {
+      console.log(response);
+      res.json(response.data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
 // find user tweets by username:
 router.get("/searchUser", (req, res) => {
   console.log(req.query.username);
 
   Tweet.find({ username: req.query.username })
-    .then(data => {
-      res.json(data);
+    .then(response => {
+
+      res.json(response.data);
     })
     .catch(err => {
       console.log(err);
@@ -100,3 +115,4 @@ router.post("/usersave", async (req, res) => {
 });
 
 module.exports = router;
+

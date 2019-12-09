@@ -18,7 +18,7 @@ const ProfileSearch = ({ dispatch }) => {
                 }
             })
             .then(response => {
-                console.log('search user: ', response.data);
+                console.log('username tweets: ', response.data);
                 if (response.data) {
                     // get tweet stats by that particular username: 
                     dispatch(setTweets(response.data));

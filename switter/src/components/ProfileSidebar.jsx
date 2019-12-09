@@ -1,21 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Button,  Badge } from "react-bootstrap";
 import { connect } from 'react-redux';
-import { setIsLoggedIn } from '../redux/actions/userActions';
+import { setIsLoggedIn, setEmail } from '../redux/actions/userActions';
 import ProfileSearch from './ProfileSearch';
+import axios from 'axios';
 
 const ProfileSidebar = ({ dispatch, activeUsers, username, email, isLoggedIn }) => {
+
+    // const [email, setEmail]
 
     const logout = ( ) => {
         dispatch(setIsLoggedIn(false));
         window.location.href='/';
     }
     const profile = ( ) => {
-        console.log("email: " + email);
-        if(isLoggedIn == true){
-            window.location.href='/profile';
-        }   
+        
+        axios
+            .get('/api/profileEmail', {
+                params: {
+                    username: username,
+                }
+            })
+            .then(response => {
+                console.log('username data: ', response.data);
+            })
+            .catch(err => {
+                console.log('no user email found ', err);
+            });
     }
     return (
         <Container>
@@ -54,6 +66,7 @@ const ProfileSidebar = ({ dispatch, activeUsers, username, email, isLoggedIn }) 
 const mapStateToProps = state => ({
     activeUsers: state.userReducer.activeUsers,
     username: state.userReducer.username,
+    email: state.userReducer.email,
 });
 
 export default connect(mapStateToProps, null)(ProfileSidebar);
