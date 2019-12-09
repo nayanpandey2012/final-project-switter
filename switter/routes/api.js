@@ -17,11 +17,11 @@ router.get("/", (req, res) => {
 
 // find user email profile by username:
 router.get("/profileEmail", (req, res) => {
-  console.log(req.query.username);
+  console.log('print: ', req.query.username);
 
   User.find({ username: req.query.username })
-    .then(response => {
-      res.json(response.data);
+    .then(data => {
+      res.json(data);
     })
     .catch(err => {
       console.log(err);
