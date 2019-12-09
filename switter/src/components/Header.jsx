@@ -43,7 +43,7 @@ const Header = ({ dispatch, tweets, message, newTweets }) => {
             <h6>likes: {tweet.likes}</h6>
             <br />
           </div>
-        ))} */}
+        ))} */ }
         <Tweets />
       </div>
     </Container>

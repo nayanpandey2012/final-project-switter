@@ -1,21 +1,13 @@
 import React, { Component , tweetStyle} from "react";
 import { connect } from 'react-redux';
 
-///const Tweet = ({ tweets }) => {
-    //return (
-        //<div>
-            //<h5>{tweets.username}</h5>
-            //<h5>{tweets.message}</h5>
-            //<h6>{tweets.likes}</h6>
-       // </div>
-    //);
-//}
-
 export default class Tweet extends Component {
      
         constructor(props) {
           super(props);
           this.state = {
+            username: "",
+            message: "",
             likes: 0,
             updated: true
           };
@@ -44,10 +36,11 @@ export default class Tweet extends Component {
           }
 
     render() {
-        //const{username,message,likes } = this.props.box;
+        const{ username,message,likes } = this.props;
         return (
             <div >
-              </div>
+
+            </div>
         )
     }
 }
