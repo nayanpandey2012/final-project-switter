@@ -1,25 +1,36 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import TweetObject from "./TweetObject";
 import { connect } from 'react-redux';
+import {  getAllTweets } from '../redux/actions/noteActions';
 
-class Tweets extends Component {
-    render() {
-        const { tweets } = this.props;
-        const post_list = tweets && tweets.map(el => <TweetObject key={el._id} message={el}/>);
+const Tweets = ({ dispatch, tweetslist })=> {
+
+    React.useEffect(() => {
+        dispatch(getAllTweets());
+      }, []);
+
+
         return (
-            <div>
-                { post_list }
-            </div>
+        <div> 
+            { tweetslist.map((tweet, i) => (
+                    <div key={i}>
+                    <h5>{tweet.username}</h5>
+                    <h5>{tweet.message}</h5>
+                    <h6>likes: {tweet.likes}</h6>
+                    </div>
+                    )) 
+            }
+
+        </div>
         )
-    }
+    
 }
 
 const mapStateToProps = (state) => ({
-    tweets: state.notesReducer.tweets,
+    tweetslist: state.notesReducer.tweetslist,
     message: state.notesReducer.message,
     newTweets: state.notesReducer.newTweets,
-    username: state.userReducer.username,
+    username: state.notesReducer.username,
 });
 
 export default connect(mapStateToProps)(Tweets);

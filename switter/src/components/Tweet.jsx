@@ -36,9 +36,10 @@ export default class Tweet extends Component {
           }
 
     render() {
-        //const{ username,message,likes } = this.props;
+        const{ username,message,likes } = this.props;
         return (
             <div >
+
             </div>
         )
     }
