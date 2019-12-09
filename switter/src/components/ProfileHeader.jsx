@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import switterLogo from "../csc667-logo.svg";
 import { Container } from "react-bootstrap";
 import ProfileTweetDashboard from './ProfileTweetDashboard';
+import Tweets from './Tweet';
 import { Button, Navbar, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { getAllTweets} from '../redux/actions/noteActions';
@@ -35,7 +36,13 @@ const ProfileHeader = ({ dispatch, tweets }) => {
           Tweet
         </Button>
       </form>
+<<<<<<< HEAD
       <ProfileTweetDashboard />
+=======
+      <div>
+        <Tweets />
+      </div>
+>>>>>>> b6fc8e54cd4ba67a2bceee3a6ad91dc36f3c8ead
     </Container>
   );
 }
