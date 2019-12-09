@@ -1,19 +1,19 @@
 import axios from 'axios';
 
 // action types: 
-const SET_TWEETS = 'SET_TWEETS';
 const SET_MESSAGE = 'SET_MESSAGE';
 const SET_NEW_TWEETS = 'SET_NEW_TWEETS';
-// const SET_SEARCH_TWEETS = 'SET_SEARCH_TWEETS';
+const SET_IS_LIKED = 'SET_IS_LIKED';
+const SET_USERNAME = 'SET_USERNAME';
 
 // current tweet in db:
-export const setTweets = tweets => ({
-    type: SET_TWEETS,
-    tweets,
+export const setTweets = tweetslist => ({
+    type: 'SET_TWEETS',
+    tweetslist,
 });
 
 // get all tweets from database: 
-export const getAllTweets = () => (dispatch, getState) => {
+export const getAllTweets = () => (dispatch) => {
     axios.get('/api')
         .then(res => {
             console.log('tweet data ', res.data);
@@ -31,9 +31,19 @@ export const setMessage = message => ({
     message,
 });
 
+export const setUsername = username => ({
+    type: SET_USERNAME,
+    username,
+});
+
 // new tweet inserted by user state: 
 export const setNewTweets = newTweets => ({
     type: SET_NEW_TWEETS,
     newTweets,
 });
+
+export const setIsLiked = isLiked => ({
+    type: SET_IS_LIKED,
+    isLiked,
+})
 
