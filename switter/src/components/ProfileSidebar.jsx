@@ -8,14 +8,12 @@ import axios from 'axios';
 
 const ProfileSidebar = ({ dispatch, activeUsers, username, email, isLoggedIn }) => {
 
-    // const [email, setEmail]
-
     const logout = ( ) => {
         dispatch(setIsLoggedIn(false));
         window.location.href='/';
-    }
+    };
+
     const profile = ( ) => {
-        
         axios
             .get('/api/profileEmail', {
                 params: {
@@ -23,12 +21,16 @@ const ProfileSidebar = ({ dispatch, activeUsers, username, email, isLoggedIn }) 
                 }
             })
             .then(response => {
-                console.log('username data: ', response.data);
+                console.log('username email: ', response.data[0].email);
+                if (response.data ) {
+                    dispatch(setEmail(response.data[0].email));
+                }
             })
             .catch(err => {
-                console.log('no user email found ', err);
+                console.log("no user found", err);
             });
     }
+
     return (
         <Container>
             <br/>
@@ -37,7 +39,8 @@ const ProfileSidebar = ({ dispatch, activeUsers, username, email, isLoggedIn }) 
             <br/>
                 <h5>
                     <Button variant="primary"
-                    onClick={profile} >
+                    onClick={profile}
+                    >
                         Profile
                     </Button>
                 </h5>
