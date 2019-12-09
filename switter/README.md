@@ -1,6 +1,6 @@
 ### Switter
 
-Proxy gates:\
+Proxy gates:
 * Turn on all servers for Proxy to work!
 
 ## Websocket
@@ -18,3 +18,8 @@ nodemon server.js
 fileServer is at port 4000\
 To run fileServer:\
 nodemon fileServer.js
+
+## Proxy Server: 
+gateway is at port 3004\
+To run gateway:\
+nodemon gateway.js
