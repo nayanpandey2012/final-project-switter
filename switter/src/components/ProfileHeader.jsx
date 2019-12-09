@@ -36,13 +36,7 @@ const ProfileHeader = ({ dispatch, tweets }) => {
           Tweet
         </Button>
       </form>
-<<<<<<< HEAD
       <ProfileTweetDashboard />
-=======
-      <div>
-        <Tweets />
-      </div>
->>>>>>> b6fc8e54cd4ba67a2bceee3a6ad91dc36f3c8ead
     </Container>
   );
 }

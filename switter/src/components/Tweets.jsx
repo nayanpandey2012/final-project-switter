@@ -27,13 +27,6 @@ const Tweets = ({ dispatch, tweetslist })=> {
     
 }
 
-<<<<<<< HEAD
-const mapStateToProps = state => ({
-    tweets: state.notesReducer.tweets,
-});
-
-export default connect(mapStateToProps, null)(Tweets);
-=======
 const mapStateToProps = (state) => ({
     tweetslist: state.notesReducer.tweetslist,
     message: state.notesReducer.message,
@@ -42,4 +35,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(Tweets);
->>>>>>> b6fc8e54cd4ba67a2bceee3a6ad91dc36f3c8ead
