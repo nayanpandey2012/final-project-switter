@@ -11,7 +11,8 @@ const INITIAL_STATE = {
   activeUsers: 0,
   username: "",
   password: "",
-  email: ""
+  email: "", 
+  message: '',
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {

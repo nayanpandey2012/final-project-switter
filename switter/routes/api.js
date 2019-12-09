@@ -21,7 +21,6 @@ router.get("/profileEmail", (req, res) => {
 
   User.find({ username: req.query.username })
     .then(response => {
-      console.log(response.data);
       res.json(response.data);
     })
     .catch(err => {

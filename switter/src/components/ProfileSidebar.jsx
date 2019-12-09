@@ -24,6 +24,7 @@ const ProfileSidebar = ({ dispatch, activeUsers, username, email, isLoggedIn }) 
                 console.log('username email: ', response.data[0].email);
                 if (response.data ) {
                     dispatch(setEmail(response.data[0].email));
+                    // window.location.href='/account';
                 }
             })
             .catch(err => {
