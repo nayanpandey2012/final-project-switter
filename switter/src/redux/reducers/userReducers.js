@@ -4,15 +4,18 @@ const SET_PASSWORD = "SET_PASSWORD";
 const SET_EMAIL = "SET_EMAIL";
 const SET_IS_LOGGED_IN = "SET_IS_LOGGED_IN";
 const SET_ACTIVE_USERS = "SET_ACTIVE_USERS";
+const SET_MESSAGE = 'SET_MESSAGE';
+const SET_LIKES = 'SET_LIKES';
 
 // initial state:
 const INITIAL_STATE = {
   isLoggedIn: false,
   activeUsers: 0,
-  username: "",
-  password: "",
-  email: "", 
+  username: '',
+  password: '',
+  email: '', 
   message: '',
+  likes: 0,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -44,6 +47,19 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         email: action.email
       };
+    case SET_MESSAGE:
+      console.log(action.message);
+      return {
+        ...state,
+        message: action.message
+      };
+    case SET_LIKES:
+      console.log(action.likes);
+      return {
+        ...state,
+        likes: action.likes
+      };
+    
     default:
       return state;
   }
