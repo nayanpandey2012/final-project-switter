@@ -23,3 +23,8 @@ nodemon fileServer.js
 gateway is at port 3004\
 To run gateway:\
 nodemon gateway.js
+
+
+If properly run, **localhost:3004** should work!
+
+
