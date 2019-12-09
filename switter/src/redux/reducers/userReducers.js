@@ -28,7 +28,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
         activeUsers: action.activeUsers
       };
     case SET_USERNAME:
-      console.log(action.username);
       return {
         ...state,
         username: action.username

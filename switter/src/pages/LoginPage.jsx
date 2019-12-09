@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import "../LoginPage.css";
 import "../App.css";
@@ -15,9 +15,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 
 const Login = ({ dispatch, username, password, email, isLoggedIn }) => {
-  
   const [count, setCount] = useState("");
-
   const checkUser = () => {
     axios
       .get("/api/getUser", {
@@ -38,6 +36,10 @@ const Login = ({ dispatch, username, password, email, isLoggedIn }) => {
         setCount(err.response.data.loginMsg);
       });
   };
+
+  // React.useEffect(() => {
+  //   checkUser();
+  // }, []);
 
   const updateUsername = newUser => {
     if (newUser.length < 20) {

@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container,  Col } from "react-bootstrap";
 import { connect } from 'react-redux';
 import {  getAllTweets } from '../redux/actions/noteActions';
 
