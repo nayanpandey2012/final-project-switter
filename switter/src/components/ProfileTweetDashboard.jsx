@@ -14,7 +14,6 @@ const ProfileTweetDashboard = ({ dispatch, email }) => {
         <div>
             {/* Dashboard for all display tweets in DB: */}
             <br/>
-            {email}
             <Tweets />
         </div>
     );

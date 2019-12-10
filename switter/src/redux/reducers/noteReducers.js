@@ -10,10 +10,10 @@ const notesReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         
         case SET_TWEETS:
-                console.log('print this: ', action.tweets);
+            // action.tweet: []
             return {
                 ...state,
-                tweets: [action.tweets], // return an array of tweets arrays
+                tweets: action.tweets, // return an array of tweets arrays
             };
         default:
             return state;

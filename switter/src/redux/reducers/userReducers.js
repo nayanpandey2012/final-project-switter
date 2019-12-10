@@ -21,7 +21,6 @@ const INITIAL_STATE = {
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_IS_LOGGED_IN:
-      console.log(action.isLoggedIn);
       return {
         ...state,
         isLoggedIn: action.isLoggedIn
@@ -42,19 +41,16 @@ const userReducer = (state = INITIAL_STATE, action) => {
         password: action.password
       };
     case SET_EMAIL:
-      console.log(action.email);
       return {
         ...state,
         email: action.email
       };
     case SET_MESSAGE:
-      console.log(action.message);
       return {
         ...state,
         message: action.message
       };
     case SET_LIKES:
-      console.log(action.likes);
       return {
         ...state,
         likes: action.likes

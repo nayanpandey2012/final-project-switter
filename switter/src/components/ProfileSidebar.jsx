@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Button,  Badge } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
-import { setIsLoggedIn, setEmail } from '../redux/actions/userActions';
+import { setIsLoggedIn, setEmail, setUsername, setPassword } from '../redux/actions/userActions';
 import ProfileSearch from './ProfileSearch';
 import axios from 'axios';
 
-const ProfileSidebar = ({ dispatch, activeUsers, username, email, isLoggedIn }) => {
+const ProfileSidebar = ({ dispatch, activeUsers, username, password, email, isLoggedIn }) => {
 
     const logout = ( ) => {
+        // return to initial state:
         dispatch(setIsLoggedIn(false));
-        window.location.href='/';
+        dispatch(setUsername(''));
+        dispatch(setPassword(''));
+        dispatch(setEmail(''));
     };
 
     const profile = ( ) => {
@@ -24,7 +28,6 @@ const ProfileSidebar = ({ dispatch, activeUsers, username, email, isLoggedIn }) 
                 console.log('username email: ', response.data[0].email);
                 if (response.data ) {
                     dispatch(setEmail(response.data[0].email));
-                    // window.location.href='/account';
                 }
             })
             .catch(err => {
@@ -39,11 +42,13 @@ const ProfileSidebar = ({ dispatch, activeUsers, username, email, isLoggedIn }) 
             <ProfileSearch />
             <br/>
                 <h5>
+                <Link to="/account">
                     <Button variant="primary"
                     onClick={profile}
                     >
                         Profile
                     </Button>
+                </Link>
                 </h5>
             <br/>
             <div>
@@ -58,11 +63,13 @@ const ProfileSidebar = ({ dispatch, activeUsers, username, email, isLoggedIn }) 
                 </h5>
             </div>
             <br/>
-            <Button variant="primary"
-                onClick={logout}
-            >
-                Logout
-            </Button>
+            <Link to="/">
+                <Button variant="primary"
+                    onClick={logout}
+                >
+                    Logout
+                </Button>
+            </Link>
         </Container>
     );
 }
@@ -70,6 +77,7 @@ const ProfileSidebar = ({ dispatch, activeUsers, username, email, isLoggedIn }) 
 const mapStateToProps = state => ({
     activeUsers: state.userReducer.activeUsers,
     username: state.userReducer.username,
+    password: state.userReducer.password,
     email: state.userReducer.email,
 });
 

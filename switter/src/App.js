@@ -21,7 +21,7 @@ const App = ({ isLoggedIn }) => {
         {isLoggedIn && (
           <div>
             <Link to='/profile'></Link>
-            {/* <Link to='/account'></Link> */}
+            <Link to='/account'></Link>
           </div>
         )}
         <Switch>
@@ -29,7 +29,7 @@ const App = ({ isLoggedIn }) => {
           <Route path='/welcome' component={WelcomePage} />
           <Route path='/signup' component={SignUp} />
           <Route path='/login' component={LoginPage} />
-          {/* <Route path='/account' component={AccountPage} /> */}
+          <Route path='/account' component={AccountPage} />
           <Route exact path='/' component={Logged_in_main} />
         </Switch>
       </Router>

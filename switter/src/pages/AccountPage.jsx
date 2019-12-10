@@ -1,19 +1,19 @@
 import React from 'react';
-import { Container } from "react-bootstrap";
-import { Navbar } from "react-bootstrap";
+import { Container, Navbar } from "react-bootstrap";
 import switterLogo from "../csc667-logo.svg";
+import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 
 const AccountPage = ({ email }) => {
     return (
         <Container>
             <Navbar bg="white">
-                <Navbar.Brand href="/profile" style={logoStyle.float}>
-                <img src={switterLogo} width="40" height="40" alt="logo" />
+                <Navbar.Brand  style={logoStyle.float}>
+                    <Link to='/profile'><img src={switterLogo} width="40" height="40" alt="logo" /></Link>
                 </Navbar.Brand>
             </Navbar>
             <h1>Account Page</h1>
-            <p>user email: {email}</p>
+            <p>Your email: {email}</p>
         </Container>
     );
 }

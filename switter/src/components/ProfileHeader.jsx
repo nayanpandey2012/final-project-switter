@@ -1,9 +1,9 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import switterLogo from "../csc667-logo.svg";
-import { Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import ProfileTweetDashboard from './ProfileTweetDashboard';
-import { Button, Navbar, Form } from "react-bootstrap";
+import { Container, Button, Navbar, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { getAllTweets} from '../redux/actions/noteActions';
 
@@ -16,8 +16,8 @@ const ProfileHeader = ({ dispatch, tweets }) => {
   return (
     <Container>
       <Navbar bg="white">
-        <Navbar.Brand href="/profile" style={logoStyle.float}>
-          <img src={switterLogo} width="40" height="40" alt="logo" />
+        <Navbar.Brand  style={logoStyle.float}>
+          <Link to='/profile'><img src={switterLogo} width="40" height="40" alt="logo" /></Link>
         </Navbar.Brand>
       </Navbar>
       <form>
@@ -42,8 +42,8 @@ const ProfileHeader = ({ dispatch, tweets }) => {
 
 const mapStateToProps = state => ({
   tweets: state.notesReducer.tweets,
-  // message: state.notesReducer.message,
-  // newTweets: state.notesReducer.newTweets,
+  // message: state.userReducer.message,
+  // likes: state.userReducer.likes,
   // username: state.userReducer.username,
 });
 
