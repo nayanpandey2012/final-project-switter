@@ -10,14 +10,14 @@ import axios from 'axios';
 
 const ProfileHeader = ({ dispatch, username }) => {
 
-  // React.useEffect(() => {
-  //   dispatch(getAllTweets());
-  // }, []);
+  // display all tweets on screen: 
+  React.useEffect(() => {
+    dispatch(getAllTweets());
+  }, []);
 
   const [terms, setTerms] = React.useState('');
 
   const search = (el) => {
-    console.log(el);
     setTerms(el);
   }
 
@@ -40,8 +40,10 @@ const ProfileHeader = ({ dispatch, username }) => {
   return (
     <Container>
       <Navbar bg="white">
-        <Navbar.Brand style={logoStyle.float}>
-          <Link to='/profile'><img src={switterLogo} width="40" height="40" alt="logo" /></Link>
+        <Navbar.Brand href='/profile' style={logoStyle.float}>
+          {/* <Link to='/profile'></Link> */}
+            <img src={switterLogo} width="40" height="40" alt="logo" />
+          
         </Navbar.Brand>
       </Navbar>
       <form>
@@ -58,7 +60,7 @@ const ProfileHeader = ({ dispatch, username }) => {
           Tweet
         </Button>
       </form>
-      {/* <ProfileTweetDashboard /> */}
+      <ProfileTweetDashboard />
     </Container>
   );
 }

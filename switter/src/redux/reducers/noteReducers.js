@@ -6,7 +6,9 @@ const INITIAL_STATE = {
     tweets: [],
     /*
     tweets = [
-        {username: 'mimimama', message: 'hello', likes: 0}
+        {username: 'user1', message: 'hello', likes: 0}
+        {username: 'user1', message: 'hi', likes: 0}
+        {username: 'user2', message: 'hola', likes: 0}
     ]
     */
 };
@@ -18,7 +20,7 @@ const notesReducer = (state = INITIAL_STATE, action) => {
             // action.tweet: []
             return {
                 ...state,
-                tweets: action.tweets, // return an array of tweets arrays
+                tweets: action.tweets, // return an array of tweets objects
             };
         default:
             return state;
