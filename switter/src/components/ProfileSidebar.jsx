@@ -25,7 +25,6 @@ const ProfileSidebar = ({ dispatch, activeUsers, username, password, email, isLo
                 }
             })
             .then(response => {
-                console.log('username email: ', response.data[0].email);
                 if (response.data ) {
                     dispatch(setEmail(response.data[0].email));
                 }

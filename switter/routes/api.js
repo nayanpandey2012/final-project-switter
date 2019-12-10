@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// find user email profile by username:
+// find user email profile by username in User DB:
 router.get("/profileEmail", (req, res) => {
   console.log('print: ', req.query.username);
 
@@ -28,7 +28,7 @@ router.get("/profileEmail", (req, res) => {
     });
 });
 
-// find user tweets by username:
+// find user tweets by username in Tweet DB:
 router.get("/searchUser", (req, res) => {
   console.log(req.query.username);
 
@@ -42,7 +42,7 @@ router.get("/searchUser", (req, res) => {
     });
 });
 
-// find a specific user by matching username and password:
+// find a specific user by matching username and password in User DB:
 router.get("/getUser", async (req, res) => {
   let findUsername = req.query.username;
   let findPassword = req.query.password;
@@ -87,11 +87,25 @@ router.post("/save", (req, res) => {
   });
 });
 
+// insert new tweet to Tweet DB:
 router.post('/postTweet', (req, res) => {
   console.log('body ', req.body);
-})
+  const data = req.body;
 
-// save users data into MongoDB:
+  const newBlogPost = new Tweet(data);
+
+  newBlogPost.save(err => {
+    if (err) {
+      res.status(500).json({ msg: 'Sorry, internal server errorr...'});
+      return;
+    }
+    return res.json({
+      msg: 'data inserted into database...!!!!'
+    });
+  });
+});
+
+// save users data into User DB:
 router.post("/usersave", async (req, res) => {
   console.log("Body", req.body);
   const data = req.body;
