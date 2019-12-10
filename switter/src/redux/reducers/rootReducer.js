@@ -18,7 +18,6 @@ export default persistReducer(persistConfig, rootReducer);
 
 
 
-
 // import { combineReducers } from 'redux';
 // import userReducer from './userReducers';
 // import notesReducer from './noteReducers';

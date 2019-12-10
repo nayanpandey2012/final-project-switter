@@ -1,7 +1,6 @@
 import React from "react";
 import switterLogo from "../csc667-logo.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
 import Tweets from './Tweets';
 import { Container, Button, Navbar, Form } from "react-bootstrap";
 import { connect } from 'react-redux'; 

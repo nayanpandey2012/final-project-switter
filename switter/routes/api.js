@@ -87,6 +87,10 @@ router.post("/save", (req, res) => {
   });
 });
 
+router.post('/postTweet', (req, res) => {
+  console.log('body ', req.body);
+})
+
 // save users data into MongoDB:
 router.post("/usersave", async (req, res) => {
   console.log("Body", req.body);

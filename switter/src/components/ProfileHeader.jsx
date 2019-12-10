@@ -6,17 +6,41 @@ import ProfileTweetDashboard from './ProfileTweetDashboard';
 import { Container, Button, Navbar, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { getAllTweets} from '../redux/actions/noteActions';
+import axios from 'axios';
 
-const ProfileHeader = ({ dispatch, tweets }) => {
+const ProfileHeader = ({ dispatch, username }) => {
 
-  React.useEffect(() => {
-    dispatch(getAllTweets());
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch(getAllTweets());
+  // }, []);
+
+  const [terms, setTerms] = React.useState('');
+
+  const search = (el) => {
+    console.log(el);
+    setTerms(el);
+  }
+
+  const postTweet = e => {
+    e.preventDefault();
+
+    axios.post('/api/postTweet', {
+      username: username,
+      message: terms,
+      likes: 0,
+    })
+      .then(res => {
+        console.log('Tweets sent to server...', res);
+      })
+      .catch(e => {
+        console.log('Error posting tweet to server...', e);
+      })
+  }
 
   return (
     <Container>
       <Navbar bg="white">
-        <Navbar.Brand  style={logoStyle.float}>
+        <Navbar.Brand style={logoStyle.float}>
           <Link to='/profile'><img src={switterLogo} width="40" height="40" alt="logo" /></Link>
         </Navbar.Brand>
       </Navbar>
@@ -26,15 +50,15 @@ const ProfileHeader = ({ dispatch, tweets }) => {
             type="text"
             placeholder="What's on your mind"
             name="message"
+            value={terms}
+            onChange={e => search(e.target.value)}
           />
         </Form.Group>
-        <Button 
-          onClick={e => e.preventDefault()}
-        >
+        <Button onClick={postTweet}>
           Tweet
         </Button>
       </form>
-      <ProfileTweetDashboard />
+      {/* <ProfileTweetDashboard /> */}
     </Container>
   );
 }
@@ -43,7 +67,7 @@ const mapStateToProps = state => ({
   tweets: state.notesReducer.tweets,
   // message: state.userReducer.message,
   // likes: state.userReducer.likes,
-  // username: state.userReducer.username,
+  username: state.userReducer.username,
 });
 
 export default connect(mapStateToProps, null)(ProfileHeader);
