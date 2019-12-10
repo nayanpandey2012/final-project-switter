@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
 
 // find user email profile by username in User DB:
 router.get("/profileEmail", (req, res) => {
-  console.log('print: ', req.query.username);
+  // console.log('print: ', req.query.username);
 
   User.find({ username: req.query.username })
     .then(data => {
@@ -28,14 +28,13 @@ router.get("/profileEmail", (req, res) => {
     });
 });
 
-// find user tweets by username in Tweet DB:
+// find tweets by username in Tweet DB:
 router.get("/searchUser", (req, res) => {
-  console.log(req.query.username);
+  // console.log(req.query.username);
 
   Tweet.find({ username: req.query.username })
-    .then(response => {
-
-      res.json(response.data);
+    .then(data => {
+      res.json(data);
     })
     .catch(err => {
       console.log(err);
@@ -71,7 +70,7 @@ router.get("/getUser", async (req, res) => {
 
 // save tweets data into MongoDB:
 router.post("/save", (req, res) => {
-  console.log("Body", req.body);
+  // console.log("Body", req.body);
   const data = req.body;
 
   const newBlogPost = new Tweet(data);
@@ -89,7 +88,7 @@ router.post("/save", (req, res) => {
 
 // insert new tweet to Tweet DB:
 router.post('/postTweet', (req, res) => {
-  console.log('body ', req.body);
+  // console.log('body ', req.body);
   const data = req.body;
 
   const newBlogPost = new Tweet(data);
@@ -107,7 +106,7 @@ router.post('/postTweet', (req, res) => {
 
 // save users data into User DB:
 router.post("/usersave", async (req, res) => {
-  console.log("Body", req.body);
+  // console.log("Body", req.body);
   const data = req.body;
 
   const newUserPost = new User(data);
