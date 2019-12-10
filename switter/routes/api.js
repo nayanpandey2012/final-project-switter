@@ -70,7 +70,7 @@ router.get("/getUser", async (req, res) => {
 
 // save tweets data into MongoDB:
 router.post("/save", (req, res) => {
-  // console.log("Body", req.body);
+  console.log("Body", req.body);
   const data = req.body;
 
   const newBlogPost = new Tweet(data);
