@@ -7,7 +7,7 @@ import { setIsLoggedIn, setEmail, setUsername, setPassword } from '../redux/acti
 import ProfileSearch from './ProfileSearch';
 import axios from 'axios';
 
-const ProfileSidebar = ({ dispatch, activeUsers, username, password, email, isLoggedIn }) => {
+const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
 
     const logout = ( ) => {
         // return to initial state:

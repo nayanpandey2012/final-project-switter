@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Tweets from './Tweets';
 import { Container, Button, Navbar, Form } from "react-bootstrap";
 import { connect } from 'react-redux'; 
+import { Link } from "react-router-dom";
 import {  getAllTweets } from '../redux/actions/noteActions';
 
 const Header = ({ dispatch }) => {
@@ -26,13 +27,12 @@ const Header = ({ dispatch }) => {
             placeholder="What's on your mind"
           />
         </Form.Group>
-        <Button 
-          style={{marginInlineStart:"600px"}} 
-          // force lazy-registration
-          onClick={() =>  window.location.href='/welcome'}
-        >
-          Tweet
-        </Button>
+        <Link to="/welcome">
+          {/* force lazy-registration */}
+          <Button style={{marginInlineStart:"600px"}}>
+            Tweet
+          </Button>
+        </Link>
       </form>
       <div>
         <Tweets />
@@ -41,13 +41,7 @@ const Header = ({ dispatch }) => {
   );
 }
 
-const mapStateToProps = state => ({
-  tweets: state.notesReducer.tweets,
-  message: state.notesReducer.message,
-  newTweets: state.notesReducer.newTweets,
-});
-
-export default connect(mapStateToProps, null)(Header);
+export default connect(null, null)(Header);
 
 // CSS:
 const logoStyle = {

@@ -14,7 +14,7 @@ class WelcomePage extends Component {
             <span>
               <br />
               <Link to="/">
-                <img src={switterLogo} width="70px" height="70px" alt="logo" />
+                <img href='/' src={switterLogo} width="70px" height="70px" alt="logo" />
               </Link>
             </span>
           </div>

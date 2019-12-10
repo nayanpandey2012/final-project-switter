@@ -41,9 +41,10 @@ const ProfileHeader = ({ dispatch, username }) => {
     <Container>
       <Navbar bg="white">
         <Navbar.Brand href='/profile' style={logoStyle.float}>
-          {/* <Link to='/profile'></Link> */}
+          {/* <Link to='/profile'> */}
+            {/* Refresh page upon new tweets: */}
             <img src={switterLogo} width="40" height="40" alt="logo" />
-          
+          {/* </Link> */}
         </Navbar.Brand>
       </Navbar>
       <form>

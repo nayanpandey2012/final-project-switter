@@ -93,7 +93,7 @@ router.post('/postTweet', (req, res) => {
   const data = req.body;
 
   const newBlogPost = new Tweet(data);
-
+  
   newBlogPost.save(err => {
     if (err) {
       res.status(500).json({ msg: 'Sorry, internal server errorr...'});
