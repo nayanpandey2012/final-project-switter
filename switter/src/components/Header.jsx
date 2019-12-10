@@ -29,7 +29,6 @@ const Header = ({ dispatch, message}) => {
           />
         </Form.Group>
         <Button 
-          style={{marginInlineStart:"600px"}} 
           // force lazy-registration
           onClick={() => dispatch(updateTweet())}
         >

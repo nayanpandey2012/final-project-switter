@@ -41,19 +41,25 @@ export const setIsLiked = isLiked => ({
 export const updateTweet = () => ( dispatch, getState ) => {
     const {username, message} = getState().noteReducers;
 
-    const newTweetData = {
-        id: 1,
+    const note = {
         username: username,
         message: message,
-        likes: 0,
-        createdAt: null
     }
 
     axios({
         url: "/api/save",
         method: "POST",
-        data: newTweetData
+        data: note
       })
+        .then(res => {
+          console.log("Data has been sent to the server", res);
+          this.resetUserdataInputs();
+          setTimeout(() => {
+            window.location.href = "login";
+          }, 3000);
+          console.log("i am here");
+          this.setState({ dbMsg: res.data.msg });
+        })
 }
 
 

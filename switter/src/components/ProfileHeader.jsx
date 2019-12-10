@@ -28,21 +28,15 @@ const ProfileHeader = ({ dispatch, tweetslist, message }) => {
             placeholder="What's on your mind"
             name="message"
           />
+          <Button variant="primary" onClick={() => dispatch(updateTweet())}> Tweet </Button>
         </Form.Group>
-        <Button 
-          
-          onClick={() => dispatch(updateTweet())}
-        >
-          Tweet
-        </Button>
+        
       </form>
       <div>
       <div> 
-            { tweetslist.map((tweet, i) => (
-                    <div key={i}>
-                    <h5>{tweet.username}</h5>
-                    <h5>{tweet.message}</h5>
-                    <h6>likes: {tweet.likes}</h6>
+            { tweetslist.map(e => (
+                    <div>
+                    { e.message }
                     </div>
                     )) 
             }
