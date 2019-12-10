@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { getAllTweets} from '../redux/actions/noteActions';
 import axios from 'axios';
 
-const ProfileHeader = ({ dispatch, username, likes }) => {
+const ProfileTweeting = ({ dispatch, username, likes }) => {
 
   // display all tweets on screen: 
   React.useEffect(() => {
@@ -27,7 +27,7 @@ const ProfileHeader = ({ dispatch, username, likes }) => {
     axios.post('/api/postTweet', {
       username: username,
       message: terms,
-      likes: likes,
+      // likes: likes,
     })
       .then(res => {
         console.log('Tweets sent to server...', res);
@@ -73,7 +73,7 @@ const mapStateToProps = state => ({
   username: state.userReducer.username,
 });
 
-export default connect(mapStateToProps, null)(ProfileHeader);
+export default connect(mapStateToProps, null)(ProfileTweeting);
 
 // CSS: 
 const logoStyle = {
