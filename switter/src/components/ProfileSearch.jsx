@@ -5,37 +5,37 @@ import { Button, Col, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { setTweets } from '../redux/actions/noteActions';
 
-
 const ProfileSearch = ({ dispatch }) => {
 
     const [searchTerm, setSearchTerm] = React.useState('');
 
-    const searchUser = () => {
-        axios
-            .get('/api/searchuser', {
-                params: {
-                    username: searchTerm,
-                }
-            })
-            .then(response => {
-                console.log('username tweets: ', response.data);
-                if (response.data) {
-                    // get tweet stats by that particular username: 
-                    dispatch(setTweets(response.data));
-                } 
-            })
-            .catch(err => {
-                console.log('no user tweet ', err);
-            });
-    }
+    // const searchUser = () => {
+    //     axios
+    //         .get('/api/searchuser', {
+    //             params: {
+    //                 username: searchTerm,
+    //             }
+    //         })
+    //         .then(response => {
+    //             console.log('username tweets: ', response.data);
+    //             if (response.data) {
+    //                 // get tweet stats by that particular username: 
+    //                 dispatch(setTweets(response.data));
+    //             } 
+    //         })
+    //         .catch(err => {
+    //             console.log('no user tweet ', err);
+    //         });
+    // }
     
     const getSearchterm = el => {
+        console.log(el);
         setSearchTerm(el)
     }
 
-    React.useEffect(() => {
-        searchUser();
-    }, []);
+    // React.useEffect(() => {
+    //     searchUser();
+    // }, []);
 
     return (
         <form>
@@ -49,9 +49,7 @@ const ProfileSearch = ({ dispatch }) => {
                 />
             </Col>
             <Col>
-                <Button variant="primary" 
-                    onClick={searchUser}
-                >
+                <Button variant="primary">
                     Search
                 </Button>
             </Col>

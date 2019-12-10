@@ -29,7 +29,6 @@ const ProfileHeader = ({ dispatch, tweets }) => {
           />
         </Form.Group>
         <Button 
-          
           onClick={e => e.preventDefault()}
         >
           Tweet

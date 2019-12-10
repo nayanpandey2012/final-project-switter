@@ -7,7 +7,7 @@ const User = require("../src/models/userSchema");
 router.get("/", (req, res) => {
   Tweet.find({})
     .then(data => {
-      console.log("Data: ", data);
+      // console.log("Tweets data: ", data);
       res.json(data);
     })
     .catch(error => {
