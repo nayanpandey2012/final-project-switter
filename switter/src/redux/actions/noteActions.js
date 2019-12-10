@@ -46,4 +46,3 @@ export const setIsLiked = isLiked => ({
     type: SET_IS_LIKED,
     isLiked,
 })
-
