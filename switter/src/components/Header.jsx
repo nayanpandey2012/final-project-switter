@@ -5,9 +5,9 @@ import axios from "axios";
 import Tweets from './Tweets';
 import { Container, Button, Navbar, Form } from "react-bootstrap";
 import { connect } from 'react-redux'; 
-import {  getAllTweets } from '../redux/actions/noteActions';
+import { getAllTweets, setMessage, updateTweet} from '../redux/actions/noteActions';
 
-const Header = ({ dispatch, tweets, message, newTweets }) => {
+const Header = ({ dispatch, message}) => {
 
   React.useEffect(() => {
     dispatch(getAllTweets());
@@ -22,7 +22,8 @@ const Header = ({ dispatch, tweets, message, newTweets }) => {
       </Navbar>
       <form>
         <Form.Group controlId="tweet_submit">
-          <Form.Control
+          <Form.Control onChange={e => dispatch(setMessage(e.target.value))}
+            value={message}
             type="text"
             placeholder="What's on your mind"
           />
@@ -30,7 +31,7 @@ const Header = ({ dispatch, tweets, message, newTweets }) => {
         <Button 
           style={{marginInlineStart:"600px"}} 
           // force lazy-registration
-          onClick={() =>  window.location.href='/welcome'}
+          onClick={() => dispatch(updateTweet())}
         >
           Tweet
         </Button>

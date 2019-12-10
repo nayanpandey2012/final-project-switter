@@ -1,18 +1,11 @@
 import axios from 'axios';
 
-// action types: 
-const SET_MESSAGE = 'SET_MESSAGE';
-const SET_NEW_TWEETS = 'SET_NEW_TWEETS';
-const SET_IS_LIKED = 'SET_IS_LIKED';
-const SET_USERNAME = 'SET_USERNAME';
 
-// current tweet in db:
 export const setTweets = tweetslist => ({
     type: 'SET_TWEETS',
     tweetslist,
 });
-
-// get all tweets from database: 
+ 
 export const getAllTweets = () => (dispatch) => {
     axios.get('/api')
         .then(res => {
@@ -25,25 +18,42 @@ export const getAllTweets = () => (dispatch) => {
         });
 };
 
-// message of user state:
 export const setMessage = message => ({
-    type: SET_MESSAGE,
+    type: 'SET_MESSAGE',
     message,
 });
 
 export const setUsername = username => ({
-    type: SET_USERNAME,
+    type: 'SET_USERNAME',
     username,
 });
 
-// new tweet inserted by user state: 
-export const setNewTweets = newTweets => ({
-    type: SET_NEW_TWEETS,
-    newTweets,
+export const setNewTweet = newTweet => ({
+    type: 'SET_NEW_TWEET',
+    newTweet,
 });
 
 export const setIsLiked = isLiked => ({
-    type: SET_IS_LIKED,
+    type: 'SET_IS_LIKED',
     isLiked,
 })
+
+export const updateTweet = () => ( dispatch, getState ) => {
+    const {username, message} = getState().noteReducers;
+
+    const newTweetData = {
+        id: 1,
+        username: username,
+        message: message,
+        likes: 0,
+        createdAt: null
+    }
+
+    axios({
+        url: "/api/save",
+        method: "POST",
+        data: newTweetData
+      })
+}
+
 

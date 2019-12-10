@@ -5,12 +5,12 @@ import { Container } from "react-bootstrap";
 import Tweets from './Tweet';
 import { Button, Navbar, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
-import { getAllTweets} from '../redux/actions/noteActions';
+import { getAllTweets, setMessage, updateTweet} from '../redux/actions/noteActions';
 
-const ProfileHeader = ({ dispatch }) => {
+const ProfileHeader = ({ dispatch, tweetslist, message }) => {
 
   React.useEffect(() => {
-    dispatch(getAllTweets());
+    dispatch(getAllTweets() );
   }, []);
 
   return (
@@ -22,7 +22,8 @@ const ProfileHeader = ({ dispatch }) => {
       </Navbar>
       <form>
         <Form.Group controlId="tweet_submit">
-          <Form.Control
+          <Form.Control onChange={e => dispatch(setMessage(e.target.value))}
+            value={message}
             type="text"
             placeholder="What's on your mind"
             name="message"
@@ -30,13 +31,23 @@ const ProfileHeader = ({ dispatch }) => {
         </Form.Group>
         <Button 
           
-          onClick={e => e.preventDefault()}
+          onClick={() => dispatch(updateTweet())}
         >
           Tweet
         </Button>
       </form>
       <div>
-        <Tweets />
+      <div> 
+            { tweetslist.map((tweet, i) => (
+                    <div key={i}>
+                    <h5>{tweet.username}</h5>
+                    <h5>{tweet.message}</h5>
+                    <h6>likes: {tweet.likes}</h6>
+                    </div>
+                    )) 
+            }
+
+        </div>
       </div>
     </Container>
   );
