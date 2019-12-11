@@ -30,7 +30,6 @@ router.get("/profileEmail", (req, res) => {
 
 // find tweets by the login user:
 router.get("/accountTweets", (req, res) => {
-  console.log(req.query.body);
 
   Tweet.find({ username: req.query.username })
     .then(data => {

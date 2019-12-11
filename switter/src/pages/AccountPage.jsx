@@ -42,7 +42,6 @@ const AccountPage = ({ email, username, dispatch }) => {
             <h5>Email: {email}</h5>
             <br/>
             <h3>Your Swits</h3>
-            <br/>
             <Tweets/>
         </Container>
     );
