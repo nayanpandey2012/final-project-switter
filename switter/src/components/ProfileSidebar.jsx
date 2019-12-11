@@ -13,7 +13,7 @@ const ProfileSidebar = ({ dispatch, activeUsers, username, email, isLoggedIn }) 
     }
     const profile = ( ) => {
         console.log("email: " + email);
-        if(isLoggedIn === true){
+        if(isLoggedIn == true){
             window.location.href='/profile';
         }   
     }

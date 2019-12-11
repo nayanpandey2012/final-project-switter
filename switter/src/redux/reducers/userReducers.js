@@ -1,9 +1,12 @@
+import { bindActionCreators } from "../../../../../../../Library/Caches/typescript/3.6/node_modules/redux";
+
 // action types:
 const SET_USERNAME = "SET_USERNAME";
 const SET_PASSWORD = "SET_PASSWORD";
 const SET_EMAIL = "SET_EMAIL";
 const SET_IS_LOGGED_IN = "SET_IS_LOGGED_IN";
 const SET_ACTIVE_USERS = "SET_ACTIVE_USERS";
+const SET_NEW_TWEET = "SET_NEW_TWEET"
 
 // initial state:
 const INITIAL_STATE = {
@@ -11,7 +14,7 @@ const INITIAL_STATE = {
   activeUsers: 0,
   username: "",
   password: "",
-  email: ""
+  email: "",
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {

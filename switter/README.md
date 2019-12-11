@@ -1,8 +1,5 @@
 ### Switter
 
-Proxy gates:
-* Turn on all servers for Proxy to work!
-
 ## Websocket
 Websocket is at port 4005\
 To run websocket:\
@@ -26,5 +23,4 @@ nodemon gateway.js
 
 
 If properly run, proxy link at **localhost:3004** should work!
-
 
