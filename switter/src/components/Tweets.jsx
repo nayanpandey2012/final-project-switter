@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 
 const Tweets = ({ dispatch, tweets, likes }) => {
 
-    const incrementLikes = () => {
-        dispatch(setLikes(likes+1));
-    };
+    // const incrementLikes = () => {
+    //     dispatch(setLikes(likes+1));
+    // };
 
     return (
         <Container>
@@ -17,7 +17,7 @@ const Tweets = ({ dispatch, tweets, likes }) => {
                 <div key={index}>
                     <h5>@{tweet.username}</h5>
                     <h5>{tweet.message}</h5>
-                    <button onClick={incrementLikes}>{tweet.likes}</button>
+                    {/* <button onClick={incrementLikes}>{tweet.likes}</button> */}
                     <br/>
                     <br/>
                 </div>
@@ -29,7 +29,7 @@ const Tweets = ({ dispatch, tweets, likes }) => {
 
 const mapStateToProps = state => ({
     tweets: state.notesReducer.tweets,
-    likes: state.userReducer.likes,
+    // likes: state.userReducer.likes,
 });
 
 export default connect(mapStateToProps, null)(Tweets);

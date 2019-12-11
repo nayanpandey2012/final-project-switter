@@ -1,7 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import switterLogo from "../csc667-logo.svg";
-import { Link } from "react-router-dom";
 import ProfileTweetDashboard from './ProfileTweetDashboard';
 import { Container, Button, Navbar, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
@@ -24,6 +23,7 @@ const ProfileTweeting = ({ dispatch, username, likes }) => {
   const postTweet = e => {
     e.preventDefault();
 
+    // save new tweet to mongodb
     axios.post('/api/postTweet', {
       username: username,
       message: terms,
@@ -69,7 +69,7 @@ const ProfileTweeting = ({ dispatch, username, likes }) => {
 const mapStateToProps = state => ({
   tweets: state.notesReducer.tweets,
   // message: state.userReducer.message,
-  likes: state.userReducer.likes,
+  // likes: state.userReducer.likes,
   username: state.userReducer.username,
 });
 

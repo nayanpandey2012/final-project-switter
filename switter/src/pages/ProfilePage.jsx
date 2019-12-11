@@ -1,5 +1,4 @@
 import React from "react";
-import Tweets from "../components/Tweets";
 import ProfileTweeting from "../components/ProfileTweeting";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProfileSidebar from '../components/ProfileSidebar';
