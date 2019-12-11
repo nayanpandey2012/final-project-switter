@@ -25,6 +25,6 @@ To run gateway:\
 nodemon gateway.js
 
 
-If properly run, **localhost:3004** should work!
+If properly run, proxy link at **localhost:3004** should work!
 
 
