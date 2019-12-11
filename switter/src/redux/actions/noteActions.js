@@ -11,7 +11,8 @@ export const setTweets = tweets => ({
 
 // get all tweets from database: 
 export const getAllTweets = () => (dispatch, getState) => {
-    axios.get('/api')
+    axios
+        .get('/api')
         .then(res => {
             console.log('tweet data ', res.data);
             dispatch(setTweets(res.data))
@@ -21,4 +22,25 @@ export const getAllTweets = () => (dispatch, getState) => {
             console.log('no tweets found ', e)
         });
 };
+
+// get tweets of the user on Account page: 
+export const getAccountTweet = () => (dispatch, getState) => {
+
+    const { username } = getState().userReducer;
+
+    axios
+        .get('/api/accountTweets', {
+            params: {
+                username: username,
+            }
+        })
+        .then(response => {
+            console.log('print: ', response.data);
+            dispatch(setTweets(response.data));
+        })
+        .catch(err => {
+            console.log('error account tweets', err);
+        });
+};
+
 

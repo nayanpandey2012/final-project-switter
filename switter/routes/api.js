@@ -28,6 +28,19 @@ router.get("/profileEmail", (req, res) => {
     });
 });
 
+// find tweets by the login user:
+router.get("/accountTweets", (req, res) => {
+  console.log(req.query.body);
+
+  Tweet.find({ username: req.query.username })
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
 // find tweets by username in Tweet DB:
 router.get("/searchUser", (req, res) => {
   // console.log(req.query.username);
