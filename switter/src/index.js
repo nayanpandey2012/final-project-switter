@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { Provider } from 'react-redux';
 import App from './App';
-import { store, persistor } from './store';
 import * as serviceWorker from './serviceWorker';
 import { setActiveUsers } from './redux/actions/userActions';
 import { BrowserRouter as Router } from 'react-router-dom';
-import {PersistGate } from 'redux-persist/integration/react';
+import { PersistGate } from 'redux-persist/integration/react';
+import  store from './store';
+import persistor from './store'
 
 // websocket for active user: 
 const ws = new WebSocket('ws://localhost:4005');

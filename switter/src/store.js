@@ -7,7 +7,7 @@ import rootReducer from './redux/reducers/rootReducer';
 // Initial store state
 const initialState = {};
 
-// const middleware = [thunk];
+//const middleware = [thunk];
 
 const store = createStore(
   rootReducer,
