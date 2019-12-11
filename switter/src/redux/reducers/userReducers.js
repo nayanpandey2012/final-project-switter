@@ -1,4 +1,4 @@
-import { bindActionCreators } from "../../../../../../../Library/Caches/typescript/3.6/node_modules/redux";
+import { bindActionCreators } from "../../../../../../Library/Caches/typescript/3.6/node_modules/redux";
 
 // action types:
 const SET_USERNAME = "SET_USERNAME";
