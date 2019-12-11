@@ -8,6 +8,7 @@ import WelcomePage from './pages/WelcomePage';
 import Logged_in_main from './pages/Logged_in_main';
 import ProfilePage from './pages/ProfilePage';
 import { connect } from 'react-redux';
+import selector from './selectors';
 
 const App = ({ isLoggedIn }) => {
   
@@ -34,8 +35,14 @@ const App = ({ isLoggedIn }) => {
   );
 }
 
-const mapStateToProps = state => ({
-  isLoggedIn: state.userReducer.isLoggedIn,
-});
+//const mapStateToProps = state => ({
+  //isLoggedIn: state.userReducer.isLoggedIn,
+//});
+
+function mapStateToProps(state) {
+  return {
+    tables: selector.tablesSelector(state),
+  }
+}
 
 export default connect(mapStateToProps, null)(App);

@@ -6,6 +6,7 @@ import Tweets from './Tweets';
 import { Container, Button, Navbar, Form } from "react-bootstrap";
 import { connect } from 'react-redux'; 
 import { getAllTweets, setMessage, updateTweet} from '../redux/actions/noteActions';
+import selector from '../selectors';
 
 const Header = ({ dispatch, message}) => {
 
@@ -49,12 +50,16 @@ const Header = ({ dispatch, message}) => {
     </Container>
   );
 }
-
-const mapStateToProps = state => ({
+function mapStateToProps(state) {
+  return {
+    tables: selector.tablesSelector(state),
+  }
+}
+/*const mapStateToProps = state => ({
   tweets: state.notesReducer.tweets,
   message: state.notesReducer.message,
   newTweets: state.notesReducer.newTweets,
-});
+});*/
 
 export default connect(mapStateToProps, null)(Header);
 

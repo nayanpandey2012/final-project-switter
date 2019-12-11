@@ -2,6 +2,7 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Button,  Badge, Col, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
+import selector from '../selectors';
 
 const Sidebar = ({ activeUsers }) => {
     return (
@@ -39,8 +40,13 @@ const Sidebar = ({ activeUsers }) => {
     );
 }
 
-const mapStateToProps = state => ({
+/*const mapStateToProps = state => ({
     activeUsers: state.userReducer.activeUsers,
-});
+});*/
+function mapStateToProps(state) {
+    return {
+      tables: selector.tablesSelector(state),
+    }
+  }
 
 export default connect(mapStateToProps, null)(Sidebar);

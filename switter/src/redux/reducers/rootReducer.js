@@ -10,6 +10,19 @@ const persistConfig = {
   whitelist: ['user', 'notes']
 };
 
+
+function tables(state = [], {type, payload}) {
+  switch (type) {
+    case 'FETCH_ALL_TABLES':
+      return [
+        ...state,
+        ...payload,
+      ]
+  }
+
+  return state;
+}
+
 const rootReducer = combineReducers({
   user: userReducer,
   notes: notesReducer,
