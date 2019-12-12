@@ -17,7 +17,6 @@ const Tweets = ({ dispatch, tweets, likes }) => {
                 <div key={index}>
                     <h5>@{tweet.username}</h5>
                     <h5>{tweet.message}</h5>
-                    {/* <button onClick={incrementLikes}>{tweet.likes}</button> */}
                     <br/>
                     <br/>
                 </div>
