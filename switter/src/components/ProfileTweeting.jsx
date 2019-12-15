@@ -27,7 +27,6 @@ const ProfileTweeting = ({ dispatch, username, likes }) => {
     axios.post('/api/postTweet', {
       username: username,
       message: terms,
-      // likes: likes,
     })
       .then(res => {
         console.log('Tweets sent to server...', res);
@@ -70,8 +69,6 @@ const ProfileTweeting = ({ dispatch, username, likes }) => {
 
 const mapStateToProps = state => ({
   tweets: state.notesReducer.tweets,
-  // message: state.userReducer.message,
-  // likes: state.userReducer.likes,
   username: state.userReducer.username,
 });
 
