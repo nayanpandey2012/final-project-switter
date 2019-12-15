@@ -7,7 +7,7 @@ const User = require("../src/models/userSchema");
 router.get("/", (req, res) => {
   Tweet.find({})
     .then(data => {
-      console.log("Data: ", data);
+      // console.log("Tweets data: ", data);
       res.json(data);
     })
     .catch(error => {
@@ -15,9 +15,34 @@ router.get("/", (req, res) => {
     });
 });
 
-// find user tweets by username:
+// find user email profile by username in User DB:
+router.get("/profileEmail", (req, res) => {
+  // console.log('print: ', req.query.username);
+
+  User.find({ username: req.query.username })
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
+// find tweets by the login user:
+router.get("/accountTweets", (req, res) => {
+
+  Tweet.find({ username: req.query.username })
+    .then(data => {
+      res.json(data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
+// find tweets by username in Tweet DB:
 router.get("/searchUser", (req, res) => {
-  console.log(req.query.username);
+  // console.log(req.query.username);
 
   Tweet.findOne({ username: req.query.username })
     .then(data => {
@@ -28,7 +53,7 @@ router.get("/searchUser", (req, res) => {
     });
 });
 
-// find a specific user by matching username and password:
+// find a specific user by matching username and password in User DB:
 router.get("/getUser", async (req, res) => {
   let findUsername = req.query.username;
   let findPassword = req.query.password;
@@ -84,9 +109,27 @@ router.post("/save", (req, res) => {
   });
 });
 
-// save users data into MongoDB:
+// insert new tweet to Tweet DB:
+router.post('/postTweet', (req, res) => {
+  // console.log('body ', req.body);
+  const data = req.body;
+
+  const newBlogPost = new Tweet(data);
+  
+  newBlogPost.save(err => {
+    if (err) {
+      res.status(500).json({ msg: 'Sorry, internal server errorr...'});
+      return;
+    }
+    return res.json({
+      msg: 'data inserted into database...!!!!'
+    });
+  });
+});
+
+// save users data into User DB:
 router.post("/usersave", async (req, res) => {
-  console.log("Body", req.body);
+  // console.log("Body", req.body);
   const data = req.body;
 
   const newUserPost = new User(data);
@@ -111,3 +154,4 @@ router.post("/usersave", async (req, res) => {
 });
 
 module.exports = router;
+

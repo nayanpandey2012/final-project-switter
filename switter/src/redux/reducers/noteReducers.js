@@ -1,38 +1,26 @@
 // action types: 
 const SET_TWEETS = 'SET_TWEETS';
-const SET_MESSAGE = 'SET_MESSAGE';
-const SET_USERNAME = 'SET_USERNAME';
-const SET_NEW_TWEETS = 'SET_NEW_TWEETS';
 
 // initial state: 
 const INITIAL_STATE = {
-    tweetslist: [],
-    username: '',
-    message: '',
-    newTweets: '',
+    tweets: [],
+    /*
+    tweets = [
+        {username: 'user1', message: 'hello', likes: 0}
+        {username: 'user1', message: 'hi', likes: 0}
+        {username: 'user2', message: 'hola', likes: 0}
+    ]
+    */
 };
   
 const notesReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case SET_MESSAGE:
-            return {
-                ...state,
-                message: action.message,
-            };
-        case SET_USERNAME:
-                return {
-                    ...state,
-                    message: action.username,
-                };
-        case SET_NEW_TWEETS:
-            return {
-                ...state,
-                newTweets: [action.newTweets, ...state.list]
-            };
+        
         case SET_TWEETS:
+            // action.tweet: []
             return {
                 ...state,
-                tweets: action.tweetlist,
+                tweets: action.tweets, // return an array of tweets objects
             };
         default:
             return state;
