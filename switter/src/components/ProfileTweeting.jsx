@@ -30,11 +30,7 @@ const ProfileTweeting = ({ dispatch, username, likes }) => {
         // likes: likes,
       })
       .then(res => {
-<<<<<<< HEAD
-        console.log('Tweets sent to server...', res);
-=======
         console.log("Tweets sent to server...", res);
->>>>>>> 6e117a98ad7c3705c56db5f02e9fda1bd0047e5f
         setTerms("");
         window.location.reload(true);
       })
