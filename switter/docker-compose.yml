@@ -1,0 +1,31 @@
+version: "3"
+services:
+  web:
+    image: sushilkplassar/switter
+    deploy:
+      replicas: 8
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "3000:3000"
+    networks:
+      - webnet
+    environment:
+      - REDIS_HOST=redis
+  redis:
+    image: redis:5.0.4
+    ports:
+      - "6379:6379"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - webnet
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017" #local machine port:host port
+    networks:
+      - webnet
+networks:
+  webnet:
