@@ -23,6 +23,7 @@ const Tweets = ({ tweets }) => {
 
 const mapStateToProps = state => ({
     tweets: state.notesReducer.tweets,
+    // likes: state.userReducer.likes,
 });
 
-export default connect(mapStateToProps)(Tweets);
+export default connect(mapStateToProps, null)(Tweets);

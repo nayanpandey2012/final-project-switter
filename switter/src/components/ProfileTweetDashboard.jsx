@@ -3,7 +3,7 @@ import Tweets from './Tweets';
 import {  getAllTweets } from '../redux/actions/noteActions';
 import { connect } from 'react-redux';
 
-const ProfileTweetDashboard = ({ dispatch }) => {
+const ProfileTweetDashboard = ({ dispatch, email }) => {
     
     React.useEffect(() => {
         dispatch(getAllTweets());

@@ -41,5 +41,3 @@ export const setLikes = likes => ({
   type: SET_LIKES,
   likes,
 });
-
-
