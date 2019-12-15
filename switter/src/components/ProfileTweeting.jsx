@@ -31,6 +31,8 @@ const ProfileTweeting = ({ dispatch, username, likes }) => {
     })
       .then(res => {
         console.log('Tweets sent to server...', res);
+        setTerms("");
+        window.location.reload(true);
       })
       .catch(e => {
         console.log('Error posting tweet to server...', e);
