@@ -68,8 +68,6 @@ const ProfileTweeting = ({ dispatch, username, likes }) => {
 
 const mapStateToProps = state => ({
   tweets: state.notesReducer.tweets,
-  // message: state.userReducer.message,
-  // likes: state.userReducer.likes,
   username: state.userReducer.username
 });
 

@@ -13,9 +13,9 @@ import {
 } from "../redux/actions/userActions";
 import { connect } from "react-redux";
 import axios from "axios";
+import md5 from 'md5';
 
 const Login = ({ dispatch, username, password, email, isLoggedIn }) => {
-  
   const [count, setCount] = useState("");
 
   const checkUser = () => {

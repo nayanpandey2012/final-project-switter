@@ -1,14 +1,9 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container,  Col } from "react-bootstrap";
-import { setLikes } from '../redux/actions/userActions';
 import { connect } from 'react-redux';
 
-const Tweets = ({ dispatch, tweets, likes }) => {
-
-    // const incrementLikes = () => {
-    //     dispatch(setLikes(likes+1));
-    // };
+const Tweets = ({ tweets }) => {
 
     return (
         <Container>
@@ -28,7 +23,6 @@ const Tweets = ({ dispatch, tweets, likes }) => {
 
 const mapStateToProps = state => ({
     tweets: state.notesReducer.tweets,
-    // likes: state.userReducer.likes,
 });
 
-export default connect(mapStateToProps, null)(Tweets);
+export default connect(mapStateToProps)(Tweets);

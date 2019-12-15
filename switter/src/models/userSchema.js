@@ -11,7 +11,8 @@ let UserSchema = mongoose.Schema({
     type: String,
     default: Date.now()
   },
-  email: String
+  email: String,
+  liked_tweets: []
 })
 
 let User = mongoose.model('users', UserSchema)

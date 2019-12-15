@@ -4,11 +4,11 @@ import { Container, Button,  Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { setIsLoggedIn, setEmail, setUsername, setPassword } from '../redux/actions/userActions';
-import { setTweets, getAllTweets } from '../redux/actions/noteActions';
+import { setTweets } from '../redux/actions/noteActions';
 import ProfileSearch from './ProfileSearch';
 import axios from 'axios';
 
-const ProfileSidebar = ({ dispatch, activeUsers, username, tweets }) => {
+const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
 
     const logout = ( ) => {
         // return to initial state:
@@ -34,20 +34,6 @@ const ProfileSidebar = ({ dispatch, activeUsers, username, tweets }) => {
             .catch(err => {
                 console.log("no user found", err);
             });
-        // axios
-        //     .get('/api/accountTweets', {
-        //         params: {
-        //             username: username,
-        //         }
-        //     })
-        //     .then(response => {
-        //         console.log('print: ', response.data);
-        //         dispatch(setTweets([]))
-        //         dispatch(getAllTweets(response.data));
-        //     })
-        //     .catch(err => {
-        //         console.log('error account tweets', err);
-        //     });
     }
 
     return (
