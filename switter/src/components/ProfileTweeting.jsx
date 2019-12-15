@@ -26,8 +26,7 @@ const ProfileTweeting = ({ dispatch, username, likes }) => {
     axios
       .post("/api/postTweet", {
         username: username,
-        message: terms
-        // likes: likes,
+        message: terms,
       })
       .then(res => {
         console.log("Tweets sent to server...", res);
