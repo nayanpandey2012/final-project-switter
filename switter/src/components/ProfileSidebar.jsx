@@ -1,44 +1,76 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Button,  Badge, Col, Row, Navbar, Form } from "react-bootstrap";
-import { BrowserRouter as Router, Route, Switch, Link, Redirect, useHistory } from "react-router-dom";
+import { Container, Button,  Badge } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
-import { setIsLoggedIn } from '../redux/actions/userActions';
+import { setIsLoggedIn, setEmail, setUsername, setPassword } from '../redux/actions/userActions';
+import { setTweets } from '../redux/actions/noteActions';
+import ProfileSearch from './ProfileSearch';
+import axios from 'axios';
 
 const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
-    
-    let history = useHistory();
 
     const logout = ( ) => {
+        // return to initial state:
         dispatch(setIsLoggedIn(false));
-        history.push('/');
+        dispatch(setUsername(''));
+        dispatch(setPassword(''));
+        dispatch(setEmail(''));
+    };
+
+    const profile = ( ) => {
+        axios
+            .get('/api/profileEmail', {
+                params: {
+                    username: username,
+                }
+            })
+            .then(response => {
+                if (response.data ) {
+                    dispatch(setEmail(response.data[0].email));
+                    dispatch(setTweets([]));
+                }
+            })
+            .catch(err => {
+                console.log("no user found", err);
+            });
     }
+
     return (
         <Container>
             <br/>
-            <h5>
-                Active Users <Badge variant="secondary">{activeUsers}</Badge>
-            </h5>
+            <br />
+            <ProfileSearch />
             <br/>
-            <h5>Hello {username}</h5>
-            <br/>
-            <Navbar bg="white">
-                <button 
-                    onClick={logout}
-                >Logout</button>
-            </Navbar>
-            <form>
-                <Form.Row>
-                    <Col>
-                        <Form.Control placeholder="Search by Username" style={{width:"200px"}}/>
-                    </Col>
-                    <Col>
-                    <Button variant="primary" type="submit">
-                        Search
+                <h5>
+                <Link to="/account">
+                    <Button variant="primary"
+                    onClick={profile}
+                    >
+                        Profile
                     </Button>
-                    </Col>
-                </Form.Row>
-            </form>
+                </Link>
+                </h5>
+            <br/>
+            <div>
+                <h5>
+                    Active Users <Badge variant="secondary">{activeUsers}</Badge>
+                </h5>
+            </div>
+            <br/>
+            <div>
+                <h5>
+                    Hello <Badge variant="secondary">{username}</Badge>
+                </h5>
+            </div>
+            <br/>
+            <Link to="/">
+                <Button variant="primary"
+                    onClick={logout}
+                >
+                    Logout
+                </Button>
+            </Link>
         </Container>
     );
 }
@@ -46,6 +78,9 @@ const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
 const mapStateToProps = state => ({
     activeUsers: state.userReducer.activeUsers,
     username: state.userReducer.username,
+    password: state.userReducer.password,
+    email: state.userReducer.email,
+    tweets: state.notesReducer.tweets,
 });
 
 export default connect(mapStateToProps, null)(ProfileSidebar);

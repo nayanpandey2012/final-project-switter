@@ -3,9 +3,8 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form } from "react-bootstrap";
 import switterLogo from "../csc667-logo.svg";
-import { Link  } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
-//import { validateAll } from "indicative";
 
 export default class SignUp extends React.Component {
   state = {
@@ -14,25 +13,7 @@ export default class SignUp extends React.Component {
     password: "",
     email: "",
     c_password: ""
-    // users: []
   };
-
-  // componentDidMount = () => {
-  //   this.getUserPost();
-  // };
-
-  // getUserPost = () => {
-  //   axios
-  //     .get("/api")
-  //     .then(res => {
-  //       const data = res.data;
-  //       this.setState({ users: data });
-  //       console.log("Data has been received!!");
-  //     })
-  //     .catch(() => {
-  //       alert("Error finding data");
-  //     });
-  // };
 
   handleChange = ({ target }) => {
     const { name, value } = target;
@@ -60,29 +41,22 @@ export default class SignUp extends React.Component {
         data: userpayload
       })
         .then(res => {
-          alert("You are now registered. Please login to use Switter.");
           console.log("Data has been sent to the server", res);
           this.resetUserdataInputs();
-          //alert("User is now signed up. Happy Switting!");
-          window.location.href="login"
-
-          //this.redirecttologin();
-          // this.getUserPost();
+          setTimeout(() => {
+            window.location.href = "login";
+          }, 3000);
+          console.log("i am here");
+          this.setState({ dbMsg: res.data.msg });
         })
-        
+
         .catch(e => {
-          alert("Username already taken.!!");
-          console.log("Internal server error", e.res);
+          console.log("Internal server error");
+          console.log(e);
+          this.setState({ dbMsg: e.response.data.msg });
         });
     }
   };
-
-  // redirecttologin = ()=>{
-  //   console.log('Click happened');
-  //   return <Redirect to="/login" />;
-  // }
-
-
 
   resetUserdataInputs = () => {
     this.setState({
@@ -98,8 +72,6 @@ export default class SignUp extends React.Component {
     return (
       <div style={{ height: "60vh", paddingTop: 100 }}>
         <h2 style={{ color: "#00ACED" }}>Create your account</h2>
-
-        {/* NOTE: add home btn logo to return to homepage */}
         <span>
           <Link to="/">
             <img src={switterLogo} width="40px" height="40px" alt="logo" />
@@ -109,7 +81,6 @@ export default class SignUp extends React.Component {
         <form onSubmit={this.submit}>
           <br />
           <Form.Group style={{ width: "49vh", marginInlineStart: 550 }}>
-            <Form.Label>Avatar name</Form.Label>
             <Form.Control
               type="text"
               placeholder="Pick a name"
@@ -123,7 +94,6 @@ export default class SignUp extends React.Component {
             controlId="formGroupEmail"
             style={{ width: "49vh", marginInlineStart: 550 }}
           >
-            <Form.Label>Email address</Form.Label>
             <Form.Control
               type="email"
               placeholder="Enter email"
@@ -137,7 +107,6 @@ export default class SignUp extends React.Component {
             controlId="formGroupPassword"
             style={{ width: "49vh", marginInlineStart: 550 }}
           >
-            <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
               placeholder="Password"
@@ -151,7 +120,6 @@ export default class SignUp extends React.Component {
             controlId="formGroupPassword"
             style={{ width: "49vh", marginInlineStart: 550 }}
           >
-            <Form.Label>Confirm Password</Form.Label>
             <Form.Control
               type="password"
               placeholder="Confirm Password"
@@ -161,16 +129,18 @@ export default class SignUp extends React.Component {
               onChange={this.handleChange}
             />
           </Form.Group>
-          {/* <ButtonToolbar> */}
           <Button
             type="submit"
             variant="outline-primary"
             style={{ width: "49vh" }}
-          >Sign up
-            {/* <Link to='/profile'>submit</Link> */}
+          >
+            Sign up
           </Button>
         </form>
+
+        <p style={{ margin: "10px" }}>{this.state.dbMsg}</p>
       </div>
     );
   }
 }
+

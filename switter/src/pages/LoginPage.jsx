@@ -1,37 +1,43 @@
-import React from 'react';
+import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import '../LoginPage.css';
-import '../App.css';
+import "../LoginPage.css";
+import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Form } from "react-bootstrap";
-import switterLogo from '../csc667-logo.svg';
-import { setUsername, setPassword, setIsLoggedIn } from '../redux/actions/userActions';
-import { connect } from 'react-redux';
-import axios from 'axios';
+import { Form } from "react-bootstrap";
+import switterLogo from "../csc667-logo.svg";
+import {
+  setUsername,
+  setPassword,
+  setEmail,
+  setIsLoggedIn
+} from "../redux/actions/userActions";
+import { connect } from "react-redux";
+import axios from "axios";
 
-const Login = ({ dispatch, username, password, isLoggedIn }) => {
+const Login = ({ dispatch, username, password, email, isLoggedIn }) => {
+  
+  const [count, setCount] = useState("");
 
   const checkUser = () => {
-    axios.get('/api/getUser', {
-      params: {
-        username: username, 
-        password: password,
-      }
-    })
+    axios
+      .get("/api/getUser", {
+        params: {
+          username: username,
+          password: password,
+          email: email
+        }
+      })
       .then(response => {
-        console.log(response.data);
         if (response.data) {
           dispatch(setIsLoggedIn(true));
-        } 
+        }
       })
       .catch(err => {
-        console.log('no user found', err);
+        console.log("no user found", err);
+        console.log("response from Server ", err.response.data.loginMsg);
+        setCount(err.response.data.loginMsg);
       });
-  }
-
-  React.useEffect(() => {
-    checkUser();
-  }, []);
+  };
 
   const updateUsername = newUser => {
     if (newUser.length < 20) {
@@ -46,13 +52,15 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
   };
 
   if (isLoggedIn) {
-    console.log('isLoggedIn: ',isLoggedIn);
-    return <Redirect to='/profile' />;
+    console.log("isLoggedIn: ", isLoggedIn);
+    setUsername(username);
+    setEmail(email);
+    return <Redirect to="/profile" />;
   }
 
   return (
     <div style={{ height: "60vh", paddingTop: 100 }}>
-      <h2 style={{ color: "#00ACED" }}>Login with your Username</h2>
+      <h2 style={{ color: "#00ACED" }}>Login with your username</h2>
       <span>
         <Link to="/">
           <img src={switterLogo} width="40px" height="40px" alt="logo" />
@@ -85,22 +93,23 @@ const Login = ({ dispatch, username, password, isLoggedIn }) => {
             required
           />
         </Form.Group>
-        
       </Form>
-      <button style={{ width: "49vh", marginInlineStart: 550 }} 
-        className='login-btn'
-        onClick={ checkUser }
+      <button
+        style={{ width: "49vh", marginInlineStart: 550 }}
+        className="login-btn"
+        onClick={checkUser}
       >
         Login
       </button>
+      <p>{count}</p>
     </div>
   );
-}
+};
 
 const mapStateToProps = state => ({
   username: state.userReducer.username,
   password: state.userReducer.password,
-  isLoggedIn: state.userReducer.isLoggedIn,
+  isLoggedIn: state.userReducer.isLoggedIn
 });
-  
+
 export default connect(mapStateToProps, null)(Login);

@@ -1,7 +1,6 @@
 //credit to sunny
 import React, { Component } from "react";
-//import { BrowserRouter as  NavLink, Router, Route, Switch, Link } from "react-router-dom";
-import { HashRouter as Router, Route, Link, NavLink } from "react-router-dom";
+import { HashRouter as Link, NavLink } from "react-router-dom";
 import switterLogo from "../csc667-logo.svg";
 import "../WelcomePage.css";
 
@@ -15,7 +14,7 @@ class WelcomePage extends Component {
             <span>
               <br />
               <Link to="/">
-                <img src={switterLogo} width="70px" height="70px" alt="logo" />
+                <img href='/' src={switterLogo} width="70px" height="70px" alt="logo" />
               </Link>
             </span>
           </div>

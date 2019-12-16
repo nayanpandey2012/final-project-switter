@@ -7,7 +7,7 @@ const TweetSchema = new Schema({
   id: String,
   username: String,
   message: String,
-  likes: String,
+  likes: Number,
   createdAt: {
     type: String,
     default: Date.now()
