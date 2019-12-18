@@ -7,28 +7,47 @@ import App from './App';
 import { store, persistor } from './store';
 import * as serviceWorker from './serviceWorker';
 import { setActiveUsers } from './redux/actions/userActions';
+import { setTweets } from './redux/actions/noteActions';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 // websocket for client-side:
 const ws = new WebSocket('ws://localhost:4005');
 
+// action types:
+const UPDATE_USER_COUNT = 'UPDATE_USER_COUNT';
+const UPDATE_MESSAGES = 'UPDATE_MESSAGES';
+
+// log connection closed on console
+ws.onclose = () => { 
+  console.log('conenction has closed!');
+};
+
+// log connection open on console
 ws.onopen = () => {
   console.log('connection has opened!');
-}
+};
 
+// on receive message, add it to the list of messages:
 ws.onmessage = message => {
+  // parse message from server: 
   const messageObj =  JSON.parse(message.data);
   switch (messageObj.type) {
-      case 'UPDATE_USER_COUNT':
-          store.dispatch(setActiveUsers(messageObj.count));
-          break;
+      case UPDATE_USER_COUNT:
+        store.dispatch(setActiveUsers(messageObj.count));
+        break;
+      case UPDATE_MESSAGES:
+        store.dispatch(setTweets(messageObj.notes));
+        break;
       default: return;
   }
+  console.log(messageObj);
 };
 
 ws.onerror = e => {
   console.log(e);
 };
+
+window.ws = ws; 
 
 ReactDOM.render(
   <Provider store={store}>

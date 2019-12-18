@@ -3,9 +3,8 @@ import Tweets from './Tweets';
 import {  getAllTweets } from '../redux/actions/noteActions';
 import { connect } from 'react-redux';
 
-
-const ProfileTweetDashboard = ({ dispatch, email }) => {
-    
+const ProfileTweetDashboard = ({ dispatch }) => {
+    // display all tweets on screen:
     React.useEffect(() => {
         dispatch(getAllTweets());
     }, []);
@@ -25,5 +24,5 @@ const mapStateToProps = state => ({
     newTweets: state.notesReducer.newTweets,
     email: state.userReducer.email,
 });
-
+// export default ProfileTweetDashboard;
 export default connect(mapStateToProps, null)(ProfileTweetDashboard);

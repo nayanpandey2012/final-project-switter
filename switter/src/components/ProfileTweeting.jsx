@@ -10,9 +10,9 @@ import axios from "axios";
 const ProfileTweeting = ({ dispatch, username }) => {
   // display all tweets on screen:
   React.useEffect(() => {
-    dispatch(getAllTweets());
+      dispatch(getAllTweets());
   }, []);
-
+ 
   const [terms, setTerms] = React.useState("");
 
   const search = el => {
@@ -22,6 +22,11 @@ const ProfileTweeting = ({ dispatch, username }) => {
   const postTweet = e => {
     e.preventDefault();
 
+    const data = {
+      type: 'SEND_MESSAGE',
+      newNote: terms,
+    }
+
     // save new tweet to mongodb
     axios
       .post("/api/postTweet", {
@@ -30,8 +35,11 @@ const ProfileTweeting = ({ dispatch, username }) => {
       })
       .then(res => {
         console.log("Tweets sent to server...", res);
+        
         setTerms("");
         window.location.reload(true);
+        // client to server:
+        window.ws.send(JSON.stringify(data));
       })
       .catch(e => {
         console.log("Error posting tweet to server...", e);

@@ -15,7 +15,6 @@ const INITIAL_STATE = {
   
 const notesReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        
         case SET_TWEETS:
             // action.tweet: []
             return {
