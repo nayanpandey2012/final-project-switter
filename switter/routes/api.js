@@ -14,6 +14,11 @@ client.on('connect', () => {
   console.log('connected to redis!');
 });
 
+client.on('error', () => {
+  console.log('disconnect from redis');
+  client.quit();
+});
+
 // body-parser middleware:
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
@@ -74,7 +79,7 @@ const checkCache = (req, res, next) => {
       console.log('cache hit!');
       console.log('cached value is: ', data);
       console.log([{ username: username, message: data[0] }, { username: username, message: data[1] }])
-      return res.json([{ username: username, message: data[0] }, { username: username, message: data[1] }, { username: username, message: data[2] }]);
+      return res.json(data);
     } else {
       console.log('cache miss!');
       next();
