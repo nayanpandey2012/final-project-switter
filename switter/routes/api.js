@@ -78,17 +78,17 @@ const checkCache = (req, res, next) => {
     if (data !== null) {
       console.log('cache hit!');
       console.log('cached value is: ', data);
-      console.log([{ username: username, message: data[0] }, { username: username, message: data[1] }])
       return res.json(data);
     } else {
       console.log('cache miss!');
       next();
       return;
     }
-  })
+  });
 }
 
 // find tweets by the login user:
+// router.get("/accountTweets", checkCache, async (req, res) => {
 router.get("/accountTweets", async (req, res) => {
   try {
     Tweet.find({ username: req.query.username })
@@ -102,23 +102,24 @@ router.get("/accountTweets", async (req, res) => {
 });
 
 // find tweets by search by username in Tweet DB:
+// router.get("/searchUser", checkCache, async (req, res) => {
 router.get("/searchUser", async (req, res) => {
   // console.log(req.query.username);
 
-  Tweet.find({ username: req.query.username })
-    .then(data => {
-      res.json(data);
-    })
-    .catch(err => {
+  try {
+    Tweet.find({ username: req.query.username })
+      .then(data => {
+        return res.json(data);
+      });
+  } catch (err) {
       console.log(err);
-    });
+  }
 });
 
 /* USER DATABASE */
 
 // find user email profile by username in User DB:
 router.get("/profileEmail", async (req, res) => {
-  // console.log('print: ', req.query.username);
 
   User.find({ username: req.query.username })
     .then(data => {
@@ -159,7 +160,7 @@ router.get("/getUser", async (req, res) => {
 
 // save users data into User DB:
 router.post("/usersave", async (req, res) => {
-  // console.log("Body", req.body);
+  
   const data = req.body;
 
   const newUserPost = new User(data);

@@ -1,5 +1,6 @@
 const Websocket = require('ws');
 
+// make websocket server:  
 const wss = new Websocket.Server({ port: 4005 });
 
 const broadcastMessage = message => {

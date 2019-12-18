@@ -9,7 +9,7 @@ import * as serviceWorker from './serviceWorker';
 import { setActiveUsers } from './redux/actions/userActions';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-// websocket for active user: 
+// websocket for client-side:
 const ws = new WebSocket('ws://localhost:4005');
 
 ws.onopen = () => {
