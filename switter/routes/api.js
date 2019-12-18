@@ -2,21 +2,33 @@ const express = require("express");
 const router = express.Router();
 const Tweet = require("../src/models/tweetSchema");
 const User = require("../src/models/userSchema");
+const redis = require('redis');
+const bodyParser = require('body-parser');
+
+const client = redis.createClient();
+
+client.on('connect', () => {
+  console.log('connected to redis!');
+});
+
+// middleware:
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.json());
 
 // get all tweets in Tweet DB:
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
   Tweet.find({})
     .then(data => {
-      // console.log("Tweets data: ", data);
       res.json(data);
     })
     .catch(error => {
       console.log("error: ", error);
+      return res.status(500).json;
     });
 });
 
 // find user email profile by username in User DB:
-router.get("/profileEmail", (req, res) => {
+router.get("/profileEmail", async (req, res) => {
   // console.log('print: ', req.query.username);
 
   User.find({ username: req.query.username })
@@ -29,7 +41,7 @@ router.get("/profileEmail", (req, res) => {
 });
 
 // find tweets by the login user:
-router.get("/accountTweets", (req, res) => {
+router.get("/accountTweets", async (req, res) => {
 
   Tweet.find({ username: req.query.username })
     .then(data => {
@@ -41,7 +53,7 @@ router.get("/accountTweets", (req, res) => {
 });
 
 // find tweets by username in Tweet DB:
-router.get("/searchUser", (req, res) => {
+router.get("/searchUser", async (req, res) => {
   // console.log(req.query.username);
 
   Tweet.find({ username: req.query.username })
@@ -62,7 +74,7 @@ router.get("/getUser", async (req, res) => {
     username: findUsername,
     password: findPassword
   });
-  // let pwd = await User.findOne({ password: findPassword });
+
   if (findUsername === "" || findPassword === "") {
     return res
       .status(403)
@@ -79,40 +91,39 @@ router.get("/getUser", async (req, res) => {
     return res.json({ loginMsg: "Username and password matches..." });
   }
 });
-
-// save tweets data into MongoDB:
-router.post("/save", (req, res) => {
-  console.log("Body", req.body);
-  const data = req.body;
-
-  const newBlogPost = new Tweet(data);
-
-  newBlogPost.save(error => {
-    if (error) {
-      res.status(500).json({ msg: "Sorry, internal server error..." });
-      return;
-    }
-    return res.json({
-      msg: "data inserted into database..!!!!"
-    });
-  });
-});
-
+ 
 // insert new tweet to Tweet DB:
-router.post('/postTweet', (req, res) => {
-  // console.log('body ', req.body);
+// first find tweet in redis (cache hit)
+// if tweet is not in redis, save new tweet in redis
+// if tweet is not in redis (cache miss), find in Tweet DB:
+router.post('/postTweet', async (req, res) => {
   const data = req.body;
+
+  // set key for redis:
+  const key = data.message;
+
+  // add new tweets to redis:
+  client.set(data.username, data.message);
 
   const newBlogPost = new Tweet(data);
   
+  // add new tweets to Tweet DB:
   newBlogPost.save(err => {
-    if (err) {
-      res.status(500).json({ msg: 'Sorry, internal server errorr...'});
+    // if (err) {
+    //   res.status(500).json({ msg: 'Sorry, internal server errorr...'});
+    //   return;
+    // }
+
+    // return res.json({
+    //   msg: 'data inserted into database...!!!!'
+    // });
+
+    if (!err) {
+      res.json({ msg: 'data inserted into database...!!!!' });
       return;
+    } else {
+      return res.status(500).json({ msg: 'Sorry, internal server errorr...'});
     }
-    return res.json({
-      msg: 'data inserted into database...!!!!'
-    });
   });
 });
 
