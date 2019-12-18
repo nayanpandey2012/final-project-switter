@@ -2,8 +2,13 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container,  Col } from "react-bootstrap";
 import { connect } from 'react-redux';
+import {  getAllTweets } from '../redux/actions/noteActions';
 
-const Tweets = ({ tweets }) => {
+const Tweets = ({ dispatch, tweets }) => {
+    // display all tweets on screen:
+    React.useEffect(() => {
+        dispatch(getAllTweets());
+    }, []);
 
     return (
         <Container>

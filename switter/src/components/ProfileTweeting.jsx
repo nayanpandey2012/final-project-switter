@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import switterLogo from "../csc667-logo.svg";
-import ProfileTweetDashboard from "./ProfileTweetDashboard";
+import Tweets from './Tweets';
 import { Container, Button, Navbar, Form } from "react-bootstrap";
 import { connect } from "react-redux";
 import { getAllTweets } from "../redux/actions/noteActions";
@@ -65,7 +65,7 @@ const ProfileTweeting = ({ dispatch, username }) => {
         </Form.Group>
         <Button onClick={postTweet}>Swit</Button>
       </form>
-      <ProfileTweetDashboard />
+      <Tweets />
     </Container>
   );
 };

@@ -109,7 +109,7 @@ router.get("/accountTweets", async (req, res) => {
 
 // find tweets by search by username in Tweet DB:
 // router.get("/searchUser", checkCache, async (req, res) => {
-router.get("/searchUser", checkCache, async (req, res) => {
+router.get("/searchUser", async (req, res) => {
   try {
     Tweet.find({ username: req.query.username })
       .then(data => {
