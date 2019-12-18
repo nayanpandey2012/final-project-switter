@@ -33,12 +33,11 @@ router.get("/", async (req, res) => {
 });
 
 // insert new tweet to Tweet DB:
-// first find tweet in redis (cache hit)
-// if tweet is not in redis (cache miss), save new tweet in redis and find in Tweet DB:
+// newly create tweets will be save in both redis and Tweet DB:
 router.post('/postTweet', (req, res) => {
   const data = req.body;
 
-  // add new tweets to redis:
+  // add new tweets to redis using LIST:
   // key = username, value = new tweet messages:
   client.rpush([data.username, data.message], (err, reply) => {
     console.log('print: ', reply); // return arr.length of value
@@ -57,16 +56,44 @@ router.post('/postTweet', (req, res) => {
   });
 });
 
+// first find tweet in redis (cache hit)
+// if tweet is not in redis (cache miss), find in Tweet DB:
+
+// helper function to check cache:
+const checkCache = (req, res, next) => {
+  let { username } = req.query;
+
+  // find tweets based on username in redis LIST: 
+  client.lrange(username, 0, -1, (err, data) => {
+    if (err) {
+      console.log('err ', err);
+      res.status(500).send('Redis Server Error Caching!');
+    }
+    
+    if (data !== null) {
+      console.log('cache hit!');
+      console.log('cached value is: ', data);
+      console.log([{ username: username, message: data[0] }, { username: username, message: data[1] }])
+      return res.json([{ username: username, message: data[0] }, { username: username, message: data[1] }, { username: username, message: data[2] }]);
+    } else {
+      console.log('cache miss!');
+      next();
+      return;
+    }
+  })
+}
+
 // find tweets by the login user:
 router.get("/accountTweets", async (req, res) => {
-
-  Tweet.find({ username: req.query.username })
+  try {
+    Tweet.find({ username: req.query.username })
     .then(data => {
-      res.json(data);
-    })
-    .catch(err => {
-      console.log(err);
+      console.log(data);
+      return res.json(data);
     });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // find tweets by search by username in Tweet DB:
