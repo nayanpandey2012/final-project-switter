@@ -77,10 +77,17 @@ const checkCache = (req, res, next) => {
     
     if (data !== null) {
       console.log('cache hit!');
-      console.log('cached value is: ', data);
-      return res.json(data);
+      console.log('Cache hit! Cached value is: ', data);
+      const arr = [];
+      const obj = { username: username }
+      for (var i = 0; i < data.length; i++) {
+        obj["message"] = data[i];
+      }
+      arr.push(obj);
+      console.log('print ', arr);
+      return res.json(arr);
     } else {
-      console.log('cache miss!');
+      console.log('Cache miss!');
       next();
       return;
     }
@@ -93,7 +100,6 @@ router.get("/accountTweets", async (req, res) => {
   try {
     Tweet.find({ username: req.query.username })
     .then(data => {
-      console.log(data);
       return res.json(data);
     });
   } catch (err) {
@@ -104,8 +110,6 @@ router.get("/accountTweets", async (req, res) => {
 // find tweets by search by username in Tweet DB:
 // router.get("/searchUser", checkCache, async (req, res) => {
 router.get("/searchUser", async (req, res) => {
-  // console.log(req.query.username);
-
   try {
     Tweet.find({ username: req.query.username })
       .then(data => {
