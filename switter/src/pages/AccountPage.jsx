@@ -5,12 +5,11 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import axios from 'axios';
 import Tweets from '../components/Tweets';
-import { setTweets, getAccountTweet } from '../redux/actions/noteActions';
+import { getAccountTweet } from '../redux/actions/noteActions';
 
 const AccountPage = ({ email, username, dispatch }) => {
 
     const accountTweets = () => {
-
         axios
             .get('/api/accountTweets', {
                 params: {

@@ -30,7 +30,7 @@ const Header = ({ dispatch }) => {
         <Link to="/welcome">
           {/* force lazy-registration */}
           <Button style={{marginInlineStart:"600px"}}>
-            Tweet
+            Swit
           </Button>
         </Link>
       </form>

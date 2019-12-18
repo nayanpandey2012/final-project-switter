@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { getAllTweets } from "../redux/actions/noteActions";
 import axios from "axios";
 
-const ProfileTweeting = ({ dispatch, username, likes }) => {
+const ProfileTweeting = ({ dispatch, username }) => {
   // display all tweets on screen:
   React.useEffect(() => {
     dispatch(getAllTweets());
@@ -42,10 +42,7 @@ const ProfileTweeting = ({ dispatch, username, likes }) => {
     <Container>
       <Navbar bg="white">
         <Navbar.Brand href="/profile" style={logoStyle.float}>
-          {/* <Link to='/profile'> */}
-          {/* Refresh page upon new tweets: */}
           <img src={switterLogo} width="40" height="40" alt="logo" />
-          {/* </Link> */}
         </Navbar.Brand>
       </Navbar>
       <form>
@@ -58,7 +55,7 @@ const ProfileTweeting = ({ dispatch, username, likes }) => {
             onChange={e => search(e.target.value)}
           />
         </Form.Group>
-        <Button onClick={postTweet}>Tweet</Button>
+        <Button onClick={postTweet}>Swit</Button>
       </form>
       <ProfileTweetDashboard />
     </Container>

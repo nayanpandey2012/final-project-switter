@@ -5,13 +5,16 @@ const User = require("../src/models/userSchema");
 const redis = require('redis');
 const bodyParser = require('body-parser');
 
-const client = redis.createClient();
+const client = redis.createClient({
+  host: '127.0.0.1',
+});
 
+// check connection to redis db:
 client.on('connect', () => {
   console.log('connected to redis!');
 });
 
-// middleware:
+// body-parser middleware:
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 
@@ -96,28 +99,21 @@ router.get("/getUser", async (req, res) => {
 // first find tweet in redis (cache hit)
 // if tweet is not in redis, save new tweet in redis
 // if tweet is not in redis (cache miss), find in Tweet DB:
-router.post('/postTweet', async (req, res) => {
+router.post('/postTweet', (req, res) => {
   const data = req.body;
 
-  // set key for redis:
-  const key = data.message;
-
   // add new tweets to redis:
-  client.set(data.username, data.message);
+  // key = username, value = new tweet message:
+
+  // client.set(data.username, data.message);
+  client.rpush([data.username, data.message], (err, reply) => {
+    console.log('print: ', reply);
+  });
 
   const newBlogPost = new Tweet(data);
   
   // add new tweets to Tweet DB:
   newBlogPost.save(err => {
-    // if (err) {
-    //   res.status(500).json({ msg: 'Sorry, internal server errorr...'});
-    //   return;
-    // }
-
-    // return res.json({
-    //   msg: 'data inserted into database...!!!!'
-    // });
-
     if (!err) {
       res.json({ msg: 'data inserted into database...!!!!' });
       return;
