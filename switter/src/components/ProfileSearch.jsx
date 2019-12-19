@@ -5,7 +5,6 @@ import { Button, Col, Form } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { setTweets } from '../redux/actions/noteActions';
 
-
 const ProfileSearch = ({ dispatch }) => {
 
     const [searchTerm, setSearchTerm] = React.useState('');
@@ -18,9 +17,8 @@ const ProfileSearch = ({ dispatch }) => {
                 }
             })
             .then(response => {
-                console.log('search user: ', response.data);
+                console.log('username tweets: ', response);
                 if (response.data) {
-                    // get tweet stats by that particular username: 
                     dispatch(setTweets(response.data));
                 } 
             })
@@ -49,9 +47,7 @@ const ProfileSearch = ({ dispatch }) => {
                 />
             </Col>
             <Col>
-                <Button variant="primary" 
-                    onClick={searchUser}
-                >
+                <Button variant="primary" onClick={searchUser}>
                     Search
                 </Button>
             </Col>

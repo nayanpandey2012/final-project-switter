@@ -1,26 +1,28 @@
-### Switter
+# Switter
+Switter is a basic Twitter like application where a user can check the sweets posted on switter. A user has to signup and login before posting any sweets on this application. In addition, the user can search for any other registered user with switter and can also view their own profile page.
 
-## Websocket
-Websocket is at port 4005\
-To run websocket:\
-nodemon websocket.js
+## Technology Stack (MERN)
+- <b> FrontEnd: </b> React, JavaScript, Bootstrap, CSS
+- <b> BackEnd: </b> Node.Js, Express
+- <b> Database: </b> MongoDB
 
+## Steps to run on local machine
+- git clone the repository
+- install dependencies with `npm i`
+- run the command `npm run dev`
 
-## MongoDB
-MongoDB is at port 8000\
-To run server for mongodb:\
-nodemon server.js
+## Docker Image
 
-## File Server for React Frontend
-fileServer is at port 4000\
-To run fileServer:\
-nodemon fileServer.js
+### Build a docker image
+- Build Docker image with `docker build -t <username>/switter:v1 .`
+- To view your image, run `docker image ls <username>/switter:v1`
+- Run with `docker run -p 3000:3000 <username>/switter:v1`
+- To view the docker container running, `docker container ls`
+- To stop a docker container `docker stop <container id>`
+- Push your docker image with docker `push <username>/switter:v1`
+- Run your image off of dockerhub `docker run -p 3000:3000 <username>/switter:v1`
 
-## Proxy Server: 
-gateway is at port 3004\
-To run gateway:\
-nodemon gateway.js
+### To run on AWS EC2 instance
 
-
-If properly run, proxy link at **localhost:3004** should work!
-
+- Install docker on ec2 with `sudo snap install docker`
+- Run the docker image on ec2 with `sudo docker run -p 3000:3000 <username>/switter:v1`

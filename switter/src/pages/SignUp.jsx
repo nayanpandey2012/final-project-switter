@@ -81,7 +81,6 @@ export default class SignUp extends React.Component {
         <form onSubmit={this.submit}>
           <br />
           <Form.Group style={{ width: "49vh", marginInlineStart: 550 }}>
-            <Form.Label>Avatar name</Form.Label>
             <Form.Control
               type="text"
               placeholder="Pick a name"
@@ -95,7 +94,6 @@ export default class SignUp extends React.Component {
             controlId="formGroupEmail"
             style={{ width: "49vh", marginInlineStart: 550 }}
           >
-            <Form.Label>Email address</Form.Label>
             <Form.Control
               type="email"
               placeholder="Enter email"
@@ -109,7 +107,6 @@ export default class SignUp extends React.Component {
             controlId="formGroupPassword"
             style={{ width: "49vh", marginInlineStart: 550 }}
           >
-            <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
               placeholder="Password"
@@ -123,7 +120,6 @@ export default class SignUp extends React.Component {
             controlId="formGroupPassword"
             style={{ width: "49vh", marginInlineStart: 550 }}
           >
-            <Form.Label>Confirm Password</Form.Label>
             <Form.Control
               type="password"
               placeholder="Confirm Password"
@@ -147,3 +143,4 @@ export default class SignUp extends React.Component {
     );
   }
 }
+
