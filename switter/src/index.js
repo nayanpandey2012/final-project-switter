@@ -35,9 +35,6 @@ ws.onmessage = message => {
       case UPDATE_USER_COUNT:
         store.dispatch(setActiveUsers(messageObj.count));
         break;
-      case UPDATE_MESSAGES:
-        store.dispatch(setTweets(messageObj.notes));
-        break;
       default: return;
   }
   console.log(messageObj);

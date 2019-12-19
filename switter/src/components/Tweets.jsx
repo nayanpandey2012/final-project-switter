@@ -15,8 +15,11 @@ const Tweets = ({ dispatch, tweets }) => {
             <Col>
             {tweets.map((tweet, index) => (
                 <div key={index}>
-                    <h5>@{tweet.username}</h5>
-                    <h5>{tweet.message}</h5>
+                    <br/>
+                    <h5>
+                        <strong>@{tweet.username}: </strong>
+                        <em>{tweet.message}</em>
+                    </h5>
                     <br/>
                     <br/>
                 </div>

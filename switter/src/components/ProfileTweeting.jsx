@@ -8,43 +8,34 @@ import { getAllTweets } from "../redux/actions/noteActions";
 import axios from "axios";
 
 const ProfileTweeting = ({ dispatch, username }) => {
-  // display all tweets on screen:
-  React.useEffect(() => {
-      dispatch(getAllTweets());
-  }, []);
- 
-  const [terms, setTerms] = React.useState("");
+// display all tweets on screen:
+React.useEffect(() => {
+    dispatch(getAllTweets());
+}, []);
 
-  const search = el => {
-    setTerms(el);
-  };
+const [terms, setTerms] = React.useState("");
 
-  const postTweet = e => {
-    e.preventDefault();
+const search = el => {
+  setTerms(el);
+};
 
-    const data = {
-      type: 'SEND_MESSAGE',
-      newNote: terms,
-    }
-
-    // save new tweet to mongodb
-    axios
-      .post("/api/postTweet", {
-        username: username,
-        message: terms,
-      })
-      .then(res => {
-        console.log("Tweets sent to server...", res);
-        
-        setTerms("");
-        window.location.reload(true);
-        // client to server:
-        window.ws.send(JSON.stringify(data));
-      })
-      .catch(e => {
-        console.log("Error posting tweet to server...", e);
-      });
-  };
+const postTweet = e => {
+  e.preventDefault();
+  // save new tweet to mongodb
+  axios
+    .post("/api/postTweet", {
+      username: username,
+      message: terms,
+    })
+    .then(res => {
+      console.log("Tweets sent to server...", res);
+      setTerms("");
+      window.location.reload(true);
+    })
+    .catch(e => {
+      console.log("Error posting tweet to server...", e);
+    });
+};
 
   return (
     <Container>

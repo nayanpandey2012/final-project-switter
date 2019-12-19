@@ -6,9 +6,9 @@ const INITIAL_STATE = {
     tweets: [],
     /*
     tweets = [
-        {username: 'user1', message: 'hello', likes: 0}
-        {username: 'user1', message: 'hi', likes: 0}
-        {username: 'user2', message: 'hola', likes: 0}
+        {username: 'user1', message: 'hello'}
+        {username: 'user1', message: 'hi'}
+        {username: 'user2', message: 'hola'}
     ]
     */
 };

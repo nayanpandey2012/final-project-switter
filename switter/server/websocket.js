@@ -46,21 +46,21 @@ wss.on('connection', (ws) => {
     // count active users:
     updateUserCount();
     // send serialize messages from server to client
-    ws.send(JSON.stringify({
-        type: UPDATE_MESSAGES,
-        notes,
-    }));
+    // ws.send(JSON.stringify({
+    //     type: UPDATE_MESSAGES,
+    //     notes,
+    // }));
 
     // on message event with client:
-    ws.on('message', message => {
-        const messageObj = JSON.parse(message);
-        switch (messageObj.type) {
-            case SEND_MESSAGE:
-                broadcastAllMessages(messageObj.newNote);
-                break;
-        }
-        console.log(message);
-    })
+    // ws.on('message', message => {
+    //     const messageObj = JSON.parse(message);
+    //     switch (messageObj.type) {
+    //         case SEND_MESSAGE:
+    //             broadcastAllMessages(messageObj.newNote);
+    //             break;
+    //     }
+    //     console.log('ws message: ', message);
+    // });
 
     ws.on('close', () => {
         updateUserCount();

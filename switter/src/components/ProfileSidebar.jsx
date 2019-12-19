@@ -8,7 +8,7 @@ import { setTweets } from '../redux/actions/noteActions';
 import ProfileSearch from './ProfileSearch';
 import axios from 'axios';
 
-const ProfileSidebar = ({ dispatch, activeUsers, username, tweets }) => {
+const ProfileSidebar = ({ dispatch, activeUsers, username }) => {
 
     const logout = ( ) => {
         // return to initial state:
@@ -80,7 +80,6 @@ const mapStateToProps = state => ({
     username: state.userReducer.username,
     password: state.userReducer.password,
     email: state.userReducer.email,
-    tweets: state.notesReducer.tweets,
 });
 
 export default connect(mapStateToProps, null)(ProfileSidebar);
